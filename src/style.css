@@ -1,0 +1,132 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  @font-face {
+    font-family: 'Academy Engraved';
+    src: local('Academy Engraved LET'), local('AcademyEngravedLetPlain'),
+         url('/font/AcademyEngravedLetPlain.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow';
+    src: local('Barlow ExtraLight'), local('Barlow-ExtraLight'),
+         url('/font/Barlow-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Barlow';
+    src: local('Barlow Medium'), local('Barlow-Medium'),
+         url('/font/Barlow-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Bon Vivant';
+    src: local('Bon Vivant'), local('bon-vivant'),
+         url('/font/bon-vivant.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body,p {
+    font-family: 'Barlow', 'Inter', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif !important;
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Academy Engraved', serif !important;
+    font-weight: 400;
+  }
+
+  .font-decorative,
+  .decorative-text {
+    font-family: 'Bon Vivant', cursive !important;
+    font-weight: 400;
+  }
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #e5e5e5;
+  font-family: 'Barlow', 'Inter', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, theme('colors.gold') 0%, transparent 70%);
+  opacity: 0;
+  animation: subtle-pulse 15s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #525252;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease-out;
+}
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Loading screen animations */
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* Prevent body scroll during loading */
+body.loading {
+  overflow: hidden;
+}
