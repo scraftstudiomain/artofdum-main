@@ -2,12 +2,24 @@
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import DecorativeDivider from '../components/icons/DecorativeDivider.vue';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const main = ref<HTMLElement | null>(null);
 let ctx: gsap.Context;
+let preparedStoryNodes: HTMLElement[] = [];
+let storyScroll: ScrollTrigger | null = null;
+let totalStoryChars = 0;
+
+type ChapterState = {
+  node: HTMLElement;
+  text: string;
+  length: number;
+  start: number;
+  end: number;
+};
+
+let storyChaptersState: ChapterState[] = [];
 
 const storyChapters = [
   "Our story begins in the opulent kitchens of Awadh...",
@@ -25,27 +37,105 @@ onMounted(() => {
       if (!self || !self.selector) return;
 
       // Pinned Narrative
-      const storySection = self.selector('.story-section')[0];
-      const storyTextElements = self.selector('.story-text');
-      if (storySection && storyTextElements.length > 0) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: storySection,
-            start: 'top top',
-            end: '+=3000',
-            pin: true,
-            scrub: 1,
-          }
+      const storySection = self.selector('.story-section')[0] as HTMLElement | undefined;
+      const storyTextNodes = Array.from(self.selector('.story-text') as HTMLElement[] ?? []);
+
+      if (storySection && storyTextNodes.length > 0) {
+        preparedStoryNodes = storyTextNodes;
+
+        storyChaptersState = [];
+        totalStoryChars = 0;
+
+        storyTextNodes.forEach((node) => {
+          const original = node.textContent?.trim() ?? '';
+          node.dataset.originalText = original;
+          node.setAttribute('aria-label', original);
+          node.textContent = '';
+          node.style.opacity = '0';
+          node.classList.remove('is-typing');
+
+          const length = original.length;
+          const start = totalStoryChars;
+          totalStoryChars += Math.max(length, 1);
+          const end = totalStoryChars;
+
+          storyChaptersState.push({ node, text: original, length, start, end });
         });
 
-        tl.to(self.selector('.story-bg-video'), { scale: 1, duration: tl.duration() }, 0);
+        const updateStory = (rawCount: number) => {
+          if (storyChaptersState.length === 0) return;
+          const clamped = Math.min(Math.max(rawCount, 0), totalStoryChars);
 
-        storyTextElements.forEach((text, index) => {
-          tl.fromTo(text, { opacity: 0 }, { opacity: 1, duration: 1 });
-          if (index < storyTextElements.length - 1) {
-            tl.to(text, { opacity: 0, duration: 1 }, '+=2');
+          let active = storyChaptersState[storyChaptersState.length - 1];
+          for (const chapter of storyChaptersState) {
+            if (clamped < chapter.end) {
+              active = chapter;
+              break;
+            }
           }
+
+          storyChaptersState.forEach((chapter) => {
+            const within = Math.min(
+              Math.max(clamped - chapter.start, 0),
+              chapter.length
+            );
+            const isActive = chapter === active;
+
+            chapter.node.textContent = chapter.text.slice(0, within);
+            chapter.node.style.opacity =
+              isActive && within > 0 ? '1' : '0';
+            chapter.node.classList.toggle(
+              'is-typing',
+              isActive && within < chapter.length
+            );
+            chapter.node.setAttribute(
+              'aria-hidden',
+              (!isActive || within === 0).toString()
+            );
+
+            if (!isActive) {
+              chapter.node.classList.remove('is-typing');
+            }
+          });
+        };
+
+        const scrollLength = Math.max(2000, totalStoryChars * 16);
+
+        storyScroll = ScrollTrigger.create({
+          trigger: storySection,
+          start: 'top top',
+          end: `+=${scrollLength}`,
+          pin: true,
+          scrub: 0.4,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            updateStory(Math.round(self.progress * totalStoryChars));
+          },
+          onLeave: () => updateStory(totalStoryChars),
+          onLeaveBack: () => updateStory(0),
+          onRefresh: (self) =>
+            updateStory(Math.round(self.progress * totalStoryChars)),
         });
+
+        const bgVideo = storySection.querySelector('.story-bg-video');
+        if (bgVideo) {
+          gsap.fromTo(
+            bgVideo,
+            { scale: 1.08 },
+            {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: storySection,
+                start: 'top top',
+                end: `+=${scrollLength}`,
+                scrub: true,
+              },
+            }
+          );
+        }
+
+        updateStory(0);
       }
 
       // Philosophy Scroll
@@ -70,36 +160,27 @@ onMounted(() => {
         }
       }
 
-      // Chef Reveal
-      const chefSection = self.selector('.chef-section')[0];
-      if (chefSection) {
-        gsap.from(self.selector('.chef-image-wrapper img'), {
-          scale: 1.2,
-          y: '5%',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: chefSection,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
-        gsap.from(self.selector('.chef-content'), {
-          opacity: 0,
-          y: 50,
-          scrollTrigger: {
-            trigger: chefSection,
-            start: 'top center',
-            toggleActions: 'play none none reverse'
-          }
-        });
-      }
-
+  
     }, main.value!);
   });
 });
 
 onUnmounted(() => {
+  preparedStoryNodes.forEach((node) => {
+    const original = node.dataset.originalText;
+    if (original) {
+      node.textContent = original;
+      node.style.opacity = '';
+      node.classList.remove('is-typing');
+      node.removeAttribute('aria-hidden');
+    }
+  });
+
+  preparedStoryNodes = [];
+  storyChaptersState = [];
+  totalStoryChars = 0;
+  storyScroll?.kill();
+  storyScroll = null;
   ctx?.revert();
 });
 </script>
@@ -148,8 +229,8 @@ onUnmounted(() => {
     </section>
 
     <!-- Pinned Narrative -->
-    <section class="story-section h-screen w-full relative">
-      <div class="absolute inset-0 overflow-hidden">
+    <section class="story-section relative min-h-screen isolate bg-background">
+      <div class="absolute inset-0 overflow-hidden -z-10">
         <video 
           src="https://videos.pexels.com/video-files/7578541/7578541-hd_1920_1080_25fps.mp4" 
           class="story-bg-video w-full h-full object-cover scale-125"
@@ -157,12 +238,12 @@ onUnmounted(() => {
         ></video>
         <div class="absolute inset-0 bg-black/60"></div>
       </div>
-      <div class="relative h-full flex items-center justify-center text-center px-4">
-        <div class="max-w-4xl">
+      <div class="relative min-h-screen flex items-center justify-center text-center px-4 py-24 sm:py-32">
+        <div class="relative w-full pointer-events-none">
           <p 
             v-for="(chapter, index) in storyChapters" 
             :key="index"
-            class="story-text font-serif text-3xl md:text-5xl lg:text-6xl leading-tight absolute left-1/2 -translate-x-1/2 w-full px-4 opacity-0"
+            class="story-text story-typewriter font-decorative text-3xl md:text-5xl lg:text-6xl leading-snug absolute inset-x-0 top-1/2 -translate-y-1/2 px-4 sm:px-8 opacity-0 z-10"
           >
             {{ chapter }}
           </p>
@@ -170,28 +251,11 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Meet the Ustad -->
-    <section class="chef-section py-20 sm:py-32 bg-background">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div class="chef-image-wrapper h-96 md:h-[600px] overflow-hidden">
-             <img 
-              src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-              alt="Portrait of Ustad Aisha Begum" 
-              class="w-full h-full object-cover object-top"
-              loading="lazy" decoding="async"
-            >
-          </div>
-          <div class="chef-content">
-            <h2 class="font-serif text-4xl text-gold mb-6">Meet the Ustad</h2>
-            <p class="font-sans text-xl font-bold text-text mb-4">Ustad Aisha Begum</p>
-            <div class="space-y-4 text-text-muted leading-relaxed">
-              <p>Carrying the torch of her ancestors, Ustad Aisha Begum is the heart and soul of our kitchen. With over three decades of experience, she has mastered the delicate balance of spice and subtlety that defines our cuisine.</p>
-              <p>Her hands move with the grace of an artist and the precision of a master craftswoman. For her, every dish is a tribute to her heritage and a gift to our guests.</p>
-            </div>
-            <DecorativeDivider />
-          </div>
-        </div>
+    <section class="bg-background py-24 sm:py-32">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-muted">
+        <p class="max-w-3xl mx-auto">
+          The Art of Dum legacy continues in every dining room we serve. Each course is choreographed to sustain the wonder long after the final bite, inviting you to linger, reflect, and return.
+        </p>
       </div>
     </section>
   </div>

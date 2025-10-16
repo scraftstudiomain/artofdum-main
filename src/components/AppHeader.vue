@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
 import DiamondIcon from './icons/DiamondIcon.vue';
 
 const emit = defineEmits(['toggle-menu']);
+const router = useRouter();
 const scrolled = ref(false);
-const showLogo = ref(false);
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50;
-  // Show logo after scrolling past hero section (approximately 100vh)
-  showLogo.value = window.scrollY > window.innerHeight;
+};
+
+const navigateToHome = () => {
+  router.push('/');
 };
 
 const scrollToOrderVia = () => {
@@ -50,15 +53,18 @@ onUnmounted(() => {
           </button>
         </div>
         
-        <!-- Center - Logo (only visible after scrolling past hero) -->
+        <!-- Center - Logo (always visible) -->
         <div class="flex items-center justify-center">
-          <img 
-            v-if="showLogo"
-            src="/images/your-logo.png" 
-            alt="Art of Dum" 
-            class="h-12 w-12 md:h-14 md:w-14 transition-opacity duration-300"
-            :class="showLogo ? 'opacity-100' : 'opacity-0'"
-          />
+          <button
+            @click="navigateToHome"
+            class="transition-transform duration-300 hover:scale-110 focus:outline-none"
+          >
+            <img
+              src="/images/your-logo.png"
+              alt="Art of Dum"
+              class="h-12 w-12 md:h-14 md:w-14"
+            />
+          </button>
         </div>
         
         <!-- Right side - Menu -->

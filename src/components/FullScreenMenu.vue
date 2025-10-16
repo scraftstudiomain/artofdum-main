@@ -11,6 +11,7 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
+  { name: 'Home', path: '/' },
   { name: 'Menu', path: '/menu' },
   { name: 'Catering', path: '/catering' },
   { name: 'About', path: '/about' },
@@ -43,7 +44,7 @@ const closeMenu = () => {
           >
             <router-link
               :to="item.path"
-              class="font-serif text-5xl md:text-7xl text-text-muted hover:text-text transition-colors duration-300 block py-2 link-underline" 
+              class="menu-link text-5xl md:text-7xl text-text-muted hover:text-text transition-colors duration-300 block py-2 link-underline uppercase tracking-[0.18em]" 
               @click="closeMenu" 
             >
               <span>{{ item.name }}</span>
@@ -68,5 +69,14 @@ const closeMenu = () => {
 .menu-fade-enter-from,
 .menu-fade-leave-to {
   opacity: 0;
+}
+
+.menu-link {
+  font-family: 'Academy Engraved', serif;
+  letter-spacing: 0.18em;
+}
+
+.menu-link span {
+  font-family: inherit;
 }
 </style>
