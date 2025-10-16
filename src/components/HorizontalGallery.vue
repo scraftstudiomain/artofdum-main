@@ -71,13 +71,18 @@ onUnmounted(() => {
           <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
           <p class="mt-4 text-text-muted max-w-sm">Glimpses of the artistry and passion infused into every creation.</p>
         </div>
-        <div 
-          v-for="(image, index) in images" 
-          :key="index" 
+        <div
+          v-for="(image, index) in images"
+          :key="index"
           class="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] h-[70vh] px-4 sm:px-6 md:px-8"
         >
           <div class="w-full h-full overflow-hidden shadow-2xl shadow-black/50">
-            <img :src="image" :alt="`Gallery image ${index + 1}`" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+            <img
+              :src="image"
+              :alt="`Gallery image ${index + 1}`"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
           </div>
         </div>
          <div class="flex-shrink-0 w-[10vw]"></div> <!-- Spacer at the end -->

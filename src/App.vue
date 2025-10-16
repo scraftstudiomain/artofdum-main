@@ -88,11 +88,11 @@ onUnmounted(() => {
 <template>
   <div class="bg-background font-sans text-text">
     <!-- Loading Screen -->
-    <LoadingScreen 
-      v-if="isLoading" 
-      @loading-complete="handleLoadingComplete" 
+    <LoadingScreen
+      v-if="isLoading"
+      @loading-complete="handleLoadingComplete"
     />
-    
+
     <!-- Main App Content - shown after doors open -->
     <div v-if="!isLoading" class="main-content-transition">
       <!-- Navigation - shown immediately with hero -->
@@ -100,7 +100,7 @@ onUnmounted(() => {
         <AppHeader @toggle-menu="isMenuOpen = !isMenuOpen" />
         <FullScreenMenu :is-open="isMenuOpen" @close="isMenuOpen = false" />
       </div>
-      
+
       <!-- Main content with router view -->
       <main>
         <router-view v-slot="{ Component }">
@@ -109,7 +109,7 @@ onUnmounted(() => {
           </transition>
         </router-view>
       </main>
-      
+
       <!-- Footer sections - shown after main content -->
       <div v-if="showMainContent" class="relative fade-in">
         <CurveDivider class="absolute bottom-full w-full h-24 text-background fill-current" />

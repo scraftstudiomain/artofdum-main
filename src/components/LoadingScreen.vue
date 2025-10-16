@@ -1,42 +1,17 @@
 <template>
-  <div 
-    v-if="isLoading" 
+  <div
+    v-if="isLoading"
     class="loading-screen"
     ref="loadingScreen"
   >
-    <!-- Hero section content behind doors - gradually appears -->
-    <div class="hero-content">
-      <div class="absolute inset-0 z-0">
-        <video 
-          class="w-full h-full object-cover hero-video"
-          src="/videos/Video.mp4"
-          autoplay
-          loop
-          muted
-          playsinline
-          ref="heroVideo"
-        ></video>
-        <div class="absolute inset-0 bg-black/50 hero-overlay"></div>
-      </div>
-      
-      <!-- Hero logo behind doors -->
-      <div class="hero-logo-behind">
-        <img 
-          src="/images/your-logo.png" 
-          alt="Art of Dum" 
-          class="h-56 w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 block hero-logo-behind-img" 
-        />
-      </div>
-    </div>
-
     <!-- Logo container - stays in center, above doors -->
-    <div 
+    <div
       class="logo-container"
       ref="logoContainer"
     >
-      <img 
-        src="/images/your-logo.png" 
-        alt="Restaurant Logo" 
+      <img
+        src="/images/your-logo.png"
+        alt="Restaurant Logo"
         class="logo"
         ref="logo"
       />
@@ -49,13 +24,13 @@
     </div>
 
     <!-- Left door panel -->
-    <div 
+    <div
       class="door-panel left-door"
       ref="leftDoor"
     ></div>
-    
+
     <!-- Right door panel -->
-    <div 
+    <div
       class="door-panel right-door"
       ref="rightDoor"
     ></div>
@@ -77,26 +52,19 @@ const rightDoor = ref<HTMLElement>()
 const logoContainer = ref<HTMLElement>()
 const logo = ref<HTMLElement>()
 const loadingIndicator = ref<HTMLElement>()
-const heroVideo = ref<HTMLElement>()
 
 onMounted(() => {
   // Prevent body scroll during loading
   document.body.classList.add('loading')
-  
-  // Initial setup - doors closed, logo visible, hero content hidden
+
+  // Initial setup - doors closed, logo visible
   gsap.set([leftDoor.value, rightDoor.value], {
     x: 0
   })
-  
+
   gsap.set(logo.value, {
     scale: 1,
     opacity: 1
-  })
-  
-  // Hide hero content initially
-  gsap.set([heroVideo.value, document.querySelector('.hero-overlay'), document.querySelector('.hero-logo-behind-img')], {
-    opacity: 0,
-    scale: 0.8
   })
 
   // Start the loading sequence
@@ -167,21 +135,7 @@ const startLoadingSequence = () => {
       ease: "power2.inOut"
     })
     .to({}, { duration: 1.5 }) // Wait time
-    
-    // Gradually reveal hero content behind doors
-    .to([heroVideo.value, document.querySelector('.hero-overlay')], {
-      opacity: 1,
-      scale: 1,
-      duration: 1.0,
-      ease: "power2.out"
-    }, "-=0.8")
-    .to(document.querySelector('.hero-logo-behind-img'), {
-      opacity: 1,
-      scale: 1,
-      duration: 1.2,
-      ease: "power2.out"
-    }, "-=0.6")
-    
+
     // Door opening animation - doors slide apart like a real door
     .to(leftDoor.value, {
       x: "-100%",
@@ -193,7 +147,7 @@ const startLoadingSequence = () => {
       duration: 2.5,
       ease: "power3.inOut"
     }, "<")
-    
+
     // Fade out logo as doors open
     .to(logo.value, {
       opacity: 0,
@@ -220,35 +174,6 @@ const startLoadingSequence = () => {
   overflow: hidden;
 }
 
-.hero-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.hero-video {
-  transform-origin: center center;
-}
-
-.hero-overlay {
-  transform-origin: center center;
-}
-
-.hero-logo-behind {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-.hero-logo-behind-img {
-  transform-origin: center center;
-}
-
 .door-panel {
   position: absolute;
   top: 0;
@@ -268,7 +193,6 @@ const startLoadingSequence = () => {
   left: 50%;
   transform-origin: left center;
 }
-
 
 .logo-container {
   position: relative;

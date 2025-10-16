@@ -15,15 +15,6 @@ const navigateToHome = () => {
   router.push('/');
 };
 
-const scrollToOrderVia = () => {
-  const orderViaSection = document.querySelector('[data-ordervia-section]');
-  if (orderViaSection) {
-    orderViaSection.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }
-};
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
@@ -42,19 +33,13 @@ onUnmounted(() => {
     ]"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-24">
-        <!-- Left side - Order button -->
-        <div class="flex items-center">
-          <button 
-            @click="scrollToOrderVia"
-            class="px-6 py-3 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-bold tracking-widest uppercase text-sm rounded-none hover:from-yellow-500 hover:to-yellow-400 transition-all duration-300 transform hover:scale-105"
-          >
-            ORDER ONLINE
-          </button>
+      <div class="flex items-center justify-between h-24 py-4">
+        <!-- Left side - Empty space -->
+        <div class="flex items-center w-1/4">
         </div>
-        
-        <!-- Center - Logo (always visible) -->
-        <div class="flex items-center justify-center">
+
+        <!-- Center - Logo (always visible and bigger) -->
+        <div class="flex items-center justify-center w-1/2">
           <button
             @click="navigateToHome"
             class="transition-transform duration-300 hover:scale-110 focus:outline-none"
@@ -62,14 +47,14 @@ onUnmounted(() => {
             <img
               src="/images/your-logo.png"
               alt="Art of Dum"
-              class="h-12 w-12 md:h-14 md:w-14"
+              class="h-20 w-20 md:h-24 md:w-24"
             />
           </button>
         </div>
-        
+
         <!-- Right side - Menu -->
-        <div class="flex items-center">
-          <button 
+        <div class="flex items-center w-1/4 justify-end">
+          <button
             @click="emit('toggle-menu')"
             class="flex items-center gap-x-3 font-sans font-medium tracking-widest uppercase text-sm group"
           >

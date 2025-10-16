@@ -10,6 +10,7 @@ let ctx: gsap.Context;
 let preparedStoryNodes: HTMLElement[] = [];
 let storyScroll: ScrollTrigger | null = null;
 let totalStoryChars = 0;
+let storySectionEl: HTMLElement | null = null;
 
 type ChapterState = {
   node: HTMLElement;
@@ -17,9 +18,13 @@ type ChapterState = {
   length: number;
   start: number;
   end: number;
+  done: boolean;
 };
 
 let storyChaptersState: ChapterState[] = [];
+let clearStoryChapters = () => {};
+const collapseStorySection = () => storySectionEl?.classList.add('story-section--collapsed');
+const restoreStorySection = () => storySectionEl?.classList.remove('story-section--collapsed');
 
 const storyChapters = [
   "Our story begins in the opulent kitchens of Awadh...",
@@ -41,6 +46,8 @@ onMounted(() => {
       const storyTextNodes = Array.from(self.selector('.story-text') as HTMLElement[] ?? []);
 
       if (storySection && storyTextNodes.length > 0) {
+        storySectionEl = storySection;
+        restoreStorySection();
         preparedStoryNodes = storyTextNodes;
 
         storyChaptersState = [];
@@ -53,14 +60,25 @@ onMounted(() => {
           node.textContent = '';
           node.style.opacity = '0';
           node.classList.remove('is-typing');
+          node.setAttribute('aria-hidden', 'true');
 
           const length = original.length;
           const start = totalStoryChars;
           totalStoryChars += Math.max(length, 1);
           const end = totalStoryChars;
 
-          storyChaptersState.push({ node, text: original, length, start, end });
+          storyChaptersState.push({ node, text: original, length, start, end, done: false });
         });
+
+        clearStoryChapters = () => {
+          storyChaptersState.forEach((chapter) => {
+            chapter.node.textContent = '';
+            chapter.node.style.opacity = '0';
+            chapter.node.classList.remove('is-typing');
+            chapter.node.setAttribute('aria-hidden', 'true');
+            chapter.done = false;
+          });
+        };
 
         const updateStory = (rawCount: number) => {
           if (storyChaptersState.length === 0) return;
@@ -96,23 +114,46 @@ onMounted(() => {
             if (!isActive) {
               chapter.node.classList.remove('is-typing');
             }
+
+            if (!chapter.done && within >= chapter.length) {
+              gsap.timeline({ defaults: { ease: 'power2.out' } })
+                .to(chapter.node, { opacity: 1, duration: 0.25 })
+                .to({}, { duration: 0.45 })
+                .to(chapter.node, { opacity: 0, duration: 0.5 });
+              chapter.done = true;
+            }
           });
         };
 
-        const scrollLength = Math.max(2000, totalStoryChars * 16);
+        const scrollLength = Math.max(1800, totalStoryChars * 15);
 
         storyScroll = ScrollTrigger.create({
           trigger: storySection,
           start: 'top top',
-          end: `+=${scrollLength}`,
+          end: () => `+=${scrollLength}`,
           pin: true,
           scrub: 0.4,
           anticipatePin: 1,
           onUpdate: (self) => {
             updateStory(Math.round(self.progress * totalStoryChars));
           },
-          onLeave: () => updateStory(totalStoryChars),
-          onLeaveBack: () => updateStory(0),
+          onLeave: () => {
+            gsap.to(storySection, {
+              autoAlpha: 0,
+              duration: 0.25,
+              overwrite: 'auto',
+              onComplete: () => {
+                clearStoryChapters();
+                collapseStorySection();
+              },
+            });
+          },
+          onLeaveBack: () => {
+            restoreStorySection();
+            gsap.to(storySection, { autoAlpha: 1, duration: 0.2, overwrite: 'auto' });
+            clearStoryChapters();
+            updateStory(0);
+          },
           onRefresh: (self) =>
             updateStory(Math.round(self.progress * totalStoryChars)),
         });
@@ -179,6 +220,7 @@ onUnmounted(() => {
   preparedStoryNodes = [];
   storyChaptersState = [];
   totalStoryChars = 0;
+  clearStoryChapters = () => {};
   storyScroll?.kill();
   storyScroll = null;
   ctx?.revert();
@@ -229,7 +271,7 @@ onUnmounted(() => {
     </section>
 
     <!-- Pinned Narrative -->
-    <section class="story-section relative min-h-screen isolate bg-background">
+    <section class="story-section relative h-screen isolate bg-background">
       <div class="absolute inset-0 overflow-hidden -z-10">
         <video 
           src="https://videos.pexels.com/video-files/7578541/7578541-hd_1920_1080_25fps.mp4" 
@@ -238,7 +280,7 @@ onUnmounted(() => {
         ></video>
         <div class="absolute inset-0 bg-black/60"></div>
       </div>
-      <div class="relative min-h-screen flex items-center justify-center text-center px-4 py-24 sm:py-32">
+      <div class="relative h-full flex items-center justify-center text-center px-4 py-16 sm:py-24">
         <div class="relative w-full pointer-events-none">
           <p 
             v-for="(chapter, index) in storyChapters" 
@@ -251,7 +293,7 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <section class="bg-background py-24 sm:py-32">
+    <section class="bg-background pt-12 pb-24 sm:pt-16 sm:pb-28">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-text-muted">
         <p class="max-w-3xl mx-auto">
           The Art of Dum legacy continues in every dining room we serve. Each course is choreographed to sustain the wonder long after the final bite, inviting you to linger, reflect, and return.
@@ -260,3 +302,13 @@ onUnmounted(() => {
     </section>
   </div>
 </template>
+
+<style scoped>
+.story-section--collapsed {
+  min-height: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+</style>

@@ -103,11 +103,15 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateIsMobile)
   ctx?.revert()
+  // Clean up ScrollTrigger by ID to ensure complete removal
+  ScrollTrigger.getById('video-pin')?.kill(true)
   // Clean up any local video listeners
   if (onVideoReady && videoRef.value) {
     videoRef.value.removeEventListener('loadedmetadata', onVideoReady as EventListener)
     videoRef.value.removeEventListener('canplay', onVideoReady as EventListener)
   }
+  // Force refresh to ensure all traces are removed
+  ScrollTrigger.refresh()
 })
 </script>
 
@@ -121,13 +125,13 @@ onBeforeUnmount(() => {
       }"
     >
       <video
-        src="/videos/Video.mp4"
-        playsinline
-        muted
-        loop
-        autoplay
-        class="video-el"
         ref="videoRef"
+        class="video-el"
+        src="/videos/Video.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
       />
     </div>
 
@@ -197,4 +201,3 @@ onBeforeUnmount(() => {
   to { transform: rotate(360deg); }
 }
 </style>
-
