@@ -29,7 +29,7 @@ const handleSubmit = () => {
       >
         <h1 class="font-serif text-5xl md:text-7xl font-bold text-text">Connect with Royalty</h1>
         <p class="mt-4 text-lg text-text-muted max-w-3xl mx-auto">
-          We welcome your inquiries, reservations, and feedback. Reach out to us, and let us extend our royal hospitality.
+          Book a table to immerse yourself in the art of Dum. For inquiries, catering requests, or private events, our team is ready to assist.
         </p>
       </div>
 
