@@ -6,6 +6,7 @@ import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
 import BlogView from '../views/BlogView.vue'
 import ExperiencesView from '../views/ExperiencesView.vue'
+import SustainabilityView from '../views/SustainabilityView.vue'
 
 const routes = [
   {
@@ -21,6 +22,7 @@ const routes = [
   { path: '/catering', name: 'Catering', component: CateringView },
   { path: '/about', name: 'About', component: AboutView },
   { path: '/experiences', name: 'Experiences', component: ExperiencesView },
+  { path: '/sustainability', name: 'Sustainability', component: SustainabilityView },
   { path: '/blog', name: 'Blog', component: BlogView },
   { path: '/contact', name: 'Contact', component: ContactView },
 ]

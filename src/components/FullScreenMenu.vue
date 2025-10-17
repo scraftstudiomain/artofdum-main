@@ -16,6 +16,7 @@ const menuItems: MenuItem[] = [
   { name: 'Catering', path: '/catering' },
   { name: 'Experiences', path: '/experiences' },
   { name: 'About', path: '/about' },
+  { name: 'Sustainability', path: '/sustainability' },
   { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' },
 ];
