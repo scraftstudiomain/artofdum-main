@@ -1,36 +1,27 @@
+// vite.config.js
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { fileURLToPath, URL } from 'node:url'
+import path from 'path'
 
-// Configuration specifically for easysite.ai compatibility
-export default defineConfig(({ mode }) => {
-  return {
-    plugins: [
-      vue({
-        script: {
-          defineModel: true,
-          propsDestructure: true
-        }
-      })
-    ],
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
+  build: {
+    minify: false,
+    cssCodeSplit: false,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html')
+      },
+      output: {
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
-    },
-    build: {
-      minify: false,
-      sourcemap: true,
-      // Ensure Vue files are properly processed
-      rollupOptions: {
-        external: [],
-        output: {
-          format: 'es'
-        }
-      }
-    },
-    optimizeDeps: {
-      include: ['vue', 'vue-router']
     }
   }
 })
