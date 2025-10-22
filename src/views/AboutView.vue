@@ -132,6 +132,7 @@ onMounted(() => {
           start: 'top top',
           end: () => `+=${scrollLength}`,
           pin: true,
+          pinSpacing: false, // This prevents the extra space
           scrub: 0.4,
           anticipatePin: 1,
           onUpdate: (self) => {
@@ -150,9 +151,15 @@ onMounted(() => {
           },
           onLeaveBack: () => {
             restoreStorySection();
-            gsap.to(storySection, { autoAlpha: 1, duration: 0.2, overwrite: 'auto' });
-            clearStoryChapters();
-            updateStory(0);
+            gsap.to(storySection, { 
+              autoAlpha: 1, 
+              duration: 0.2, 
+              overwrite: 'auto',
+              onComplete: () => {
+                clearStoryChapters();
+                updateStory(0);
+              }
+            });
           },
           onRefresh: (self) =>
             updateStory(Math.round(self.progress * totalStoryChars)),
@@ -305,10 +312,14 @@ onUnmounted(() => {
 
 <style scoped>
 .story-section--collapsed {
-  min-height: 0 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 0 !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  z-index: -1;
 }
 </style>

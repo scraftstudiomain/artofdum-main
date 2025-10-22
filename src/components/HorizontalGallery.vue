@@ -17,6 +17,14 @@ const images = [
   'https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 ];
 
+// Handle image loading error
+const handleImageError = (event: Event) => {
+  const img = event.target as HTMLImageElement;
+  console.error(`Failed to load image: ${img.src}`);
+  // You could add a fallback placeholder image here if needed
+  // img.src = '/path/to/placeholder.jpg';
+};
+
 let ctx: gsap.Context;
 
 onMounted(() => {
@@ -82,6 +90,8 @@ onUnmounted(() => {
                 :src="image"
                 :alt="`Gallery image ${index + 1}`"
                 loading="lazy"
+                decoding="async"
+                @error="handleImageError"
                 class="w-full h-full object-cover"
               />
             </div>

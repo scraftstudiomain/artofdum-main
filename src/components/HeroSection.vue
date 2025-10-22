@@ -7,11 +7,13 @@
     <div class="absolute inset-0 z-0">
       <video 
         class="w-full h-full object-cover"
+        poster="/images/hero-poster.jpg"
         src="/videos/Video.mp4"
         autoplay
         loop
         muted
         playsinline
+        preload="metadata"
       ></video>
       <div class="absolute inset-0 bg-black/50"></div>
     </div>
@@ -21,6 +23,8 @@
       <img 
         src="/images/your-logo.png" 
         alt="Art of Dum" 
+        loading="eager"
+        decoding="sync"
         class="h-56 w-56 md:h-64 md:w-64 lg:h-72 lg:w-72 block" 
       />
     </div>

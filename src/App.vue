@@ -1,27 +1,35 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
-import Lenis from 'lenis'
-import { useScrollLock } from '@vueuse/core'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
-import AppHeader from './components/AppHeader.vue'
-import AppFooter from './components/AppFooter.vue'
-import FullScreenMenu from './components/FullScreenMenu.vue'
-import OrderViaSection from './components/OrderViaSection.vue'
-import CurveDivider from './components/icons/CurveDivider.vue'
-import LoadingScreen from './components/LoadingScreen.vue'
+import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
+import { useLenis } from '@studio-freight/lenis/vue';
+import { useScrollLock } from '@vueuse/core';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 
-let lenis: Lenis;
-const isMenuOpen = ref(false);
-const bodyEl = document.body;
-const isLocked = useScrollLock(bodyEl);
+// Components
+import LoadingScreen from './components/LoadingScreen.vue';
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
+import FullScreenMenu from './components/FullScreenMenu.vue';
+import OrderViaSection from './components/OrderViaSection.vue';
+import CurveDivider from './components/icons/CurveDivider.vue';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
+// State variables
 const route = useRoute();
 const isLoading = ref(true);
 const showMainContent = ref(false);
 const showNavigation = ref(false);
+const isMenuOpen = ref(false);
+const bodyEl = document.body;
+const isLocked = useScrollLock(bodyEl);
 
+let lenis: Lenis;
+
+// Watchers
 watch(isMenuOpen, (newVal) => {
   isLocked.value = newVal;
   if (newVal) {
@@ -39,6 +47,7 @@ watch(route, () => {
   })
 })
 
+// Methods
 const handleLoadingComplete = () => {
   isLoading.value = false;
   
@@ -74,7 +83,27 @@ const handleLoadingComplete = () => {
   }, 600) // Shorter delay for smoother transition
 }
 
+// Performance monitoring
 onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', () => {
+      const perfData = window.performance.timing;
+      const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+      const domContentLoaded = perfData.domContentLoadedEventEnd - perfData.navigationStart;
+      
+      console.log(`Page load time: ${pageLoadTime}ms`);
+      console.log(`DOM Content Loaded: ${domContentLoaded}ms`);
+      
+      // Report to monitoring service if needed
+      if (window.gtag) {
+        window.gtag('event', 'page_load_time', {
+          value: pageLoadTime,
+          custom_parameter: 'page_load'
+        });
+      }
+    });
+  }
+  
   // Lenis initialization is now handled in handleLoadingComplete
 })
 

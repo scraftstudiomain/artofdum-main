@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
-console.info('[build] Loading Vite config with Vue plugin support')
+console.info('[build] Loading Vite config with Vue plugin support and performance optimizations')
 
-// Standard Vue setup; keep config minimal for compatibility with hosted builders.
+// Standard Vue setup with performance optimizations
 export default defineConfig({
   plugins: [
     vue({
@@ -20,5 +20,20 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['vue', 'vue-router'],
+          'animations': ['gsap', '@vueuse/motion'],
+          'ui': ['@vueuse/core']
+        }
+      }
+    },
+    minify: 'terser',
+    sourcemap: false,
+    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 1000
   }
 })

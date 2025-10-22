@@ -9,9 +9,25 @@
   NODE_VERSION = "18"
   CI = "true"       # Ensure we're in CI mode
   NETLIFY_BUILD_SKIP = "false"  # Never skip build
+  NODE_OPTIONS = "--max-old-space-size=4096"  # Increase memory for build
 
 [build.processing]
   skip_processing = false  # Ensure processing is not skipped
+  css = { bundle = true, minify = true }
+  js = { bundle = true, minify = true }
+  html = { pretty_urls = true }
+  images = { remote_images = true }
+
+[headers]
+  # Cache assets for performance
+  "/assets/*"
+    Cache-Control = "public, max-age=31536000, immutable"
+  "/images/*"
+    Cache-Control = "public, max-age=31536000, immutable"
+  "/videos/*"
+    Cache-Control = "public, max-age=31536000, immutable"
+  "/font/*"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [dev]
   command = "vite"

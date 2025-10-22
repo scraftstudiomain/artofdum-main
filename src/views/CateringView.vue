@@ -180,11 +180,11 @@ onUnmounted(() => {
               class="process-step relative pl-12 md:pl-0"
             >
               <div class="md:text-center">
-                <div class="absolute top-0 left-0 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-background border-2 border-gold flex items-center justify-center font-serif text-gold">
+                <div class="absolute top-0 left-0 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-background border-2 border-gold flex items-center justify-center font-serif text-gold z-10">
                   {{ step.step }}
                 </div>
-                <div class="md:max-w-md md:mx-auto">
-                  <h3 class="font-serif text-3xl text-gold mb-3 mt-10 md:mt-16">{{ step.title }}</h3>
+                <div class="md:max-w-md md:mx-auto pt-12 md:pt-16">
+                  <h3 class="font-serif text-3xl text-gold mb-3">{{ step.title }}</h3>
                   <p class="text-text-muted">{{ step.description }}</p>
                 </div>
               </div>
