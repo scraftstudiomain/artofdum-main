@@ -5,14 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build --config vite.config.js",
-    "build:dev": "vue-tsc && vite build --mode development --config vite.config.js",
+    "build": "vue-tsc && vite build",
+    "build:dev": "vite build --mode development",
     "preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.0",
     "@vueuse/motion": "^2.2.3",
-    "@vitejs/plugin-vue": "^5.2.4",
     "gsap": "^3.13.0",
     "lenis": "^1.1.6",
     "lucide-vue-next": "^0.408.0",
@@ -24,6 +23,7 @@
     "@rollup/rollup-win32-x64-msvc": "^4.52.4",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
     "@typescript-eslint/parser": "^8.46.1",
+    "@vitejs/plugin-vue": "^5.2.4",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
