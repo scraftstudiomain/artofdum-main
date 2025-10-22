@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.27",
-    "@vitejs/plugin-vue": "^5.0.0",
     "@vueuse/core": "^10.11.0",
     "@vueuse/motion": "^2.2.3",
     "gsap": "^3.13.0",
@@ -20,11 +19,15 @@
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
+  "peerDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0"
+  },
   "devDependencies": {
     "@faker-js/faker": "8.4.1",
     "@rollup/rollup-win32-x64-msvc": "^4.52.4",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
     "@typescript-eslint/parser": "^8.46.1",
+    "@vitejs/plugin-vue": "^5.0.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
