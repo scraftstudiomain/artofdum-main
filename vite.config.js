@@ -1,16 +1,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { dirname, resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, URL } from 'node:url'
 
-const projectRoot = dirname(fileURLToPath(import.meta.url))
-
-// Export standard Vite config with Vue support and path aliases
+// Standard Vue setup; keep config minimal for compatibility with hosted builders.
 export default defineConfig({
   plugins: [
     vue({
       template: {
         compilerOptions: {
+          // Allow defining custom elements via components when needed.
           isCustomElement: () => false
         }
       }
@@ -18,15 +16,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(projectRoot, 'src')
-    },
-    extensions: ['.ts', '.js', '.vue', '.json']
-  },
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(projectRoot, 'index.html')
-      }
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
 })
