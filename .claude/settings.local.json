@@ -14,7 +14,8 @@
       "Bash(rm:*)",
       "Bash(npx vite:*)",
       "Bash(yarn:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(vite build:*)"
     ],
     "deny": [],
     "ask": []

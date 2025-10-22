@@ -74,20 +74,22 @@ onUnmounted(() => {
         <div
           v-for="(image, index) in images"
           :key="index"
-          class="flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[50vw] lg:w-[40vw] h-[70vh] px-4 sm:px-6 md:px-8"
+          class="flex-shrink-0 w-[75vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] h-[60vh] px-4 sm:px-6 md:px-8"
         >
-          <div class="w-full h-full overflow-hidden shadow-2xl shadow-black/50">
-            <img
-              :src="image"
-              :alt="`Gallery image ${index + 1}`"
-              loading="lazy"
-              class="w-full h-full object-cover"
-            />
+          <div class="w-full h-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-gold bg-gradient-to-br from-yellow-900/20 via-yellow-700/30 to-yellow-800/20 p-1 rounded-sm">
+            <div class="w-full h-full overflow-hidden border-2 border-gold/60 bg-gradient-to-br from-yellow-700/10 to-yellow-900/20 p-0.5">
+              <img
+                :src="image"
+                :alt="`Gallery image ${index + 1}`"
+                loading="lazy"
+                class="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
          <div class="flex-shrink-0 w-[10vw]"></div> <!-- Spacer at the end -->
       </div>
     </section>
-    <div class="h-[20vh] bg-background"></div>
+    <div class="h-[5vh] bg-background"></div>
   </div>
 </template>
