@@ -4,11 +4,20 @@ import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => false
+        }
+      }
+    })
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
     },
+    extensions: ['.ts', '.js', '.vue', '.json']
   },
   build: {
     rollupOptions: {
