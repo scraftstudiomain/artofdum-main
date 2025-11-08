@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import bgImage from '../011-01.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +30,7 @@ let ctx: gsap.Context;
 
 onMounted(() => {
   nextTick(() => {
-    ctx = gsap.context((self) => {
+    ctx = gsap.context(() => {
       const track = trackRef.value;
       const gallery = galleryRef.value;
 
@@ -72,8 +73,9 @@ onUnmounted(() => {
 
 <template>
   <div ref="main">
-    <div class="h-[20vh] bg-background"></div>
-    <section ref="galleryRef" class="relative h-screen w-full overflow-hidden bg-background">
+    <!-- Top spacer hidden -->
+    <!-- <div class="h-[20vh] bg-background"></div> -->
+    <section ref="galleryRef" class="relative h-screen w-full overflow-hidden bg-background gallery-section" :style="{ backgroundImage: `url(${bgImage})` }">
       <div ref="trackRef" class="h-full flex items-center">
         <div class="flex-shrink-0 w-[80vw] sm:w-[50vw] lg:w-[40vw] pl-6 sm:pl-12 md:pl-[10vw] flex flex-col justify-center">
           <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
@@ -100,6 +102,15 @@ onUnmounted(() => {
          <div class="flex-shrink-0 w-[10vw]"></div> <!-- Spacer at the end -->
       </div>
     </section>
-    <div class="h-[5vh] bg-background"></div>
+    <!-- Bottom spacer hidden -->
+    <!-- <div class="h-[5vh] bg-background"></div> -->
   </div>
 </template>
+
+<style scoped>
+.gallery-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>

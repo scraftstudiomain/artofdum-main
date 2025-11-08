@@ -17,37 +17,71 @@ const updateIsMobile = () => {
 let ctx: gsap.Context | null = null;
 let initialized = false;
 let onVideoReady: (() => void) | null = null;
+let handleResize: (() => void) | null = null;
 
 onMounted(() => {
   updateIsMobile();
-  window.addEventListener("resize", updateIsMobile);
+  
+  handleResize = () => {
+    updateIsMobile();
+    // Refresh ScrollTrigger on resize to fix layout issues
+    ScrollTrigger.refresh();
+  };
+  
+  window.addEventListener("resize", handleResize);
 
   const initScroll = () => {
+    // Kill any existing ScrollTrigger with this ID first (before checking initialized)
+    const existingST = ScrollTrigger.getById("video-pin");
+    if (existingST) {
+      existingST.kill(true);
+      // Clean up any orphaned pin-spacers
+      const pinSpacers = document.querySelectorAll('.pin-spacer-video-pin');
+      pinSpacers.forEach(spacer => spacer.remove());
+    }
+    
     if (initialized) {
       // prevent duplicate ScrollTriggers that can cause jumps/black frames
       ScrollTrigger.refresh();
       return;
     }
+    
     ctx?.revert();
     ctx = gsap.context(() => {
       if (!isMobile.value && sectionRef.value) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.value,
-            start: "top top",
-            end: "+=225%",
-            scrub: 1.2,
-            pin: true,
-            pinSpacing: true,
-            pinReparent: true,
-            fastScrollEnd: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            preventOverlaps: true,
-            refreshPriority: 1,
-            id: "video-pin",
-          },
-        });
+        // Wait for next frame to ensure layout is settled
+        requestAnimationFrame(() => {
+          // Ensure we're working with a clean state
+          if (!sectionRef.value) return;
+          
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sectionRef.value,
+              start: "top top",
+              end: "+=225%",
+              scrub: 1.2,
+              pin: true,
+              pinSpacing: true,
+              pinReparent: true, // Changed back to true for proper pinning
+              fastScrollEnd: true,
+              anticipatePin: 1,
+              invalidateOnRefresh: true,
+              preventOverlaps: true,
+              refreshPriority: 1,
+              id: "video-pin",
+              markers: false, // Set to true for debugging if needed
+              onRefresh: () => {
+                // Clean up any duplicate pin-spacers
+                const pinSpacers = document.querySelectorAll('.pin-spacer-video-pin');
+                if (pinSpacers.length > 1) {
+                  // Keep only the first one, remove duplicates
+                  for (let i = 1; i < pinSpacers.length; i++) {
+                    pinSpacers[i].remove();
+                  }
+                }
+              }
+            },
+          });
 
         // 1) Reveal from small to beyond full to avoid edge clipping
         tl.to(".video-box", {
@@ -58,24 +92,36 @@ onMounted(() => {
         // 2) Hold at full-screen briefly so users can watch
         tl.to({}, { duration: 0.6 });
 
-        // Stop this section from re-triggering after first complete pass
-        const st = tl.scrollTrigger;
-        if (st) {
-          st.eventCallback("onLeave", () => {
-            // Force final visual state, then fully revert pin/spacer to avoid duplicates
-            gsap.set(".video-box", {
-              clipPath: "circle(150% at 50% 50%)",
-              WebkitClipPath: "circle(150% at 50% 50%)",
+          // Stop this section from re-triggering after first complete pass
+          const st = tl.scrollTrigger;
+          if (st) {
+            st.eventCallback("onLeave", () => {
+              // Force final visual state, then fully revert pin/spacer to avoid duplicates
+              gsap.set(".video-box", {
+                clipPath: "circle(150% at 50% 50%)",
+                WebkitClipPath: "circle(150% at 50% 50%)",
+              });
+              // Clean up pin-spacers before killing
+              const pinSpacers = document.querySelectorAll('.pin-spacer-video-pin');
+              pinSpacers.forEach(spacer => {
+                if (spacer.parentNode) {
+                  spacer.parentNode.removeChild(spacer);
+                }
+              });
+              st.kill(true);
+              ScrollTrigger.refresh();
             });
-            st.kill(true);
-            ScrollTrigger.refresh();
-          });
-        }
-        initialized = true;
+          }
+          initialized = true;
+        });
       }
     });
     // refresh after mount to ensure measurements are correct
-    nextTick(() => ScrollTrigger.refresh());
+    nextTick(() => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    });
   };
 
   // Wait for video to be ready before initializing the scroll scene
@@ -110,10 +156,25 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", updateIsMobile);
+  if (handleResize) {
+    window.removeEventListener("resize", handleResize);
+  }
+  
+  // Clean up all pin-spacers first
+  const pinSpacers = document.querySelectorAll('.pin-spacer-video-pin');
+  pinSpacers.forEach(spacer => {
+    if (spacer.parentNode) {
+      spacer.parentNode.removeChild(spacer);
+    }
+  });
+  
   ctx?.revert();
   // Clean up ScrollTrigger by ID to ensure complete removal
-  ScrollTrigger.getById("video-pin")?.kill(true);
+  const st = ScrollTrigger.getById("video-pin");
+  if (st) {
+    st.kill(true);
+  }
+  
   // Clean up any local video listeners
   if (onVideoReady && videoRef.value) {
     videoRef.value.removeEventListener(
@@ -125,6 +186,7 @@ onBeforeUnmount(() => {
       onVideoReady as EventListener
     );
   }
+  
   // Force refresh to ensure all traces are removed
   ScrollTrigger.refresh();
 });
