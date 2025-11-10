@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import bgImage from '../011-01.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +74,7 @@ onUnmounted(() => {
   <div ref="main">
     <!-- Top spacer hidden -->
     <!-- <div class="h-[20vh] bg-background"></div> -->
-    <section ref="galleryRef" class="relative h-screen w-full overflow-hidden bg-background gallery-section" :style="{ backgroundImage: `url(${bgImage})` }">
+    <section ref="galleryRef" class="relative h-screen w-full overflow-hidden gallery-section">
       <div ref="trackRef" class="h-full flex items-center">
         <div class="flex-shrink-0 w-[80vw] sm:w-[50vw] lg:w-[40vw] pl-6 sm:pl-12 md:pl-[10vw] flex flex-col justify-center">
           <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
@@ -109,8 +108,7 @@ onUnmounted(() => {
 
 <style scoped>
 .gallery-section {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Background image removed - now handled by parent HomeView */
+  background-color: transparent;
 }
 </style>

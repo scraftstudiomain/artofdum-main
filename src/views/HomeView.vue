@@ -10,6 +10,7 @@ import HorizontalGallery from '../components/HorizontalGallery.vue'
 // import VideoPinSection from '../components/VideoPinSection.vue'
 import ViewMenuTextPath from '../components/ViewMenuTextPath.vue'
 import ImageSlider from '../components/ImageSlider.vue'
+import bgImage from '../011-01.png'
 
 // Refresh ScrollTrigger after all components are mounted to fix positioning
 onMounted(() => {
@@ -35,7 +36,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="home-view-container" :style="{ backgroundImage: `url(${bgImage})` }">
     <HeroSection />
 
     <!-- The Soul of Dum Pukht section hidden -->
@@ -69,3 +70,14 @@ onMounted(() => {
     </div> -->
   </div>
 </template>
+
+<style scoped>
+.home-view-container {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+</style>

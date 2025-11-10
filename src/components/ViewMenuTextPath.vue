@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
-import bgImage from '../011-01.png';
 
 const textPath = ref<SVGTextPathElement | null>(null);
 let animationFrame: number | null = null;
@@ -79,7 +78,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="view-menu-text-path-container" :style="{ backgroundImage: `url(${bgImage})` }">
+  <div class="view-menu-text-path-container">
     <div class="spacer"></div>
     <svg
       width="100%"
@@ -117,10 +116,6 @@ onUnmounted(() => {
 .view-menu-text-path-container {
   width: 100%;
   overflow: visible;
-  /* Background image set via inline style - texture image (011-01.png) */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
 }
 

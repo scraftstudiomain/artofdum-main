@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import bgImage from '../011-01.png';
 
 // Using same images from HorizontalGallery
 const images = [
@@ -15,7 +14,7 @@ const totalItems = images.length * 2;
 </script>
 
 <template>
-  <section class="loop-images" :style="{ '--bg': 'white', backgroundImage: `url(${bgImage})` }">
+  <section class="loop-images" :style="{ '--bg': 'white' }">
     <div class="title-section">
       <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
       <p class="mt-4 text-text-muted max-w-sm mx-auto">Glimpses of the artistry and passion infused into every creation.</p>
@@ -41,10 +40,7 @@ const totalItems = images.length * 2;
   position: relative;
   height: 100vh;
   width: 100%;
-  background-color: var(--bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: transparent;
   overflow: hidden;
   display: flex;
   align-items: center;
