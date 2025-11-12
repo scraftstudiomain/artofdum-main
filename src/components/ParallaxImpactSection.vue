@@ -67,9 +67,7 @@ onMounted(() => {
   if (!sectionRef.value) return
 
   const prefersDesktopLayout = window.matchMedia('(min-width: 1024px)').matches
-  const dimensionPreset = prefersDesktopLayout
-    ? { scaleX: 0.33, scaleY: 0.68, yPercent: -2 }
-    : { scaleX: 0.78, scaleY: 0.88, yPercent: -4 }
+  const finalScale = prefersDesktopLayout ? 0.35 : 0.7
 
   timeline = gsap.timeline({
     scrollTrigger: {
@@ -84,14 +82,8 @@ onMounted(() => {
   if (heroRef.value) {
     timeline.fromTo(
       heroRef.value,
-      { scaleX: 1, scaleY: 1, borderRadius: '0px', yPercent: 0 },
-      {
-        scaleX: dimensionPreset.scaleX,
-        scaleY: dimensionPreset.scaleY,
-        borderRadius: '32px',
-        yPercent: dimensionPreset.yPercent,
-        ease: 'power2.out'
-      },
+      { scale: 1, borderRadius: '0px', yPercent: 0 },
+      { scale: finalScale, borderRadius: '32px', yPercent: -4, ease: 'power2.out' },
       0
     )
   }
@@ -202,8 +194,7 @@ onUnmounted(() => {
 <style scoped>
 .scroll-parallax {
   position: relative;
-  height: 600px;
-  min-height: 600px;
+  min-height: 100vh;
   background: transparent;
   color: #1a1a1a;
   overflow: hidden;
@@ -212,7 +203,7 @@ onUnmounted(() => {
 .parallax-stage {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
