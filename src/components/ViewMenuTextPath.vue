@@ -1,184 +1,89 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
-
-const textPath = ref<SVGTextPathElement | null>(null);
-let animationFrame: number | null = null;
-let startTime: number | null = null;
-
-const originalText = 'View Our Menu • ';
-// Repeat many times for seamless infinite looping
-const repeatedText = originalText.repeat(20);
-
-// Get text length from the actual text content (matching original JS code)
-let textLength = 0;
-let singleTextLength = 0; // Length of one instance for seamless looping
-const duration = 15000; // Duration of one complete animation loop in milliseconds (reduced for faster animation)
-const speedMultiplier = 80; // Adjust this value to control the speed of the animation (increased for faster movement)
-
-function animateTextPath(timestamp: number) {
-  if (!startTime) {
-    startTime = timestamp;
-  }
-
-  if (!textPath.value) {
-    animationFrame = requestAnimationFrame(animateTextPath);
-    return;
-  }
-
-  // Get text content from the element (matching original implementation)
-  if (textLength === 0 && textPath.value.textContent) {
-    const fullText = textPath.value.textContent.trim();
-    textLength = fullText.length;
-    // Calculate single instance length for seamless looping
-    singleTextLength = originalText.length;
-  }
-
-  if (textLength === 0 || singleTextLength === 0) {
-    animationFrame = requestAnimationFrame(animateTextPath);
-    return;
-  }
-
-  const elapsed = timestamp - startTime;
-  // Calculate progress within the animation loop (0 to 1)
-  const progress = (elapsed % duration) / duration;
-  
-  // For seamless infinite loop, use single text length so it wraps perfectly
-  // This ensures the animation loops seamlessly when one instance completes
-  const offset = -progress * singleTextLength * speedMultiplier;
-
-  // Set the startOffset attribute with the adjusted offset
-  textPath.value.setAttribute('startOffset', offset.toString());
-
-  animationFrame = requestAnimationFrame(animateTextPath);
-}
-
-onMounted(async () => {
-  await nextTick();
-  // Wait a bit more for DOM to fully render
-  setTimeout(() => {
-    if (textPath.value) {
-      // Get text length from the element
-      if (textPath.value.textContent) {
-        const fullText = textPath.value.textContent.trim();
-        textLength = fullText.length;
-        singleTextLength = originalText.length;
-      }
-      textPath.value.setAttribute('startOffset', '0');
-    }
-    // Start animation
-    animationFrame = requestAnimationFrame(animateTextPath);
-  }, 200);
-});
-
-onUnmounted(() => {
-  if (animationFrame) {
-    cancelAnimationFrame(animationFrame);
-  }
-});
+const repeatedText = 'View Our Menu \u2022 '.repeat(30);
 </script>
 
 <template>
   <div class="view-menu-text-path-container">
-    <div class="spacer"></div>
-    <svg
-      width="100%"
-      height="600px"
-      viewBox="0 -50 1500.72 250"
-      style="transform: scale(1.1) rotate(180deg)"
-      class="text-path-svg"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      <path
-        id="curve"
-        d="M1476.133,835.271c-238.287,0-238.287-181.231-476.574-181.231a388.326,388.326,0,0,0-69.728,5.933c-171.338,31.1-194.294,175.3-406.845,175.3C284.7,835.271,284.7,654.041,46.413,654.041H.5V.5L1510.439,12.253V835.271Z"
-        transform="translate(0 -700)"
-        fill="none"
-      />
+    <div class="svg-wrapper">
+      <svg
+        class="text-path-svg"
+        viewBox="0 0 1920 400"
+        preserveAspectRatio="xMidYMid meet"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <defs>
+          <path
+            id="view-menu-curve"
+            d="M0,260 C240,80 480,80 720,260
+               S1200,440 1440,260
+               S1680,80 1920,260"
+            fill="none"
+          />
+        </defs>
 
-      <text>
-        <textPath
-          ref="textPath"
-          dominant-baseline="hanging"
-          href="#curve"
-          id="text-path"
-          text-anchor="start"
-          class="text-path"
-        >
-          {{ repeatedText }}
-        </textPath>
-      </text>
-    </svg>
-    <div class="spacer-bottom"></div>
+        <text>
+          <textPath
+            href="#view-menu-curve"
+            startOffset="0%"
+            dominant-baseline="middle"
+            class="text-path"
+          >
+            <animate
+              attributeName="startOffset"
+              from="0%"
+              to="-40%"
+              dur="18s"
+              repeatCount="indefinite"
+            />
+            {{ repeatedText }}
+          </textPath>
+        </text>
+      </svg>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .view-menu-text-path-container {
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
 }
 
-.spacer {
-  height: 50px;
-}
-
-.spacer-bottom {
-  height: 200px; /* Matches top spacer - adjust as needed */
+.svg-wrapper {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 
 .text-path-svg {
   display: block;
   width: 100%;
-  height: 100%;
-  min-height: 300px;
-  overflow: visible;
+  height: auto;
 }
 
 .text-path {
   font-family: serif;
-  font-size: 32px;
-  fill: #000000;
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  fill: #000;
   white-space: nowrap;
-  font-weight: bold;
+  font-weight: 700;
   text-transform: uppercase;
-  position: relative;
+  letter-spacing: 0.2em;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .text-path-svg {
-    min-height: 500px;
-  }
-
   .text-path {
-    font-size: 24px;
-  }
-
-  .spacer {
-    height: 60px;
-  }
-
-  .spacer-bottom {
-    height: 60px; /* Matches top spacer */
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
   }
 }
 
 @media (max-width: 480px) {
-  .text-path-svg {
-    min-height: 400px;
-  }
-
   .text-path {
-    font-size: 18px;
-  }
-
-  .spacer {
-    height: 40px;
-  }
-
-  .spacer-bottom {
-    height: 40px; /* Matches top spacer */
+    font-size: 1.1rem;
   }
 }
 </style>
