@@ -310,7 +310,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="customer-reviews-section py-20 sm:py-32 relative overflow-hidden">
+  <section class="customer-reviews-section relative overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Section Title -->
       <div 
