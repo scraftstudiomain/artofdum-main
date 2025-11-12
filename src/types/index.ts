@@ -5,6 +5,7 @@ export interface MenuItem {
   price: number;
   priceDisplay?: string;
   allergens?: string;
+  image?: string;
 }
 
 export interface MenuCategory {

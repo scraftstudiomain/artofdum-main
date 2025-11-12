@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MenuView from '../views/MenuView.vue'
+import MenuViewModern from '../views/MenuViewModern.vue'
 import CateringView from '../views/CateringView.vue'
 import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
@@ -18,6 +19,11 @@ const routes = [
     path: '/menu',
     name: 'Menu',
     component: MenuView,
+  },
+  {
+    path: '/menu-modern',
+    name: 'MenuModern',
+    component: MenuViewModern,
   },
   { path: '/catering', name: 'Catering', component: CateringView },
   { path: '/about', name: 'About', component: AboutView },
