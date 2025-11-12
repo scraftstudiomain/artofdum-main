@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const sectionRef = ref<HTMLElement | null>(null)
 const heroRef = ref<HTMLElement | null>(null)
+const mediaShellRef = ref<HTMLElement | null>(null)
 const overlayCopyRef = ref<HTMLElement | null>(null)
 const leftColumnRef = ref<HTMLElement | null>(null)
 const rightColumnRef = ref<HTMLElement | null>(null)
@@ -79,11 +80,18 @@ onMounted(() => {
     }
   })
 
-  if (heroRef.value) {
+  if (mediaShellRef.value) {
     timeline.fromTo(
-      heroRef.value,
-      { scale: 1, borderRadius: '0px', yPercent: 0 },
-      { scale: finalScale, borderRadius: '32px', yPercent: -4, ease: 'power2.out' },
+      mediaShellRef.value,
+      { scale: 1, rotate: 0, borderRadius: '0px', yPercent: 0, '--cross-opacity': 0 },
+      {
+        scale: finalScale,
+        rotate: -6,
+        borderRadius: '32px',
+        yPercent: -4,
+        '--cross-opacity': 1,
+        ease: 'power2.out'
+      },
       0
     )
   }
@@ -134,14 +142,16 @@ onUnmounted(() => {
   >
     <div class="parallax-stage">
       <div ref="heroRef" class="hero-frame">
-        <div class="hero-slider">
-          <div
-            v-for="slide in sliderImages"
-            :key="slide.id"
-            class="hero-slide"
-            :class="{ 'is-active': slide.id === activeSlide }"
-          >
-            <img :src="slide.src" :alt="slide.caption" loading="lazy" draggable="false" />
+        <div ref="mediaShellRef" class="hero-media-shell">
+          <div class="hero-slider">
+            <div
+              v-for="slide in sliderImages"
+              :key="slide.id"
+              class="hero-slide"
+              :class="{ 'is-active': slide.id === activeSlide }"
+            >
+              <img :src="slide.src" :alt="slide.caption" loading="lazy" draggable="false" />
+            </div>
           </div>
         </div>
 
@@ -212,14 +222,44 @@ onUnmounted(() => {
 }
 
 .hero-frame {
-  position: absolute;
-  inset: 0;
-  margin: auto;
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform-origin: center;
   will-change: transform;
+}
+
+.hero-media-shell {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  overflow: hidden;
+  transform-origin: center;
+  --cross-opacity: 0;
+  box-shadow: 0 35px 55px rgba(0, 0, 0, 0.45);
+  background: #000;
+}
+
+.hero-media-shell::before,
+.hero-media-shell::after {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  opacity: var(--cross-opacity);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hero-media-shell::before {
+  transform: rotate(-8deg);
+}
+
+.hero-media-shell::after {
+  transform: rotate(8deg);
 }
 
 .hero-slider {
