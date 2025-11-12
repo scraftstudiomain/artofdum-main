@@ -11,6 +11,7 @@ import HorizontalGallery from '../components/HorizontalGallery.vue'
 import ViewMenuTextPath from '../components/ViewMenuTextPath.vue'
 import ImageSlider from '../components/ImageSlider.vue'
 import CustomerReviewsSection from '../components/CustomerReviewsSection.vue'
+import ScrollDrivenAnimationSection from '../components/ScrollDrivenAnimationSection.vue'
 import bgImage from '../011-01.png'
 
 // Refresh ScrollTrigger after all components are mounted to fix positioning
@@ -61,6 +62,8 @@ onMounted(() => {
     </section> -->
 
     <ViewMenuTextPath />
+
+    <ScrollDrivenAnimationSection />
 
     <!-- Customer Reviews Section -->
     <CustomerReviewsSection />
