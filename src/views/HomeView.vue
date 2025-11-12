@@ -10,6 +10,7 @@ import HorizontalGallery from '../components/HorizontalGallery.vue'
 // import VideoPinSection from '../components/VideoPinSection.vue'
 import ViewMenuTextPath from '../components/ViewMenuTextPath.vue'
 import ImageSlider from '../components/ImageSlider.vue'
+import CustomerReviewsSection from '../components/CustomerReviewsSection.vue'
 import bgImage from '../011-01.png'
 
 // Refresh ScrollTrigger after all components are mounted to fix positioning
@@ -60,6 +61,9 @@ onMounted(() => {
     </section> -->
 
     <ViewMenuTextPath />
+
+    <!-- Customer Reviews Section -->
+    <CustomerReviewsSection />
 
     <!-- Video section removed -->
     <!-- <VideoPinSection key="video-pin-section" /> -->
