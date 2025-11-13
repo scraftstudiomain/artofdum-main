@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import heroVideo from '../aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4';
 </script>
 
@@ -33,9 +34,9 @@ import heroVideo from '../aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4';
       <button class="hero-btn-reserve px-8 py-3 bg-gold text-black font-semibold uppercase tracking-wider hover:bg-gold/90 transition-all duration-300 shadow-lg">
         Reserve Now
       </button>
-      <button class="hero-btn-menu px-8 py-3 border-2 border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300">
+      <RouterLink to="/menu-modern" class="hero-btn-menu px-8 py-3 border-2 border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300">
         Explore Menu
-      </button>
+      </RouterLink>
     </div>
 
     <!-- Scroll indicator -->

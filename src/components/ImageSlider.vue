@@ -2,7 +2,6 @@
 
 // Using same images from HorizontalGallery
 const images = [
-  'https://images.pexels.com/photos/14832360/pexels-photo-14832360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   'https://images.pexels.com/photos/2092916/pexels-photo-2092916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   'https://images.pexels.com/photos/941864/pexels-photo-941864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -57,6 +56,7 @@ const totalItems = images.length * 2;
   z-index: 10;
   max-width: 500px;
   text-align: center;
+  padding-bottom: 2rem;
 }
 
 .carousel-track {
@@ -64,6 +64,7 @@ const totalItems = images.length * 2;
   min-width: calc(10rem * var(--total));
   height: 30rem;
   position: relative;
+  margin-top: 12rem;
 }
 
 .carousel-track .carousel-item {
@@ -112,6 +113,7 @@ const totalItems = images.length * 2;
     right: auto;
     max-width: 90%;
     padding: 0 1rem;
+    padding-bottom: 2rem;
   }
 
   .title-section h2 {
@@ -120,6 +122,7 @@ const totalItems = images.length * 2;
 
   .carousel-track {
     height: 20rem;
+    margin-top: 10rem;
   }
 
   .carousel-track .carousel-item {
