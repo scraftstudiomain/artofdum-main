@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import heroVideo from '../0_Cooking_Chef_1920x1080.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -241,7 +242,7 @@ onUnmounted(() => {
       <div class="absolute inset-0 z-0">
         <video 
           class="w-full h-full object-cover"
-          src="https://videos.pexels.com/video-files/8899388/8899388-hd_1920_1080_25fps.mp4"
+          :src="heroVideo"
           autoplay loop muted playsinline
         ></video>
         <div class="absolute inset-0 bg-black/60"></div>
