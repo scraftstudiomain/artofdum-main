@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { X, Instagram, Youtube, Facebook, Mail, Gift } from 'lucide-vue-next';
 import { useRouter } from 'vue-router';
+import heroVideo from '../0_Cooking_Chef_1920x1080.mp4';
 
 defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(['close']);
@@ -51,11 +52,16 @@ const socialLinks = [
     <div v-if="isOpen" class="fixed inset-0 z-[60] flex flex-col lg:flex-row overflow-hidden">
       <!-- Left Side - Background Image with Navigation (2/3 width on desktop, full on mobile) -->
       <div class="relative w-full lg:w-2/3 h-full">
-        <!-- Background Image -->
-        <div 
-          class="absolute inset-0 bg-cover bg-center"
-          :style="{ backgroundImage: 'url(/images/hero-poster.jpg)' }"
-        >
+        <!-- Background Video -->
+        <div class="absolute inset-0 overflow-hidden">
+          <video
+            class="w-full h-full object-cover"
+            :src="heroVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+          />
           <div class="absolute inset-0 bg-black/60"></div>
         </div>
         
