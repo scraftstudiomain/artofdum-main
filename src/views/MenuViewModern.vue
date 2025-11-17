@@ -83,7 +83,7 @@ onUnmounted(() => {
     <div class="bg-white border-b border-gray-200 pt-32 pb-8">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-8">
-          <h1 class="font-serif text-5xl md:text-6xl font-bold text-gray-900 mb-4">Menu</h1>
+          <h1 class="font-serif text-5xl md:text-6xl font-bold text-gold mb-4">Menu</h1>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">
             An ode to the culinary traditions of Indian royalty, where every dish is a masterpiece of flavor and finesse.
           </p>
@@ -95,7 +95,7 @@ onUnmounted(() => {
     <div class="sticky top-24 z-40 bg-white border-b border-gray-200 shadow-sm">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="overflow-x-auto">
-          <div class="flex gap-2 md:gap-4 py-4 min-w-max">
+          <div class="flex gap-2 md:gap-4 py-4 min-w-max justify-center">
             <button
               v-for="category in menuCategories"
               :key="category.id"
@@ -132,7 +132,7 @@ onUnmounted(() => {
           </div>
 
           <!-- Menu Items Grid - 3 per row -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center">
             <div
               v-for="(item, itemIndex) in category.items"
               :key="item.id"
@@ -205,6 +205,8 @@ onUnmounted(() => {
 .menu-item-card {
   transition: transform 0.3s ease;
   padding: 0.5rem;
+  max-width: 100%;
+  width: 100%;
 }
 
 .menu-item-card:hover {
