@@ -539,7 +539,7 @@ onUnmounted(() => {
   --main-bg: white;
   background-color: white;
   border: solid 4px transparent;
-  border-radius: 1rem;
+  border-radius: 0;
   
   --gradient-border: conic-gradient(
     from var(--border-angle),
@@ -565,7 +565,7 @@ onUnmounted(() => {
   content: '';
   position: absolute;
   inset: 4px;
-  border-radius: calc(1rem - 4px);
+  border-radius: 0;
   background: white;
   z-index: 0;
   pointer-events: none;
@@ -578,24 +578,25 @@ onUnmounted(() => {
 
 .review-card-box-active {
   animation: bg-spin 3s linear infinite;
-  border-width: 5px;
+  border-width: 2px;
+  border-radius: 0;
 }
 
 .review-card-box-active::after {
-  inset: 5px;
-  border-radius: calc(1rem - 5px);
+  inset: 2px;
+  border-radius: 0;
 }
 
 .review-card-box-inactive {
   animation: bg-spin 4s linear infinite;
   animation-play-state: paused;
-  border-width: 3px;
+  border-width: 2px;
   opacity: 0.6;
 }
 
 .review-card-box-inactive::after {
-  inset: 3px;
-  border-radius: calc(1rem - 3px);
+  inset: 2px;
+  border-radius: 0;
 }
 
 .review-card-box-inactive:hover {
