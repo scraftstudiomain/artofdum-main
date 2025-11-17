@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 0 0 15rem 0;
   cursor: grab;
   user-select: none;
   touch-action: none;
