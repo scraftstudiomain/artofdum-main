@@ -265,8 +265,43 @@ onUnmounted(() => {
       </div>
     </section>
 
+    <!-- Minimalist Statement Section -->
+    <section class="minimalist-statement-section min-h-screen w-full flex items-center justify-center bg-[#faf9f6] py-24 sm:py-32">
+      <div class="w-full px-8 sm:px-12 md:px-16 lg:px-24 xl:px-32 text-center">
+        <div class="w-full space-y-8 md:space-y-12">
+          <!-- Founded Date -->
+          <p class="text-sm md:text-base font-sans font-medium tracking-[0.2em] uppercase text-[#1a1a1a]">
+            FOUNDED IN 2017
+          </p>
+          
+          <!-- Main Headline -->
+          <div class="space-y-4 md:space-y-6">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-sans font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
+              A ROYAL CULINARY
+            </h2>
+            <h2 class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-sans font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
+              HERITAGE RESTAURANT
+            </h2>
+          </div>
+          
+          <!-- Supporting Text -->
+          <div class="space-y-3 md:space-y-4 pt-4">
+            <p class="text-lg md:text-xl lg:text-2xl font-serif italic text-[#1a1a1a]">
+              We Create and Preserve
+            </p>
+            <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
+              THE WORLD'S MOST AUTHENTIC
+            </p>
+            <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
+              DUM PUKHT EXPERIENCES
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Philosophy Scroll -->
-    <section class="philosophy-section h-screen w-full relative overflow-hidden bg-background">
+    <section v-if="false" class="philosophy-section h-screen w-full relative overflow-hidden bg-background">
       <div class="philosophy-track h-full flex items-center">
         <div 
           v-for="(word, index) in philosophyWords"
@@ -279,7 +314,7 @@ onUnmounted(() => {
     </section>
 
     <!-- Pinned Narrative -->
-    <section class="story-section relative h-screen isolate bg-background">
+    <section v-if="false" class="story-section relative h-screen isolate bg-background">
       <div class="absolute inset-0 overflow-hidden -z-10">
         <video 
           src="https://videos.pexels.com/video-files/7578541/7578541-hd_1920_1080_25fps.mp4" 
