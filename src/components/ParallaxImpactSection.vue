@@ -87,7 +87,6 @@ onMounted(() => {
       {
         scale: finalScale,
         rotate: -6,
-        borderRadius: '32px',
         yPercent: -4,
         '--cross-opacity': 1,
         ease: 'power2.out'
