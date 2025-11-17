@@ -250,7 +250,7 @@ onUnmounted(() => {
 
 /* Rounded Square Shape - with double border (white outer, gold inner) */
 .menu-image-rounded-square {
-  border-radius: 24px;
+  border-radius: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 4px;
   background: white;
@@ -261,7 +261,7 @@ onUnmounted(() => {
   content: '';
   position: absolute;
   inset: 4px;
-  border-radius: 20px;
+  border-radius: 0;
   border: 2px solid #d4af37; /* Gold inner border */
   z-index: 1;
   pointer-events: none;
@@ -271,14 +271,14 @@ onUnmounted(() => {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 24px;
+  border-radius: 0;
   border: 2px solid white; /* White outer border */
   z-index: 2;
   pointer-events: none;
 }
 
 .menu-image-rounded-square img {
-  border-radius: 20px;
+  border-radius: 0;
   position: relative;
   z-index: 0;
 }
