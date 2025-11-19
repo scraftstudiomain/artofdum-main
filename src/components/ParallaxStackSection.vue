@@ -70,15 +70,15 @@ onMounted(() => {
   const slideCount = slides.length
   const container = slidesWrapperRef.value
 
-  // Each slide takes up more than one viewport of scroll for a slower feel
-  const totalScroll = window.innerHeight * slideCount * 2.2
+  // Each slide takes up a bit more than one viewport of scroll for a quicker feel
+  const totalScroll = window.innerHeight * slideCount * 1.2
 
   scrollTrigger = ScrollTrigger.create({
     trigger: sectionRef.value,
     start: 'top top',
     end: `+=${totalScroll}`,
     pin: true,
-    scrub: 1,
+    scrub: 0.5,
     anticipatePin: 1,
     onUpdate: (self) => {
       const progress = self.progress
@@ -104,7 +104,7 @@ onMounted(() => {
           scale,
           opacity,
           zIndex,
-          duration: 0.35,
+          duration: 0.2,
           ease: 'power2.out'
         })
       })
