@@ -117,7 +117,7 @@ onUnmounted(() => {
 <template>
   <section
     ref="sectionRef"
-    class="welcome-section relative h-[700px] flex items-center px-4 sm:px-6 lg:px-8 overflow-visible"
+    class="welcome-section relative min-h-screen lg:h-[700px] flex items-center px-4 sm:px-6 lg:px-8 overflow-visible py-12 lg:py-0"
   >
     <div class="container mx-auto max-w-7xl">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">

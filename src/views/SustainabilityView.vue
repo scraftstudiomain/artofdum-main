@@ -56,26 +56,29 @@ onMounted(() => {
           }
         );
       });
-
     }, main.value!);
   });
 });
 
 onUnmounted(() => {
-  ctx?.revert();
+  if (ctx) ctx.revert();
 });
 </script>
 
 <template>
-  <div ref="main" class="bg-background text-text overflow-hidden">
-    <!-- Hero Section with Video Background -->
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+  <div class="min-h-screen bg-background text-text overflow-x-hidden" ref="main">
+    <!-- Hero Section -->
+    <section class="relative h-[100dvh] min-h-screen w-full flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
         <video
+          autoplay
+          muted
+          loop
+          playsinline
           class="w-full h-full object-cover"
-          src="https://videos.pexels.com/video-files/853889/853889-hd_1920_1080_25fps.mp4"
-          autoplay loop muted playsinline
-        ></video>
+        >
+          <source src="@/assets/0_Cooking_Chef_1920x1080.mp4" type="video/mp4" />
+        </video>
         <div class="absolute inset-0 bg-black/60"></div>
       </div>
 

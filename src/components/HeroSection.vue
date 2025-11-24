@@ -30,7 +30,7 @@ import heroVideo from '../aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4';
     </div>
 
     <!-- Buttons at Bottom -->
-    <div class="absolute bottom-20 left-0 right-0 z-10 flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 lg:px-12 hero-buttons">
+    <div class="absolute bottom-12 md:bottom-20 left-0 right-0 z-10 flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 lg:px-12 hero-buttons">
       <button class="hero-btn-reserve px-8 py-3 bg-gold text-black font-semibold uppercase tracking-wider hover:bg-gold/90 transition-all duration-300 shadow-lg">
         Reserve Now
       </button>

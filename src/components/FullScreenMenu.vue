@@ -49,9 +49,9 @@ const socialLinks = [
 
 <template>
   <Transition name="menu-fade">
-    <div v-if="isOpen" class="fixed inset-0 z-[60] flex flex-col lg:flex-row overflow-hidden">
+    <div v-if="isOpen" class="fixed inset-0 z-[60] flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden bg-background">
       <!-- Left Side - Background Image with Navigation (2/3 width on desktop, full on mobile) -->
-      <div class="relative w-full lg:w-2/3 h-full">
+      <div class="relative w-full lg:w-2/3 min-h-[60vh] lg:h-full shrink-0">
         <!-- Background Video -->
         <div class="absolute inset-0 overflow-hidden">
           <video
@@ -97,7 +97,7 @@ const socialLinks = [
       </div>
 
       <!-- Right Side - Dark Panel with Contact Info (1/3 width on desktop, full on mobile) -->
-      <div class="relative w-full lg:w-1/3 h-auto lg:h-full bg-background flex flex-col">
+      <div class="relative w-full lg:w-1/3 h-auto lg:h-full bg-background flex flex-col shrink-0">
         <!-- Close Button and MENU text in top right -->
         <div class="absolute top-4 right-4 md:top-6 md:right-6 flex items-center gap-3 md:gap-4 z-20">
           <span class="text-gold text-xs md:text-sm uppercase tracking-wider font-medium">MENU</span>

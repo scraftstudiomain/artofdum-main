@@ -13,20 +13,20 @@ const setActive = (testimonial: Testimonial) => {
 </script>
 
 <template>
-  <section class="py-20 sm:py-32 bg-background/90">
+  <section class="py-12 md:py-20 sm:py-32 bg-background/90">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div 
-        class="text-center mb-16"
+        class="text-center mb-10 md:mb-16"
         v-motion
         :initial="{ opacity: 0, y: 50 }"
         :visible-once="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut' } }"
       >
-        <h2 class="font-serif text-4xl md:text-5xl text-gold">Words of Praise</h2>
-        <p class="mt-2 text-lg text-text-muted">What our patrons say about their royal experience.</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-gold">Words of Praise</h2>
+        <p class="mt-2 text-base md:text-lg text-text-muted">What our patrons say about their royal experience.</p>
         <DecorativeDivider />
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-7xl mx-auto items-center">
+      <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-8 md:gap-12 max-w-7xl mx-auto items-center">
         <div 
           class="lg:col-span-4"
           v-motion

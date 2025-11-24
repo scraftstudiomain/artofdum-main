@@ -486,13 +486,33 @@ onUnmounted(() => {
 }
 
 @media (max-width: 1024px) {
-  .parallax-columns {
-    display: none;
+  .parallax-stage {
+    height: auto;
+    flex-direction: column;
+    padding-bottom: 4rem;
   }
 
   .hero-frame {
     width: 100%;
-    height: 100%;
+    height: 60vh;
+    margin-bottom: 2rem;
+  }
+
+  .parallax-columns {
+    display: flex;
+    position: relative;
+    inset: auto;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 1.5rem;
+    pointer-events: auto;
+  }
+
+  .column {
+    flex: 1 1 auto;
+    max-width: 100%;
+    opacity: 1 !important; /* Force visible if GSAP doesn't trigger */
+    transform: none !important;
   }
 
   .hero-overlay h2 {

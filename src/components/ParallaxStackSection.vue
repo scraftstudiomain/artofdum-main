@@ -390,18 +390,20 @@ onUnmounted(() => {
 
   .stack-slide-inner {
     grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
   }
 
   .stack-right {
-    display: none;
+    display: block;
+    order: -1; /* Image on top */
   }
 
   .stack-left {
-    padding: 1.75rem 1.5rem 2rem;
+    padding: 1.5rem;
   }
 
   .stack-title {
-    font-size: clamp(2rem, 7vw, 2.4rem);
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
   }
 
   .stack-list {

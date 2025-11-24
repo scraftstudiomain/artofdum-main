@@ -267,9 +267,15 @@ onBeforeUnmount(() => {
   z-index: 2; /* above video */
 }
 .spin-circle {
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
   animation: spin 12s linear infinite;
+}
+@media (min-width: 768px) {
+  .spin-circle {
+    width: 8rem;
+    height: 8rem;
+  }
 }
 .play-btn {
   position: absolute;

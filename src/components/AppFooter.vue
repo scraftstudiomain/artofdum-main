@@ -11,8 +11,8 @@ const socialLinks = [
 
 <template>
   <footer class="bg-background text-text-muted border-t border-white/10">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="text-center mb-12" v-motion-fade-visible-once>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+      <div class="text-center mb-8 md:mb-12" v-motion-fade-visible-once>
         <router-link to="/" class="font-decorative text-4xl text-text mb-2 inline-block">Art of Dum</router-link>
         <p class="italic">A Culinary Heritage</p>
         <DecorativeDivider />

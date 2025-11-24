@@ -240,7 +240,7 @@ onUnmounted(() => {
 <template>
   <div ref="main" class="bg-background text-text overflow-hidden">
     <!-- Cinematic Video Hero -->
-    <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section class="relative h-[100dvh] min-h-screen w-full flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0">
         <video 
           class="w-full h-full object-cover"

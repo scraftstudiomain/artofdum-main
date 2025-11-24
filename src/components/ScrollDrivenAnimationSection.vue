@@ -115,9 +115,23 @@ onUnmounted(() => {
   position: relative;
   height: 900px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .scroll-ani-viewport {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-ani-viewport {
+    height: auto;
+    padding: 4rem 0;
+  }
 }
 
 .scroll-ani-visual {

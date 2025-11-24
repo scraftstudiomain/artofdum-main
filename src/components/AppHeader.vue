@@ -33,7 +33,7 @@ onUnmounted(() => {
     ]"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-24 py-4">
+      <div class="flex items-center justify-between h-20 md:h-24 py-3 md:py-4">
         <!-- Left side - Empty space -->
         <div class="flex items-center w-1/4">
         </div>
@@ -47,7 +47,7 @@ onUnmounted(() => {
             <img
               src="/images/your-logo.png"
               alt="Art of Dum"
-              class="h-20 w-20 md:h-24 md:w-24"
+              class="h-16 w-16 md:h-24 md:w-24"
             />
           </button>
         </div>

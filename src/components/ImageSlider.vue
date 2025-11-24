@@ -126,8 +126,10 @@ const totalItems = images.length * 2;
   }
 
   .carousel-track .carousel-item {
-    width: 20rem;
-    height: 20rem;
+    width: 70vw;
+    height: 70vw;
+    max-width: 20rem;
+    max-height: 20rem;
   }
 }
 </style>

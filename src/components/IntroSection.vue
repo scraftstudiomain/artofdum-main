@@ -3,25 +3,25 @@ import DecorativeDivider from './icons/DecorativeDivider.vue';
 </script>
 
 <template>
-  <section class="py-20 sm:py-32 bg-background overflow-hidden">
+  <section class="py-12 md:py-20 sm:py-32 bg-background overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       
       <div 
-        class="text-center mb-16"
+        class="text-center mb-10 md:mb-16"
         v-motion
         :initial="{ opacity: 0, y: 50 }"
         :visible-once="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut' } }"
       >
-        <h2 class="font-serif text-4xl md:text-5xl text-gold">The Soul of Dum Pukht</h2>
-        <p class="mt-2 text-lg text-text-muted">An ancient ritual of patience and flavor.</p>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl text-gold">The Soul of Dum Pukht</h2>
+        <p class="mt-2 text-base md:text-lg text-text-muted">An ancient ritual of patience and flavor.</p>
         <DecorativeDivider />
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 items-center">
         
         <!-- Left Text -->
         <div 
-          class="lg:col-span-2 text-right"
+          class="lg:col-span-2 text-center lg:text-right"
           v-motion
           :initial="{ opacity: 0, x: -50 }"
           :visible-once="{ opacity: 1, x: 0, transition: { duration: 1000, ease: 'easeOut', delay: 400 } }"
