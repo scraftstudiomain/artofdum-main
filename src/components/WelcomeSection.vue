@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // Use landscape food images - one for background, one for front overlay
-const backgroundImage = 'https://images.pexels.com/photos/14832360/pexels-photo-14832360.jpeg'
+const backgroundImage = '/background.png'
 const frontImage = 'https://images.pexels.com/photos/2092916/pexels-photo-2092916.jpeg'
 
 // Fallback images

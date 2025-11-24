@@ -24,7 +24,7 @@ const reviews: Review[] = [
     id: 2,
     text: "Authentic flavors that remind me of home. Exceptional service!",
     source: "Talabat",
-    dishImage: "https://images.pexels.com/photos/14832360/pexels-photo-14832360.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2"
+    dishImage: "/background.png"
   },
   {
     id: 3,
