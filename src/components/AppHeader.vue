@@ -3,9 +3,16 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import DiamondIcon from './icons/DiamondIcon.vue';
 
-const emit = defineEmits(['toggle-menu']);
+const props = defineProps<{ country: 'IN' | 'UAE' }>();
+const emit = defineEmits(['toggle-menu', 'update:country']);
 const router = useRouter();
 const scrolled = ref(false);
+
+const setCountry = (value: 'IN' | 'UAE') => {
+  if (props.country !== value) {
+    emit('update:country', value);
+  }
+};
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > 50;
@@ -59,8 +66,30 @@ onUnmounted(() => {
           </button>
         </div>
 
-        <!-- Right side - Menu -->
-        <div class="flex items-center w-1/4 justify-end">
+        <!-- Right side - Country selector + Menu -->
+        <div class="flex items-center w-1/4 justify-end gap-x-3">
+          <div class="flex items-center border border-white/20 rounded-full px-2 py-1 text-[10px] sm:text-xs uppercase tracking-widest bg-background/40 backdrop-blur-sm">
+            <button
+              type="button"
+              @click="setCountry('IN')"
+              :class="[
+                'px-2 py-0.5 rounded-full transition-colors duration-300',
+                props.country === 'IN' ? 'bg-gold text-background' : 'text-text/70'
+              ]"
+            >
+              India
+            </button>
+            <button
+              type="button"
+              @click="setCountry('UAE')"
+              :class="[
+                'px-2 py-0.5 rounded-full transition-colors duration-300',
+                props.country === 'UAE' ? 'bg-gold text-background' : 'text-text/70'
+              ]"
+            >
+              UAE
+            </button>
+          </div>
           <button
             @click="emit('toggle-menu')"
             class="hidden md:flex items-center gap-x-3 font-sans font-medium tracking-widest uppercase text-sm group"
