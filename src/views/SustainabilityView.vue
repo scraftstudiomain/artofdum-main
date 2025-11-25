@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import DecorativeDivider from '../components/icons/DecorativeDivider.vue';
 import DiamondIcon from '../components/icons/DiamondIcon.vue';
+import heroVideo from '../0_Cooking_Chef_1920x1080.mp4';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,7 +78,7 @@ onUnmounted(() => {
           playsinline
           class="w-full h-full object-cover"
         >
-          <source src="@/assets/0_Cooking_Chef_1920x1080.mp4" type="video/mp4" />
+          <source :src="heroVideo" type="video/mp4" />
         </video>
         <div class="absolute inset-0 bg-black/60"></div>
       </div>

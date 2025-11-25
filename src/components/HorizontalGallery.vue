@@ -74,17 +74,20 @@ onUnmounted(() => {
     <!-- Top spacer hidden -->
     <!-- <div class="h-[20vh] bg-background"></div> -->
     <section ref="galleryRef" class="relative h-screen w-full overflow-hidden gallery-section">
-      <div ref="trackRef" class="h-full flex items-center">
-        <div class="flex-shrink-0 w-[80vw] sm:w-[50vw] lg:w-[40vw] pl-6 sm:pl-12 md:pl-[10vw] flex flex-col justify-center">
-          <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
-          <p class="mt-4 text-text-muted max-w-sm">Glimpses of the artistry and passion infused into every creation.</p>
+      <div ref="trackRef" class="h-full flex items-start md:items-center">
+        <div class="flex-shrink-0 w-[80vw] sm:w-[50vw] lg:w-[40vw] pl-6 sm:pl-12 md:pl-[10vw] flex flex-col justify-start md:justify-center pt-10 md:pt-0">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-gold text-center sm:text-left">A Visual Symphony</h2>
+          <p class="mt-3 sm:mt-4 text-text-muted max-w-sm mx-auto sm:mx-0 text-center sm:text-left">Glimpses of the artistry and passion infused into every creation.</p>
         </div>
         <div
           v-for="(image, index) in images"
           :key="index"
-          class="flex-shrink-0 w-[75vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] h-[60vh] px-4 sm:px-6 md:px-8"
+          class="flex-shrink-0 w-[75vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] px-4 sm:px-6 md:px-8"
         >
-          <div class="w-full h-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-gold bg-gradient-to-br from-yellow-900/20 via-yellow-700/30 to-yellow-800/20 p-1 rounded-sm">
+          <div
+            class="w-full h-full overflow-hidden shadow-2xl shadow-black/50 border-4 border-gold bg-gradient-to-br from-yellow-900/20 via-yellow-700/30 to-yellow-800/20 p-1 rounded-sm"
+            style="aspect-ratio: 1 / 1;"
+          >
             <div class="w-full h-full overflow-hidden border-2 border-gold/60 bg-gradient-to-br from-yellow-700/10 to-yellow-900/20 p-0.5">
               <img
                 :src="image"

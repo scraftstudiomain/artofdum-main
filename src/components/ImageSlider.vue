@@ -14,21 +14,52 @@ const totalItems = images.length * 2;
 
 <template>
   <section class="loop-images" :style="{ '--bg': 'white' }">
-    <div class="title-section">
-      <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
-      <p class="mt-4 text-text-muted max-w-sm mx-auto">Glimpses of the artistry and passion infused into every creation.</p>
-    </div>
-    <div 
-      class="carousel-track" 
-      :style="{ '--time': '60s', '--total': totalItems.toString() }"
-    >
-      <div
-        v-for="(image, index) in [...images, ...images]"
-        :key="index"
-        class="carousel-item"
-        :style="{ '--i': (index + 1).toString() }"
+    <!-- Desktop / tablet: original animated carousel -->
+    <div class="hidden md:block w-full h-full relative">
+      <div class="title-section">
+        <h2 class="font-serif text-4xl md:text-5xl text-gold">A Visual Symphony</h2>
+        <p class="mt-4 text-text-muted max-w-sm mx-auto">Glimpses of the artistry and passion infused into every creation.</p>
+      </div>
+      <div 
+        class="carousel-track" 
+        :style="{ '--time': '60s', '--total': totalItems.toString() }"
       >
-        <img :src="image" :alt="`Carousel image ${index + 1}`" />
+        <div
+          v-for="(image, index) in [...images, ...images]"
+          :key="index"
+          class="carousel-item"
+          :style="{ '--i': (index + 1).toString() }"
+        >
+          <img :src="image" :alt="`Carousel image ${index + 1}`" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: simple horizontal slider -->
+    <div class="block md:hidden w-full px-4 pt-16 pb-10">
+      <div class="text-center mb-6">
+        <h2 class="font-serif text-2xl text-gold whitespace-nowrap">A Visual Symphony</h2>
+        <p class="mt-2 text-text-muted text-sm">
+          Glimpses of the artistry and passion infused into every creation.
+        </p>
+      </div>
+      <div class="mobile-slider flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-4 px-4">
+        <div
+          v-for="(image, index) in images"
+          :key="index"
+          class="flex-shrink-0 w-[75vw] snap-center"
+        >
+          <div
+            class="w-full overflow-hidden rounded-sm shadow-2xl shadow-black/40 bg-black/5"
+            style="aspect-ratio: 1 / 1;"
+          >
+            <img
+              :src="image"
+              :alt="`Carousel image ${index + 1}`"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -106,30 +137,29 @@ const totalItems = images.length * 2;
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .title-section {
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
-    max-width: 90%;
-    padding: 0 1rem;
-    padding-bottom: 2rem;
+  .loop-images {
+    height: auto;
+    width: 100%;
+    padding: 3rem 0 2.5rem;
   }
 
-  .title-section h2 {
-    font-size: 2rem;
+  /* Mobile slider scrollbar styling (thin golden line) */
+  .mobile-slider {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 163, 67, 0.7) transparent;
   }
 
-  .carousel-track {
-    height: 20rem;
-    margin-top: 10rem;
+  :deep(.mobile-slider::-webkit-scrollbar) {
+    height: 3px;
   }
 
-  .carousel-track .carousel-item {
-    width: 70vw;
-    height: 70vw;
-    max-width: 20rem;
-    max-height: 20rem;
+  :deep(.mobile-slider::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+
+  :deep(.mobile-slider::-webkit-scrollbar-thumb) {
+    background: rgba(212, 163, 67, 0.9); /* gold-like */
+    border-radius: 9999px;
   }
 }
 </style>
