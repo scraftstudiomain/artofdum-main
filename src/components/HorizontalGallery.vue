@@ -46,7 +46,7 @@ onMounted(() => {
 
           ScrollTrigger.create({
             trigger: gallery,
-            start: 'top top+=1', // tiny offset to avoid fighting with previous pin end
+            start: 'top top+=100', // tiny offset to avoid fighting with previous pin end
             end: () => `+=${getScrollAmount()}`,
             pin: true,
             pinSpacing: true,
@@ -112,5 +112,17 @@ onUnmounted(() => {
 .gallery-section {
   /* Background image removed - now handled by parent HomeView */
   background-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    height: 45vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-section {
+    height: 45vh;
+  }
 }
 </style>
