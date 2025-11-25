@@ -36,6 +36,13 @@ onUnmounted(() => {
       <div class="flex items-center justify-between h-20 md:h-24 py-3 md:py-4">
         <!-- Left side - Empty space -->
         <div class="flex items-center w-1/4">
+          <button
+            @click="emit('toggle-menu')"
+            class="flex items-center gap-x-2 font-sans font-medium tracking-widest uppercase text-sm group md:hidden"
+          >
+            <DiamondIcon class="w-4 h-4 text-gold animate-spin-custom" />
+            <span class="text-text group-hover:text-gold transition-colors duration-300">Menu</span>
+          </button>
         </div>
 
         <!-- Center - Logo (always visible and bigger) -->
@@ -56,7 +63,7 @@ onUnmounted(() => {
         <div class="flex items-center w-1/4 justify-end">
           <button
             @click="emit('toggle-menu')"
-            class="flex items-center gap-x-3 font-sans font-medium tracking-widest uppercase text-sm group"
+            class="hidden md:flex items-center gap-x-3 font-sans font-medium tracking-widest uppercase text-sm group"
           >
             <DiamondIcon class="w-4 h-4 text-gold animate-spin-custom" />
             <span class="text-text group-hover:text-gold transition-colors duration-300">Menu</span>
