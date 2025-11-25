@@ -126,7 +126,7 @@ onUnmounted(() => {
         <div class="relative z-10 lg:pr-8 order-2 lg:order-1">
           <div
             ref="contentBoxRef"
-            class="content-box bg-white/95 backdrop-blur-sm border border-black/20 p-8 md:p-10 lg:p-12 shadow-xl"
+            class="content-box bg-white/95 backdrop-blur-sm border border-black/20 p-8 pt-10 md:p-10 lg:p-12 shadow-xl"
           >
             <div class="flex items-start gap-4">
               <div class="diamond-bullet w-2 h-2 bg-black mt-2 flex-shrink-0"></div>
@@ -141,7 +141,7 @@ onUnmounted(() => {
 
         <!-- Right Side: Layered Images -->
         <div class="relative w-full aspect-[16/10] md:aspect-[16/9] lg:aspect-[4/3] order-1 lg:order-2 overflow-visible">
-          <!-- Background Image (Back Side - Base Layer) -->
+          <!-- Background Image (First Image - base layer) -->
           <div ref="backgroundImageRef" class="image-container absolute inset-0 lg:inset-x-0 lg:right-0 lg:left-auto w-full lg:w-[95%] h-full z-10">
             <img
               :src="backgroundImage"
@@ -153,8 +153,13 @@ onUnmounted(() => {
             />
           </div>
 
-          <!-- Front Image (Same size, overlapping on top with padding) -->
-          <div ref="frontImageRef" class="image-container absolute top-8 right-8 md:top-12 md:right-12 lg:top-16 lg:right-16 left-0 bottom-0 lg:left-auto lg:right-0 w-full lg:w-[95%] h-full z-20">
+          <!-- Front Image (Second Image - overlapping, smaller on mobile) -->
+          <div
+            ref="frontImageRef"
+            class="image-container absolute top-16 left-1/2 -translate-x-1/2 w-[80%] h-[60%]
+                   md:top-12 md:right-12 md:left-auto md:translate-x-0 md:w-full md:h-full
+                   lg:top-16 lg:right-16 lg:w-[95%] lg:h-full z-20"
+          >
             <img
               :src="frontImage"
               alt="Art of Dum texture overlay"
