@@ -23,6 +23,7 @@ const isLoading = ref(true);
 const showMainContent = ref(false);
 const showNavigation = ref(false);
 const isMenuOpen = ref(false);
+const selectedCountry = ref<'IN' | 'UAE'>('IN');
 const bodyEl = document.body;
 const isLocked = useScrollLock(bodyEl);
 
@@ -125,7 +126,11 @@ onUnmounted(() => {
     <div v-if="!isLoading" class="main-content-transition">
       <!-- Navigation - shown immediately with hero -->
       <div v-if="showNavigation" class="navigation-transition">
-        <AppHeader @toggle-menu="isMenuOpen = !isMenuOpen" />
+        <AppHeader
+          :country="selectedCountry"
+          @update:country="selectedCountry = $event"
+          @toggle-menu="isMenuOpen = !isMenuOpen"
+        />
         <FullScreenMenu :is-open="isMenuOpen" @close="isMenuOpen = false" />
       </div>
 
