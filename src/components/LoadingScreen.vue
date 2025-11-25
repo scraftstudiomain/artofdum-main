@@ -42,7 +42,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 
 const emit = defineEmits<{
-  loadingComplete: []
+  'loading-complete': []
 }>()
 
 const isLoading = ref(true)
@@ -114,7 +114,7 @@ const startLoadingSequence = () => {
         isLoading.value = false
         // Re-enable body scroll when loading is complete
         document.body.classList.remove('loading')
-        emit('loadingComplete')
+        emit('loading-complete')
       }
     })
 
