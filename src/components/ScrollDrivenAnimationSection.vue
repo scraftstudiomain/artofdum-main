@@ -26,13 +26,15 @@ let timeline: gsap.core.Timeline | null = null
 onMounted(() => {
   if (!sectionRef.value || !overlayRef.value) return
 
+  const isMobile = window.matchMedia('(max-width: 768px)').matches
+
   timeline = gsap.timeline({
     scrollTrigger: {
       trigger: sectionRef.value,
       start: 'top top',
       end: '+=900',
       scrub: true,
-      pin: true,
+      pin: !isMobile,
       anticipatePin: 1
     }
   })
