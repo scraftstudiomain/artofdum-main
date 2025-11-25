@@ -31,9 +31,9 @@ import heroVideo from '../aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4';
 
     <!-- Buttons at Bottom -->
     <div class="absolute bottom-12 md:bottom-20 left-0 right-0 z-10 flex flex-col sm:flex-row items-center sm:items-end justify-center sm:justify-between gap-3 sm:gap-4 px-4 sm:px-8 lg:px-12 hero-buttons">
-      <button class="hero-btn-reserve px-8 py-3 bg-gold text-black font-semibold uppercase tracking-wider hover:bg-gold/90 transition-all duration-300 shadow-lg">
-        Reserve Now
-      </button>
+      <a href="https://artofdum.dotpe.in/" class="hero-btn-reserve px-8 py-3 bg-gold text-black font-semibold uppercase tracking-wider hover:bg-gold/90 transition-all duration-300 shadow-lg">
+        Order Online
+      </a>
       <RouterLink to="/menu-modern" class="hero-btn-menu px-8 py-3 border-2 border-white text-white font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-all duration-300">
         Explore Menu
       </RouterLink>
