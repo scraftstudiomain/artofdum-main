@@ -95,7 +95,7 @@ const totalItems = images.length * 2;
   min-width: calc(10rem * var(--total));
   height: 30rem;
   position: relative;
-  margin-top: 12rem;
+  margin-top: 20rem;
 }
 
 .carousel-track .carousel-item {
