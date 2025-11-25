@@ -112,9 +112,9 @@ onBeforeUnmount(() => {
         <defs>
           <path
             id="view-menu-curve"
-            d="M0,260 C240,80 480,80 720,260
-               S1200,440 1440,260
-               S1680,80 1920,260"
+            d="M0,200 C240,40 480,40 720,200
+               S1200,360 1440,200
+               S1680,40 1920,200"
             fill="none"
           />
         </defs>
@@ -175,14 +175,31 @@ onBeforeUnmount(() => {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .view-menu-text-path-container {
+    margin-top: -3rem;
+  }
+
+  .svg-wrapper {
+    padding-bottom: 2rem;
+    touch-action: pan-y;
+  }
+
   .text-path {
-    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-size: clamp(1.9rem, 5.5vw, 2.4rem);
   }
 }
 
 @media (max-width: 480px) {
+  .view-menu-text-path-container {
+    margin-top: -4rem;
+  }
+
+  .svg-wrapper {
+    padding-bottom: 1rem;
+  }
+
   .text-path {
-    font-size: 1.1rem;
+    font-size: clamp(2rem, 7vw, 2.6rem);
   }
 }
 </style>
