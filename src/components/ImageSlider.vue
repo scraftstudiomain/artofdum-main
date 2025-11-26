@@ -68,7 +68,7 @@ const totalItems = images.length * 2;
 <style scoped>
 .loop-images {
   position: relative;
-  height: 100vh;
+  min-height: 600px; /* Changed from fixed height to min-height */
   width: 100%;
   background-color: transparent;
   overflow: hidden;
@@ -76,32 +76,33 @@ const totalItems = images.length * 2;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 4rem 2rem; /* Adjusted padding */
 }
 
 .title-section {
   position: absolute;
-  top: 10%;
+  top: 0; /* Moved to top relative to container */
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   max-width: 500px;
   text-align: center;
   padding-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .carousel-track {
   --left: -300rem;
   min-width: calc(10rem * var(--total));
-  height: 30rem;
+  height: 25rem; /* Reduced height slightly */
   position: relative;
-  margin-top: 20rem;
+  margin-top: 8rem; /* Reduced top margin significantly */
 }
 
 .carousel-track .carousel-item {
   position: absolute;
-  width: 30rem;
-  height: 30rem;
+  width: 25rem; /* Reduced size slightly to match track height */
+  height: 25rem;
   left: 100%;
   display: flex;
   justify-content: center;
@@ -121,12 +122,13 @@ const totalItems = images.length * 2;
   background-color: white;
   transform: rotateY(-45deg);
   transition: 0.5s ease-in-out;
-  mask: linear-gradient(black 70%, transparent 100%);
-  -webkit-mask: linear-gradient(black 70%, transparent 100%);
+  /* Removed mask for hazy bottom effect */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Added shadow for depth instead */
 }
 
 .carousel-track .carousel-item:hover img {
   transform: rotateY(0deg) translateY(-1rem);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 @keyframes scroll-left {

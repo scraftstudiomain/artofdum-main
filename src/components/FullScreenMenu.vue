@@ -18,6 +18,7 @@ const menuItems: MenuItem[] = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Stay', path: '/experiences' }, // Using Experiences as placeholder for Stay
+  { name: 'Sustainability', path: '/sustainability' },
   { name: 'Menu', path: '/menu' },
   { name: 'Contact', path: '/contact' },
 ];

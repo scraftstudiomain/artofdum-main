@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
+import { useTitle } from '@vueuse/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import DecorativeDivider from '../components/icons/DecorativeDivider.vue';
@@ -10,9 +11,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 const main = ref<HTMLElement | null>(null);
 
+// Meta Tags
+useTitle('Art of Dum Sustainability | Eco-Friendly Luxury Dining');
+
 let ctx: gsap.Context;
 
 onMounted(() => {
+  // Update Meta Description
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute('content', 'Art of Dum is committed to sustainable fine dining with zero-plastic policies, reusable packaging, and eco-conscious practices in luxury Indian cuisine.');
+  } else {
+    const meta = document.createElement('meta');
+    meta.name = 'description';
+    meta.content = 'Art of Dum is committed to sustainable fine dining with zero-plastic policies, reusable packaging, and eco-conscious practices in luxury Indian cuisine.';
+    document.head.appendChild(meta);
+  }
+
   nextTick(() => {
     ctx = gsap.context((self) => {
       // Feature images animation
@@ -91,7 +106,7 @@ onUnmounted(() => {
       >
         <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">Dum With a Conscience</h1>
         <p class="mt-4 text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
-          Art of Dum embraces sustainability without compromising luxury. Our zero-plastic policy, reusable glass jars, traditional clay handis, and steel cutlery ensure every dining experience is environmentally responsible.
+          Art of Dum embraces sustainability without compromising luxury. Our zero-plastic policy, reusable glass jars, traditional clay handis, and steel cutlery ensure every dining experience is environmentally responsible. From restaurant to home delivery, we merge mindful practices with uncompromised elegance.
         </p>
       </div>
 
@@ -152,7 +167,7 @@ onUnmounted(() => {
         <!-- Feature Showcase Section -->
         <div class="max-w-6xl mx-auto mb-20">
           <div class="text-center mb-16">
-            <h2 class="font-serif text-4xl text-gold mb-4">Sustainable Elements</h2>
+            <h2 class="font-serif text-4xl text-gold mb-4">Reusable & Premium Packaging</h2>
             <DecorativeDivider />
           </div>
 
@@ -211,56 +226,6 @@ onUnmounted(() => {
               <div class="text-center px-4">
                 <h3 class="font-serif text-2xl text-gold mb-4">Local Sourcing</h3>
                 <p class="text-text-muted">Partnering with local farms and ethical suppliers who share our commitment to environmental stewardship.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sustainable Dining at Home Section -->
-        <div
-          class="max-w-4xl mx-auto mb-20"
-          v-motion-fade-visible-once
-        >
-          <div class="text-center mb-8">
-            <h2 class="font-serif text-4xl text-gold mb-4">Sustainable Dining at Home</h2>
-            <DecorativeDivider />
-          </div>
-
-          <div class="relative">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-4/5 h-4/5 bg-gold/10 blur-3xl"></div>
-            </div>
-            <div class="relative bg-background/60 backdrop-blur-sm border border-gold/20 p-12">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <div class="feature-image overflow-hidden shadow-2xl shadow-black/50 h-64 lg:h-80">
-                    <img
-                      src="https://images.pexels.com/photos/708587/pexels-photo-708587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      alt="Sustainable Delivery"
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <h3 class="font-serif text-2xl text-gold mb-6">Farm to Table Philosophy</h3>
-                  <p class="text-text-muted leading-relaxed mb-8">
-                    From restaurant to home delivery, we merge mindful practices with uncompromising elegance. Our delivery service brings the same sustainable luxury experience to your doorstep, complete with reusable packaging that can be returned for credit or proper recycling.
-                  </p>
-                  <div class="space-y-4">
-                    <div class="flex items-center gap-x-3">
-                      <DiamondIcon class="w-2.5 h-2.5 text-gold" />
-                      <span class="text-text">Return & Reward Program</span>
-                    </div>
-                    <div class="flex items-center gap-x-3">
-                      <DiamondIcon class="w-2.5 h-2.5 text-gold" />
-                      <span class="text-text">Carbon Neutral Delivery</span>
-                    </div>
-                    <div class="flex items-center gap-x-3">
-                      <DiamondIcon class="w-2.5 h-2.5 text-gold" />
-                      <span class="text-text">Reusable Packaging Credits</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

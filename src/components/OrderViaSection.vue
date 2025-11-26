@@ -27,7 +27,7 @@ const partners = [
       </div>
 
       <div 
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
       >
         <a
           v-for="(partner, index) in partners"
@@ -42,20 +42,20 @@ const partners = [
         >
           <div class="flip-card-inner">
             <!-- Front side - Text -->
-            <div class="flip-card-front relative flex flex-col items-center justify-center h-full p-10 text-center bg-transparent border border-white/10 transition-all duration-300 ease-in-out group-hover:border-gold/50">
+            <div class="flip-card-front relative flex flex-col items-center justify-center h-full p-6 text-center bg-transparent border border-white/10 transition-all duration-300 ease-in-out group-hover:border-gold/50">
               <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div class="absolute top-0 left-0 w-1/2 h-1/2 bg-gold/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               <div class="relative z-10">
-                <span class="font-serif text-3xl text-text-muted group-hover:text-gold transition-colors duration-300">{{ partner.name }}</span>
-                <div class="absolute top-4 right-4 text-text-muted/50 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300">
-                  <ArrowUpRight class="w-5 h-5" />
+                <span class="font-serif text-2xl text-text-muted group-hover:text-gold transition-colors duration-300">{{ partner.name }}</span>
+                <div class="absolute top-3 right-3 text-text-muted/50 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300">
+                  <ArrowUpRight class="w-4 h-4" />
                 </div>
               </div>
             </div>
             
             <!-- Back side - Logo -->
-            <div class="flip-card-back relative flex flex-col items-center justify-center h-full p-10 text-center bg-transparent border border-gold/50">
+            <div class="flip-card-back relative flex flex-col items-center justify-center h-full p-8 text-center bg-transparent border border-gold/50">
               <div class="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent"></div>
               <div class="relative z-10 w-full h-full flex items-center justify-center">
                 <img 

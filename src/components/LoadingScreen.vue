@@ -15,12 +15,6 @@
         class="logo"
         ref="logo"
       />
-      <!-- Loading indicator -->
-      <div class="loading-indicator" ref="loadingIndicator">
-        <div class="loading-dot"></div>
-        <div class="loading-dot"></div>
-        <div class="loading-dot"></div>
-      </div>
     </div>
 
     <!-- Left door panel -->
@@ -51,7 +45,6 @@ const leftDoor = ref<HTMLElement>()
 const rightDoor = ref<HTMLElement>()
 const logoContainer = ref<HTMLElement>()
 const logo = ref<HTMLElement>()
-const loadingIndicator = ref<HTMLElement>()
 
 onMounted(() => {
   // Prevent body scroll during loading
@@ -118,17 +111,12 @@ const startLoadingSequence = () => {
       }
     })
 
-    // Hide loading indicator and show logo with subtle breathing animation
-    tl.to(loadingIndicator.value, {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.out"
-    })
-    .to(logo.value, {
+    // Logo animation sequence
+    tl.to(logo.value, {
       scale: 1.05,
       duration: 1.2,
       ease: "power2.out"
-    }, "-=0.3")
+    })
     .to(logo.value, {
       scale: 1,
       duration: 0.8,
@@ -210,6 +198,19 @@ const startLoadingSequence = () => {
   object-fit: contain;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
   transition: filter 0.3s ease;
+  animation: gold-pulse 2s infinite ease-in-out;
+}
+
+@keyframes gold-pulse {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+  }
 }
 
 @media (min-width: 768px) {
@@ -223,60 +224,6 @@ const startLoadingSequence = () => {
   .logo {
     height: 18rem; /* lg:h-72 */
     width: 18rem; /* lg:w-72 */
-  }
-}
-
-/* Loading indicator styles */
-.loading-indicator {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-}
-
-.loading-dot {
-  width: 8px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 50%;
-  animation: loading-pulse 1.4s ease-in-out infinite both;
-}
-
-.loading-dot:nth-child(1) {
-  animation-delay: -0.32s;
-}
-
-.loading-dot:nth-child(2) {
-  animation-delay: -0.16s;
-}
-
-.loading-dot:nth-child(3) {
-  animation-delay: 0s;
-}
-
-@keyframes loading-pulse {
-  0%, 80%, 100% {
-    transform: scale(0.8);
-    opacity: 0.5;
-  }
-  40% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-/* Responsive adjustments for loading dots */
-@media (max-width: 768px) {
-  .loading-dot {
-    width: 6px;
-    height: 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  .loading-dot {
-    width: 5px;
-    height: 5px;
   }
 }
 </style>

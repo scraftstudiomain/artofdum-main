@@ -49,7 +49,7 @@ onMounted(() => {
       <IntroSection />
     </div> -->
 
-    <ImageSlider />
+    <!-- <ImageSlider /> -->
 
     <WelcomeSection />
 

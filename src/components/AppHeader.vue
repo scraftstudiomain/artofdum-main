@@ -68,7 +68,7 @@ onUnmounted(() => {
 
         <!-- Right side - Country selector + Menu -->
         <div class="flex items-center w-1/4 justify-end gap-x-3">
-          <div class="flex items-center border border-white/20 rounded-full px-2 py-1 text-[10px] sm:text-xs uppercase tracking-widest bg-background/40 backdrop-blur-sm">
+          <!-- <div class="flex items-center border border-white/20 rounded-full px-2 py-1 text-[10px] sm:text-xs uppercase tracking-widest bg-background/40 backdrop-blur-sm">
             <button
               type="button"
               @click="setCountry('IN')"
@@ -89,7 +89,7 @@ onUnmounted(() => {
             >
               UAE
             </button>
-          </div>
+          </div> -->
           <button
             @click="emit('toggle-menu')"
             class="hidden md:flex items-center gap-x-3 font-sans font-medium tracking-widest uppercase text-sm group"

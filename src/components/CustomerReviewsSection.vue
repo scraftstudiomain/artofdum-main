@@ -128,12 +128,26 @@ const handleDragMove = (event: DragEventType) => {
   // Apply visual feedback during drag
   if (carouselRef.value) {
     const cards = carouselRef.value.querySelectorAll('.review-card');
-    const offsetPercent = dragOffset.value / (carouselRef.value.clientWidth * 0.3);
-    cards.forEach((card, index) => {
+    // Move all cards together
+    cards.forEach((card) => {
       const cardElement = card as HTMLElement;
-      if (index === 1) { // Active card (center)
-        cardElement.classList.add('dragging');
-        cardElement.style.transform = `translateX(${dragOffset.value * 0.5}px) scale(${1 - Math.abs(offsetPercent) * 0.1})`;
+      cardElement.classList.add('dragging');
+      // Apply translation to all cards
+      cardElement.style.transform = `translateX(${dragOffset.value}px)`;
+      
+      // Optional: Add subtle scale effect to active card based on drag distance
+      if (cardElement.classList.contains('review-card-active')) {
+         const offsetPercent = Math.min(Math.abs(dragOffset.value) / 200, 0.1);
+         cardElement.style.transform = `translateX(${dragOffset.value}px) scale(${1 - offsetPercent})`;
+      } else {
+         // Slightly scale up the incoming card
+         const isNext = dragOffset.value < 0 && cardElement.nextElementSibling?.classList.contains('review-card-active') === false;
+         const isPrev = dragOffset.value > 0 && cardElement.previousElementSibling?.classList.contains('review-card-active') === false;
+         
+         if (isNext || isPrev) {
+            const offsetPercent = Math.min(Math.abs(dragOffset.value) / 200, 0.1);
+            cardElement.style.transform = `translateX(${dragOffset.value}px) scale(${0.9 + offsetPercent})`;
+         }
       }
     });
   }
@@ -156,6 +170,11 @@ const handleDragEnd = (event?: DragEventType) => {
   isDragging.value = false;
   activePointerId.value = null;
   
+  // Determine if swipe was significant enough to change review
+  const swipeThreshold = 50; // Minimum pixels to trigger swipe
+  const swipeDistance = Math.abs(dragOffset.value);
+  const isSwipe = wasDragging && swipeDistance > swipeThreshold;
+  
   if (carouselRef.value) {
     carouselRef.value.style.cursor = 'grab';
     
@@ -163,16 +182,24 @@ const handleDragEnd = (event?: DragEventType) => {
     const cards = carouselRef.value.querySelectorAll('.review-card');
     cards.forEach((card) => {
       const cardElement = card as HTMLElement;
-      cardElement.style.transform = '';
       cardElement.classList.remove('dragging');
+      // We don't immediately clear transform if we are going to animate
+      // But if we are staying, we need to clear it or animate back
+      if (!isSwipe) {
+          gsap.to(cardElement, {
+              x: 0,
+              scale: cardElement.classList.contains('review-card-active') ? 1 : 0.9,
+              duration: 0.3,
+              ease: 'power2.out',
+              onComplete: () => {
+                  cardElement.style.transform = '';
+              }
+          });
+      }
     });
   }
   
-  // Determine if swipe was significant enough to change review
-  const swipeThreshold = 50; // Minimum pixels to trigger swipe
-  const swipeDistance = Math.abs(dragOffset.value);
-  
-  if (wasDragging && swipeDistance > swipeThreshold) {
+  if (isSwipe) {
     if (dragOffset.value > 0) {
       // Swiped right - go to previous
       prevReview();
