@@ -12,109 +12,109 @@ const slidesWrapperRef = ref<HTMLElement | null>(null)
 const slides = [
   {
     id: 1,
-    kicker: '01',
     titleLine1: 'WE CREATE',
     titleLine2: 'BRAND MOMENTS THAT EARN ATTENTION.',
     body: `People won’t take notice unless you give them a genuine reason to. From identity to campaigns, we cut through the noise to earn lasting cultural relevance.`,
-    items: [
-      'Brand Identity',
-      'PR-Led Ideas',
-      'Social-Led Campaigns',
-      'Creative & Content Development'
-    ],
     image:
       'https://images.pexels.com/photos/5531525/pexels-photo-5531525.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   {
     id: 2,
-    kicker: '02',
     titleLine1: 'WE DESIGN',
     titleLine2: 'PLACES THAT DRAW PEOPLE IN & KEEP THEM COMING BACK.',
     body: `Venues that make an impact have a story to tell. From hotels to restaurants to bars, we craft experiences that stay with people.`,
-    items: ['Hotels', 'Bars', 'Restaurants', 'Retail', 'Mixed-Use Property', 'Placemaking'],
     image:
       'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   {
     id: 3,
-    kicker: '03',
     titleLine1: 'WE SHAPE',
     titleLine2: 'PLACE CULTURE THAT KEEPS DESTINATIONS RELEVANT.',
     body: `Places that last offer more than just a service. We shape the culture of destinations so every moment feels considered and memorable.`,
-    items: [
-      'Cultural Place Strategy',
-      'Art & Music Curation',
-      'Community Integration',
-      'Seasonal Activations'
-    ],
     image:
       'https://images.pexels.com/photos/3771839/pexels-photo-3771839.jpeg?auto=compress&cs=tinysrgb&w=1600'
   },
   {
     id: 4,
-    kicker: '04',
     titleLine1: 'WE AMPLIFY',
     titleLine2: 'EXPERIENCES THAT DRIVE INFLUENCE AND DEMAND.',
     body: `From PR to partnerships, we choreograph experiences that take brands to the forefront of their industry.`,
-    items: ['Public Relations', 'Social', 'Live Events', 'Collaborations', 'Media Partnerships'],
     image:
       'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1600'
   }
 ]
 
 let scrollTrigger: ScrollTrigger | null = null
+let ctx: gsap.Context
 
 onMounted(() => {
   if (!sectionRef.value || !slidesWrapperRef.value) return
 
-  const slideCount = slides.length
-  const container = slidesWrapperRef.value
+  ctx = gsap.context(() => {
+    const cards = gsap.utils.toArray('.stack-slide') as HTMLElement[]
+    const totalScroll = window.innerHeight * 3 // Adjust for scroll length
 
-  // Each slide takes up a bit more than one viewport of scroll for a quicker feel
-  const totalScroll = window.innerHeight * slideCount * 1.2
+    // Initial state: cards are stacked but potentially off-screen or positioned
+    // We want a "stacking" effect where they slide on top of each other.
+    // Actually, a nice stack effect is:
+    // Card 1 is there.
+    // Card 2 slides up over Card 1.
+    // Card 3 slides up over Card 2.
+    // etc.
+    
+    // Set initial z-indices
+    cards.forEach((card, i) => {
+      card.style.zIndex = (i + 1).toString()
+    })
 
-  scrollTrigger = ScrollTrigger.create({
-    trigger: sectionRef.value,
-    start: 'top top',
-    end: `+=${totalScroll}`,
-    pin: true,
-    scrub: 0.5,
-    anticipatePin: 1,
-    onUpdate: (self) => {
-      const progress = self.progress
-      // Keep all 4 slides in one sequence but avoid making the 4th feel like a separate section
-      // by never letting virtualIndex fully reach the last index.
-      const maxIndex = (slideCount - 1) * 0.9
-      const virtualIndex = progress * maxIndex
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.value,
+        start: 'top top',
+        end: `+=${totalScroll}`,
+        pin: true,
+        scrub: 1, // Smooth scrubbing
+        anticipatePin: 1,
+      }
+    })
 
-      const cards = Array.from(container.querySelectorAll<HTMLElement>('.stack-slide'))
-      cards.forEach((card, index) => {
-        const depth = index - virtualIndex
-        const isPast = depth < 0
-        const absDepth = Math.abs(depth)
+    // Animate cards 2, 3, 4 sliding up
+    // We skip the first card as it's already "there" (or we can animate it too if we want)
+    // Let's keep card 1 static, and slide others on top.
+    
+    cards.forEach((card, i) => {
+      if (i === 0) return // Skip first card
 
-        // Smooth positioning based on continuous depth
-        const y = isPast ? -18 - absDepth * 4 : depth * 8
-        const scale = 1 - Math.min(absDepth * 0.06, 0.18)
-        const opacity = absDepth > 3 ? 0 : 1 - Math.min(absDepth * 0.18, 0.5)
-        const zIndex = 100 - Math.round(absDepth * 10)
+      tl.fromTo(card, 
+        { 
+          yPercent: 100,
+          scale: 0.9 + (i * 0.02) // Slight scale difference for depth before entering
+        },
+        {
+          yPercent: 0, // Slide to natural position (which is absolute inset 0)
+          scale: 1,
+          ease: 'none',
+          duration: 1
+        }
+      )
+      
+      // Optional: Parallax/Scale effect for the card *below* the current one
+      // When card i enters, card i-1 could scale down slightly or darken
+      if (i > 0) {
+        tl.to(cards[i-1], {
+          scale: 0.95,
+          filter: 'brightness(0.8)',
+          duration: 1,
+          ease: 'none'
+        }, "<") // Run at same time as card i entering
+      }
+    })
 
-        gsap.to(card, {
-          yPercent: y,
-          scale,
-          opacity,
-          zIndex,
-          duration: 0.2,
-          ease: 'power2.out'
-        })
-      })
-    }
-  })
+  }, sectionRef.value)
 })
 
 onUnmounted(() => {
-  scrollTrigger?.kill()
-  scrollTrigger = null
+  ctx?.revert()
 })
 </script>
 
@@ -141,7 +141,6 @@ onUnmounted(() => {
           <div class="stack-slide-inner">
             <div class="stack-left">
               <header class="stack-header">
-                <span class="stack-kicker">{{ slide.kicker }}</span>
                 <p class="stack-label">WHAT WE DO</p>
               </header>
 
@@ -153,18 +152,6 @@ onUnmounted(() => {
               <p class="stack-body">
                 {{ slide.body }}
               </p>
-
-              <div class="stack-list-wrapper">
-                <ol class="stack-list">
-                  <li
-                    v-for="(item, index) in slide.items"
-                    :key="index"
-                  >
-                    <span class="stack-list-index">{{ index + 1 }}</span>
-                    <span class="stack-list-text">{{ item }}</span>
-                  </li>
-                </ol>
-              </div>
             </div>
 
             <div class="stack-right">
@@ -276,22 +263,18 @@ onUnmounted(() => {
   padding: clamp(2rem, 4vw, 3rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center; /* Centered vertically since list is gone */
   gap: 1.75rem;
 }
 
 .stack-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-size: 0.75rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: #8b6914;
-}
-
-.stack-kicker {
-  font-weight: 600;
 }
 
 .stack-label {
@@ -303,7 +286,7 @@ onUnmounted(() => {
   font-weight: 800;
   line-height: 1.04;
   text-transform: uppercase;
-  margin: 1.25rem 0 1rem;
+  margin: 0.5rem 0 1rem;
 }
 
 .stack-title span {
@@ -312,42 +295,9 @@ onUnmounted(() => {
 
 .stack-body {
   max-width: 28rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem; /* Slightly larger for better readability */
   line-height: 1.7;
   color: #333333;
-}
-
-.stack-list-wrapper {
-  margin-top: 1.5rem;
-}
-
-.stack-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem 2.5rem;
-}
-
-.stack-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.stack-list-index {
-  width: 1.6rem;
-  border-bottom: 1px solid #d4af37;
-  opacity: 0.9;
-}
-
-.stack-list-text {
-  white-space: nowrap;
-  color: #111111;
 }
 
 .stack-right {
@@ -400,14 +350,11 @@ onUnmounted(() => {
 
   .stack-left {
     padding: 1.5rem;
+    justify-content: flex-start;
   }
 
   .stack-title {
     font-size: clamp(1.8rem, 6vw, 2.4rem);
-  }
-
-  .stack-list {
-    grid-template-columns: 1fr;
   }
 }
 </style>
