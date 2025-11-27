@@ -33,14 +33,22 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header 
-    :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
-      scrolled ? 'bg-background/70 backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
-    ]"
-  >
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20 md:h-24 py-3 md:py-4">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out">
+    <!-- Background Layer -->
+    <div 
+      :class="[
+        'absolute top-0 left-0 right-0 transition-all duration-500 ease-in-out',
+        scrolled ? 'h-16 bg-background/70 backdrop-blur-lg border-b border-white/10' : 'h-24 bg-transparent'
+      ]"
+    ></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div 
+        :class="[
+          'flex items-center justify-between transition-all duration-300 ease-in-out',
+          scrolled ? 'h-16 py-2' : 'h-20 md:h-24 py-3 md:py-4'
+        ]"
+      >
         <!-- Left side - Empty space -->
         <div class="flex items-center w-1/4">
           <button
@@ -56,12 +64,15 @@ onUnmounted(() => {
         <div class="flex items-center justify-center w-1/2">
           <button
             @click="navigateToHome"
-            class="transition-transform duration-300 hover:scale-110 focus:outline-none"
+            class="transition-transform duration-300 hover:scale-110 focus:outline-none relative"
           >
             <img
               src="/images/your-logo.png"
               alt="Art of Dum"
-              class="h-16 w-16 md:h-24 md:w-24"
+              :class="[
+                'transition-all duration-500 ease-in-out',
+                scrolled ? 'h-24 w-24 md:h-32 md:w-32 translate-y-8' : 'h-16 w-16 md:h-24 md:w-24'
+              ]"
             />
           </button>
         </div>

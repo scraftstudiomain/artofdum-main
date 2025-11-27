@@ -45,8 +45,8 @@ const main = ref<HTMLElement | null>(null);
       <div class="w-full px-8 sm:px-12 md:px-16 lg:px-24 xl:px-32 text-center">
         <div class="w-full space-y-8 md:space-y-12">
           <!-- Founded Date -->
-          <p class="text-sm md:text-base font-sans font-medium tracking-[0.2em] uppercase text-[#1a1a1a]">
-            FOUNDED IN 2017
+          <p class="text-2xl md:text-3xl font-decorative text-[#d4af37] mb-4">
+            Founded in 2017
           </p>
           
           <!-- Main Headline -->
@@ -61,7 +61,7 @@ const main = ref<HTMLElement | null>(null);
 
           <!-- Supporting Text -->
           <div class="space-y-3 md:space-y-4 pt-4">
-            <p class="text-lg md:text-xl lg:text-2xl font-serif italic text-[#1a1a1a]">
+            <p class="text-3xl md:text-4xl lg:text-5xl font-decorative text-[#d4af37]">
               We Create and Preserve
             </p>
             <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
@@ -87,7 +87,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: -40 }"
           :enter="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-sm tracking-[0.3em] uppercase text-text-muted mb-4">Our Story</p>
+          <p class="text-2xl font-decorative text-gold mb-4">Our Story</p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             From Royal Kitchens to Your Table
           </h2>

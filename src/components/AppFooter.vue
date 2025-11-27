@@ -13,7 +13,9 @@ const socialLinks = [
   <footer class="bg-background text-text-muted border-t border-white/10">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
       <div class="text-center mb-8 md:mb-12" v-motion-fade-visible-once>
-        <router-link to="/" class="font-decorative text-4xl text-text mb-2 inline-block">Art of Dum</router-link>
+        <router-link to="/" class="inline-block mb-4">
+          <img src="/images/your-logo.png" alt="Art of Dum" class="h-24 w-auto mx-auto" />
+        </router-link>
         <p class="italic">A Culinary Heritage</p>
         <DecorativeDivider />
       </div>
@@ -48,7 +50,7 @@ const socialLinks = [
       </div>
 
       <div class="mt-16 pt-8 border-t border-white/10 text-center" v-motion-fade-visible-once>
-        <p class="text-sm">&copy; 2025 Art of Dum. All Rights Reserved. Designed with Royalty.</p>
+        <p class="text-sm">&copy; 2025 Art of Dum. All Rights Reserved. Mindfully Crafted by <a href="https://scraft.studio/" target="_blank" class="underline hover:text-gold transition-colors">Scraft</a></p>
       </div>
     </div>
   </footer>

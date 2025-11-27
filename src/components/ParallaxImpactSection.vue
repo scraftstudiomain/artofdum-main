@@ -21,7 +21,7 @@ const isEnhanced = ref(false)
 const activeSlide = ref(0)
 
 const heroCopy = {
-  eyebrow: 'OUR IMPACT',
+  eyebrow: 'Our Impact',
   title: 'We envision realities, move worlds and create the future',
   description:
     "We choreograph cinematic experiences for visionary brands. Inside the lens we find clarity, emotion and momentum so the audience can't look away.",
@@ -155,7 +155,7 @@ onUnmounted(() => {
         </div>
 
         <div ref="overlayCopyRef" class="hero-overlay" aria-hidden="true">
-          <p class="eyebrow">
+          <p class="eyebrow font-decorative text-3xl text-gold">
             <span class="eyebrow-square" /> {{ heroCopy.eyebrow }}
           </p>
           <h2>{{ heroCopy.title }}</h2>
@@ -177,7 +177,7 @@ onUnmounted(() => {
 
       <div class="parallax-columns" aria-hidden="false">
         <article ref="leftColumnRef" class="column column--left">
-          <p class="eyebrow">
+          <p class="eyebrow font-decorative text-3xl text-gold">
             <span class="eyebrow-square" /> {{ heroCopy.eyebrow }}
           </p>
           <h3>{{ heroCopy.title }}</h3>
@@ -238,7 +238,6 @@ onUnmounted(() => {
   overflow: hidden;
   transform-origin: center;
   --cross-opacity: 0;
-  box-shadow: 0 35px 55px rgba(0, 0, 0, 0.45);
   background: #000;
 }
 
@@ -421,8 +420,7 @@ onUnmounted(() => {
 }
 
 .eyebrow {
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
   font-size: 0.8rem;
   display: flex;
   align-items: center;

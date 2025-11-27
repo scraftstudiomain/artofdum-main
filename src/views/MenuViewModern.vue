@@ -166,9 +166,7 @@ onUnmounted(() => {
                   {{ item.description }}
                 </p>
                 
-                <p class="text-lg md:text-xl font-semibold text-gold mb-2">
-                  AED {{ item.priceDisplay || item.price }}
-                </p>
+
                 
                 <p v-if="item.allergens" class="text-xs text-gray-500 italic">
                   {{ item.allergens }}

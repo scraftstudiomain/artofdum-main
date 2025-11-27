@@ -41,15 +41,7 @@ import DiamondIcon from '../components/icons/DiamondIcon.vue';
                   <DiamondIcon class="w-2.5 h-2.5 text-gold flex-shrink-0 mt-1" />
                   <h3 class="font-serif text-xl text-text">{{ item.name }}</h3>
                 </div>
-                <div class="flex-1 h-px overflow-hidden mx-4">
-                  <div
-                    class="border-b border-dotted border-white/20 w-full"
-                    v-motion
-                    :initial="{ x: '-101%' }"
-                    :visible-once="{ x: 0, transition: { duration: 800, ease: 'easeOut', delay: 200 + index * 50 } }"
-                  ></div>
-                </div>
-                <p class="text-xl text-text-muted">AED {{ item.priceDisplay || item.price }}</p>
+
               </div>
               <p class="text-text-muted mt-2 text-sm pl-8">{{ item.description }}</p>
               <p v-if="item.allergens" class="text-text-muted/70 mt-1 text-xs pl-8 italic">{{ item.allergens }}</p>
