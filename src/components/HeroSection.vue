@@ -25,7 +25,7 @@ import heroVideo from '../aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4';
     <!-- Hero Title -->
     <div class="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
       <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight max-w-5xl">
-        Where the Flames of Tradition Meet the Forge of Innovation
+        Where the Flames of <span class="text-gold font-decorative">Tradition</span> Meet the Forge of <span class="text-gold font-decorative">Innovation</span>
       </h1>
     </div>
 

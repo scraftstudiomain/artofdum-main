@@ -131,14 +131,22 @@ onUnmounted(() => {
             <div class="flex items-start gap-4">
               <div class="diamond-bullet w-2 h-2 bg-black mt-2 flex-shrink-0"></div>
               <div class="flex-1">
-                <p class="text-black text-base md:text-lg leading-relaxed">
-                  Welcome to Art of Dum, where a 300-year-old culinary legacy is brought alive in every Dum-sealed pot. Inspired by royal kitchens, we offer Dubai's finest slow-cooked biryanis, melt-in-your mouth kebabs, and rich gravies all delivered to you with sustainable elegance.
-                </p>
+                <div class="space-y-4 text-black text-base md:text-lg leading-relaxed">
+                  <p>
+                    Art of Dum is a celebration of the timeless Dum technique—slow cooking in sealed vessels that preserves flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies, and indulgent desserts.
+                  </p>
+                  <p>
+                    Step into a world where culinary tradition meets modern refinement. From copper tandoors to live Dum stations, every element is designed to enchant your senses.
+                  </p>
+                  <p class="font-medium">
+                    Reserve your table today and experience the transformative art of slow-cooked Indian cuisine.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
+        
         <!-- Right Side: Layered Images -->
         <div class="relative w-full aspect-[16/10] md:aspect-[16/9] lg:aspect-[4/3] order-1 lg:order-2 overflow-visible">
           <!-- Background Image (First Image - base layer) -->
@@ -201,7 +209,8 @@ onUnmounted(() => {
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .welcome-section {
-    height: 700px;
+    min-height: 700px;
+    height: auto;
   }
 }
 </style>

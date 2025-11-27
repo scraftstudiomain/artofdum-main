@@ -138,33 +138,6 @@ onUnmounted(() => {
                   { name: 'Sustainable Sourcing', description: 'Our ingredients are sourced from local farms and ethical suppliers who share our commitment to environmental stewardship.' },
                   { name: 'Reusable Packaging', description: 'All our delivery and takeaway services use premium glass jars and containers that can be returned, sanitized, and reused.' },
                   { name: 'Eco-Conscious Design', description: 'Our restaurant features energy-efficient systems, water conservation measures, and sustainable building materials.' }
-                ]"
-                :key="index"
-                v-motion
-                :initial="{ opacity: 0, y: 20 }"
-                :visible-once="{ opacity: 1, y: 0, transition: { delay: 100 + index * 50 } }"
-              >
-                <div class="flex justify-between items-baseline">
-                  <div class="flex items-center gap-x-4">
-                    <DiamondIcon class="w-2.5 h-2.5 text-gold flex-shrink-0 mt-1" />
-                    <h3 class="font-serif text-xl text-text">{{ item.name }}</h3>
-                  </div>
-                  <div class="flex-1 h-px overflow-hidden mx-4">
-                    <div
-                      class="border-b border-dotted border-white/20 w-full"
-                      v-motion
-                      :initial="{ x: '-101%' }"
-                      :visible-once="{ x: 0, transition: { duration: 800, ease: 'easeOut', delay: 200 + index * 50 } }"
-                    ></div>
-                  </div>
-                </div>
-                <p class="text-text-muted mt-2 text-sm pl-8">{{ item.description }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feature Showcase Section -->
         <div class="max-w-6xl mx-auto mb-20">
           <div class="text-center mb-16">
             <h2 class="font-serif text-4xl text-gold mb-4">Reusable & Premium Packaging</h2>

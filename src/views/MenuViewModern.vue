@@ -85,7 +85,7 @@ onUnmounted(() => {
         <div class="text-center mb-8">
           <h1 class="font-serif text-5xl md:text-6xl font-bold text-gold mb-4">Menu</h1>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-            An ode to the culinary traditions of Indian royalty, where every dish is a masterpiece of flavor and finesse.
+            Step into a world where culinary tradition meets modern refinement. From copper tandoors to live Dum stations, every element is designed to enchant your senses.
           </p>
         </div>
       </div>

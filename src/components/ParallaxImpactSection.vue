@@ -312,7 +312,6 @@ onUnmounted(() => {
   line-height: 1;
   margin: 0;
   color: #1a1a1a;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .hero-overlay .cta-link {
@@ -329,7 +328,6 @@ onUnmounted(() => {
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(26, 26, 26, 0.9);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .parallax-columns {
