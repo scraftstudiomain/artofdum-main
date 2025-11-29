@@ -2,6 +2,7 @@
 import { onMounted, nextTick } from 'vue'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroSection from '../components/HeroSection.vue'
+import ExperienceArtSection from '../components/ExperienceArtSection.vue'
 // import IntroSection from '../components/IntroSection.vue'
 import HorizontalGallery from '../components/HorizontalGallery.vue'
 // import CurvedLoop from '../components/CurvedLoop.vue'
@@ -43,6 +44,8 @@ onMounted(() => {
   <div class="home-view-container" :style="{ backgroundImage: `url(${bgImage})` }">
     <HeroSection />
 
+    <ExperienceArtSection />
+
     <!-- The Soul of Dum Pukht section hidden -->
     <!-- <div class="relative -mt-24 z-10">
       <CurveDivider class="w-full h-24 text-background fill-current" />
@@ -51,7 +54,7 @@ onMounted(() => {
 
     <!-- <ImageSlider /> -->
 
-    <WelcomeSection />
+    <!-- <WelcomeSection /> -->
 
     <HorizontalGallery />
 
