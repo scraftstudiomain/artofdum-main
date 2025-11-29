@@ -190,7 +190,7 @@ const socialLinks = [
 }
 
 .menu-link {
-  font-family: 'Academy Engraved', serif;
+  font-family: 'Bagatela', serif;
   letter-spacing: 0.05em;
   position: relative;
 }
