@@ -3,6 +3,7 @@ import { onMounted, nextTick } from 'vue'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroSection from '../components/HeroSection.vue'
 import ExperienceArtSection from '../components/ExperienceArtSection.vue'
+import CleanCulinaryOfferingsSection from '../components/CleanCulinaryOfferingsSection.vue'
 // import IntroSection from '../components/IntroSection.vue'
 import HorizontalGallery from '../components/HorizontalGallery.vue'
 // import CurvedLoop from '../components/CurvedLoop.vue'
@@ -45,6 +46,8 @@ onMounted(() => {
     <HeroSection />
 
     <ExperienceArtSection />
+
+    <CleanCulinaryOfferingsSection />
 
     <!-- The Soul of Dum Pukht section hidden -->
     <!-- <div class="relative -mt-24 z-10">
