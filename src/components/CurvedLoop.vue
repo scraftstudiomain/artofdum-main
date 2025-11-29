@@ -214,7 +214,7 @@ onUnmounted(() => {
 
 .curved-text {
   fill: currentColor;
-  font-family: 'Academy Engraved', serif;
+  font-family: 'Bagatela', serif;
   letter-spacing: 0.05em;
 }
 
