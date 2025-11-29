@@ -1,19 +1,20 @@
 <script setup lang="ts">
+import image1 from '../RAW IMAGES AGGREGATOR SHOOT/1.jpg'
+import image4 from '../RAW IMAGES AGGREGATOR SHOOT/4.jpg'
+import image8 from '../RAW IMAGES AGGREGATOR SHOOT/8.jpg'
+
 const items = [
   {
     title: 'Signature Biryani',
-    image:
-      'https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=800&auto=format&fit=crop'
+    image: image1
   },
   {
     title: 'Handcrafted Kebabs',
-    image:
-      'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=800&auto=format&fit=crop'
+    image: image4
   },
   {
     title: 'Rich Gravies',
-    image:
-      'https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=800&auto=format&fit=crop'
+    image: image8
   }
 ]
 
