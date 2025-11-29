@@ -14,8 +14,8 @@ export default {
         gold: '#c9a974',
       },
       fontFamily: {
-        serif: ['"Academy Engraved"', 'serif'],
-        sans: ['"Barlow"', '"Inter"', 'system-ui', 'sans-serif'],
+        serif: ['"Bagatela"', 'serif'],
+        sans: ['"Roc Grotesk"', '"Inter"', 'system-ui', 'sans-serif'],
         decorative: ['"Bon Vivant"', 'cursive'],
       },
       animation: {
