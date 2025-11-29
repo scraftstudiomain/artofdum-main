@@ -138,6 +138,17 @@ onUnmounted(() => {
                   { name: 'Sustainable Sourcing', description: 'Our ingredients are sourced from local farms and ethical suppliers who share our commitment to environmental stewardship.' },
                   { name: 'Reusable Packaging', description: 'All our delivery and takeaway services use premium glass jars and containers that can be returned, sanitized, and reused.' },
                   { name: 'Eco-Conscious Design', description: 'Our restaurant features energy-efficient systems, water conservation measures, and sustainable building materials.' }
+                ]"
+                :key="index"
+                class="feature-card p-6 bg-background/60 border border-gold/20"
+              >
+                <h3 class="font-serif text-2xl text-gold mb-2">{{ item.name }}</h3>
+                <p class="text-text-muted leading-relaxed">{{ item.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="max-w-6xl mx-auto mb-20">
           <div class="text-center mb-16">
             <h2 class="font-serif text-4xl text-gold mb-4">Reusable & Premium Packaging</h2>
