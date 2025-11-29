@@ -16,7 +16,6 @@ import CustomerReviewsSection from '../components/CustomerReviewsSection.vue'
 import ScrollDrivenAnimationSection from '../components/ScrollDrivenAnimationSection.vue'
 import ParallaxImpactSection from '../components/ParallaxImpactSection.vue'
 import WelcomeSection from '../components/WelcomeSection.vue'
-import bgImage from '../011-01.png'
 
 // Refresh ScrollTrigger after all components are mounted to fix positioning
 onMounted(() => {
@@ -42,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="home-view-container" :style="{ backgroundImage: `url(${bgImage})` }">
+  <div class="home-view-container">
     <HeroSection />
 
     <ExperienceArtSection />
@@ -94,6 +93,7 @@ onMounted(() => {
 .home-view-container {
   width: 100%;
   min-height: 100vh;
+  background-color: #f0ebe1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
