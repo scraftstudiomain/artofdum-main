@@ -185,165 +185,201 @@ onUnmounted(() => {
           :initial="{ opacity: 0, y: 30 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut' } }"
         >
-          <div class="text-gold/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6">Discover The Art</div>
+          <div class="text-gold/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6">Experiance of The Art of dum</div>
           <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text mb-8 leading-tight">
-            Curated <span class="text-gold">Experiences</span>
+            More Than a Meal <br><span class="text-gold">—An Experience</span>
           </h1>
-          <p class="text-lg md:text-xl text-text/80 max-w-2xl mx-auto font-light leading-relaxed mb-12">
-            Immerse yourself in a culinary journey where every detail tells a story of royal heritage and contemporary elegance.
-          </p>
+        
         </div>
       </div>
 
       <!-- Scroll Indicator -->
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+      <!-- <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
         <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center items-start p-1">
           <div class="w-1 h-2 bg-white/60 rounded-full animate-bounce"></div>
         </div>
-      </div>
+      </div> -->
     </section>
 
-    <!-- Culinary Calendar Section -->
-    <section class="py-20 bg-background">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
+    <section class="relative py-20 md:py-24 bg-[#f0ebe1]">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-y-32 md:gap-12 items-center">
+        <div class="relative flex justify-center md:justify-start">
           <div
+            class="w-64 h-80 md:w-72 md:h-96 overflow-hidden shadow-xl bg-black/5 group"
             v-motion
-            :initial="{ opacity: 0, y: 30 }"
-            :visible="{ opacity: 1, y: 0, transition: { duration: 800 } }"
+            :initial="{ opacity: 0, x: -40, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 100 } }"
           >
-            <div class="text-gold text-2xl md:text-3xl font-decorative mb-4">Seasonal Delights</div>
-            <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6 leading-[0.9]">
-              Culinary Calendar
-              <span class="block text-gold font-decorative text-5xl md:text-6xl mt-2">&amp; Seasonal Specials</span>
-            </h2>
-            <div class="w-48 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-8"></div>
-            
-            <p class="text-lg text-text/70 leading-relaxed max-w-4xl mx-auto font-light">
-              Rotating heirloom ingredients, festival menus, and progressive pairings ensure curiosity and delight year-round.
-            </p>
+            <img
+              src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Warmly lit dining room with elegant table settings"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
-        </div>
-
-        <!-- Current Season Highlight -->
-        <div class="mb-20 text-center">
-          <div class="relative inline-block">
-            <div class="absolute inset-0 bg-gradient-to-br from-orange-900/20 to-red-900/20 blur-3xl"></div>
-            <div class="relative bg-black/40 backdrop-blur-sm border-2 border-gold/30 p-12 lg:p-16 rounded-lg shadow-2xl">
-              <div class="absolute inset-0 border border-gold/10 m-2 rounded-lg pointer-events-none"></div>
-              <div class="text-gold text-2xl font-decorative mb-4">Current Season</div>
-              <h3 class="font-serif text-3xl lg:text-4xl font-bold text-gold mb-4">{{ currentSeason.name }}</h3>
-              <p class="text-text/70 mb-8 max-w-2xl mx-auto">{{ currentSeason.theme }}</p>
-              <div class="flex flex-wrap justify-center gap-3">
-                <span
-                  v-for="ingredient in currentSeason.ingredients"
-                  :key="ingredient"
-                  class="px-6 py-3 bg-gold/5 border border-gold/20 text-gold/80 text-sm tracking-wide transition-all duration-500 hover:bg-gold/10 hover:border-gold/40"
-                >
-                  {{ ingredient }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sensory Elements Section -->
-        <div class="mb-24">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div 
-              v-for="(element, index) in sensoryElements" 
-              :key="element.symbol"
-              class="sensory-item bg-black/20 backdrop-blur-sm border border-gold/10 p-8 text-center group hover:border-gold/30 transition-all duration-500"
-            >
-              <div class="text-gold/40 text-xs tracking-[0.3em] uppercase mb-6">{{ element.symbol }}</div>
-              <h3 class="font-decorative text-3xl text-gold mb-2">{{ element.title }}</h3>
-              <div class="text-sm uppercase tracking-widest text-text/80 mb-4">{{ element.subtitle }}</div>
-              <div class="w-8 h-px bg-gold/30 mx-auto mb-4"></div>
-              <p class="text-text/60 text-sm leading-relaxed">{{ element.description }}</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Calendar Events -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div
-            v-for="(event, index) in calendarEvents"
-            :key="index"
-            class="calendar-card group relative"
+            class="absolute top-[7rem] left-[9rem] sm:left-40 sm:top-24 md:left-48 md:top-28 w-56 h-72 md:w-64 md:h-80 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: 40, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 200 } }"
           >
-            <!-- Background Gradient -->
-            <div class="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <img
+              src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Plated gourmet dish showcasing Art of Dum's cuisine"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
-            <!-- Content -->
-            <div class="relative bg-black/20 backdrop-blur-sm border border-gold/10 p-8 group-hover:border-gold/30 transition-all duration-700 h-full">
-              <div class="text-gold text-xl font-decorative mb-4">{{ event.month }}</div>
-              <h3 class="font-serif text-2xl font-bold text-text mb-4">{{ event.title }}</h3>
-              <div class="w-16 h-px bg-gradient-to-r from-gold/50 to-transparent mb-4"></div>
-              <p class="text-text/60 leading-relaxed mb-6 text-sm">{{ event.description }}</p>
+        <div class="space-y-6 text-[#2b2116]">
+          <div class="h-px w-16 bg-gold/50"></div>
+          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug text-[#2b2116]">
+            Experiential Zones:
+          </h2>
+          <p class="text-sm md:text-base text-text-muted leading-relaxed">
+            Each zone at Art of Dum is designed to immerse guests in a sensory journey. From aromatic air
+            rituals to dramatic dish unveilings, every moment is curated to engage sight, smell, touch,
+            and taste.
+          </p>
+          <div class="h-px w-16 bg-gold/30"></div>
+        </div>
+      </div>
+    </section>
 
-              <!-- Highlights -->
-              <div class="space-y-3">
-                <div
-                  v-for="highlight in event.highlights"
-                  :key="highlight"
-                  class="flex items-center space-x-3 text-sm text-text/50"
-                >
-                  <div class="w-1 h-1 bg-gold/60 rounded-full"></div>
-                  <span>{{ highlight }}</span>
-                </div>
-              </div>
-            </div>
+    <section class="relative py-20 md:py-24 bg-[#f0ebe1]">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-y-32 md:gap-12 items-center">
+        <div class="space-y-6 text-[#2b2116] order-2 md:order-1">
+          <div class="h-px w-16 bg-gold/50"></div>
+          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug text-[#2b2116]">
+            Show Kitchen & Tandoor Theatre:
+          </h2>
+          <p class="text-sm md:text-base text-text-muted leading-relaxed">
+            Copper tandoors act as living sculptures, blending heat, light, and reflection. Witness ancient
+            techniques elevated into contemporary spectacle.
+          </p>
+          <div class="h-px w-16 bg-gold/30"></div>
+        </div>
+
+        <div class="relative flex justify-center md:justify-end order-1 md:order-2">
+          <div
+            class="w-64 h-80 md:w-72 md:h-96 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: 40, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 100 } }"
+          >
+            <img
+              src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Chef working in an open kitchen with warm lighting"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="absolute top-[7rem] left-[9rem] sm:left-auto sm:-right-10 sm:top-24 md:-right-16 md:top-28 w-56 h-72 md:w-64 md:h-80 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: 60, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 200 } }"
+          >
+            <img
+              src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Glowing tandoor-inspired dish in focus"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Premium CTA Section -->
-    <section class="relative py-32 sm:py-40 bg-gradient-to-b from-background to-black overflow-hidden">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center relative">
-          <!-- Background Elements -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl"></div>
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-gold/10 to-transparent rounded-full blur-2xl"></div>
+    <section class="relative py-20 md:py-24 bg-[#f0ebe1]">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-y-32 md:gap-12 items-center">
+        <div class="relative flex justify-center md:justify-start">
+          <div
+            class="w-64 h-80 md:w-72 md:h-96 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: -40, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 100 } }"
+          >
+            <img
+              src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Hand pouring sauce over a dum dish"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="block absolute top-[7rem] left-[9rem] sm:left-40 sm:top-24 md:left-48 md:top-28 w-56 h-72 md:w-64 md:h-80 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: 40, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 200 } }"
+          >
+            <img
+              src="https://images.pexels.com/photos/4109991/pexels-photo-4109991.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Chapati being prepared at a live station"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
-          <div class="relative z-10">
-            <div
-              v-motion
-              :initial="{ opacity: 0, y: 50 }"
-              :visible="{ opacity: 1, y: 0, transition: { duration: 1200, ease: 'easeOut' } }"
-            >
-              <div class="text-gold text-2xl md:text-3xl font-decorative mb-6">The Experience Awaits</div>
-              <h2 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-text mb-8 leading-[0.9]">
-                Begin Your
-                <span class="block text-gold font-decorative text-6xl md:text-8xl mt-4">Sensory Journey</span>
-              </h2>
+        <div class="space-y-6 text-[#2b2116]">
+          <div class="h-px w-16 bg-gold/50"></div>
+          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug text-[#2b2116]">
+            Live Dum & Chapati Stations:
+          </h2>
+          <p class="text-sm md:text-base text-text-muted leading-relaxed">
+            See handis sealed and rotis prepared in real time—transforming dining into theatre and ritual.
+          </p>
+          <div class="h-px w-16 bg-gold/30"></div>
+        </div>
+      </div>
+    </section>
 
-              <div class="w-32 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-12"></div>
+    <section class="relative py-20 md:pt-24 md:pb-48 bg-[#f0ebe1]">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-y-32 md:gap-12 items-center">
+        <div class="space-y-6 text-[#2b2116] order-2 md:order-1">
+          <div class="h-px w-16 bg-gold/50"></div>
+          <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug text-[#2b2116]">
+            Culinary Calendar & Seasonal Specials:
+          </h2>
+          <p class="text-sm md:text-base text-text-muted leading-relaxed">
+            Rotating heirloom ingredients, festival menus, and progressive pairings ensure curiosity and
+            delight year-round.
+          </p>
+          <div class="h-px w-16 bg-gold/30"></div>
+        </div>
 
-              <p class="text-lg text-text/70 max-w-3xl mx-auto mb-16 font-light leading-relaxed">
-                Experience the art of Dum through our carefully curated experiential zones. Each visit offers a new chapter in your culinary story.
-              </p>
-
-              <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a
-                  href="tel:+919876543210"
-                  class="relative group inline-flex items-center justify-center bg-gold text-background font-light py-6 px-12 text-sm tracking-[0.2em] uppercase transition-all duration-700 hover:bg-gold/90 hover:scale-105 hover:shadow-2xl hover:shadow-gold/30 overflow-hidden"
-                >
-                  <span class="relative z-10">Reserve Your Zone</span>
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </a>
-                <a
-                  href="/contact"
-                  class="relative group inline-flex items-center justify-center border border-gold/50 text-gold font-light py-6 px-12 text-sm tracking-[0.2em] uppercase transition-all duration-700 hover:bg-gold hover:text-background hover:scale-105 hover:shadow-2xl hover:shadow-gold/30 overflow-hidden"
-                >
-                  <span class="relative z-10">Plan Your Experience</span>
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </a>
-              </div>
-            </div>
+        <div class="relative flex justify-center md:justify-end order-1 md:order-2">
+          <div
+            class="w-64 h-80 md:w-72 md:h-96 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: 40, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 100 } }"
+          >
+            <img
+              src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Seasonal dum dish presented elegantly"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="block absolute top-[7rem] left-[9rem] sm:left-auto sm:-right-10 sm:top-24 md:-right-16 md:top-28 w-56 h-72 md:w-64 md:h-80 overflow-hidden shadow-xl bg-black/5 group"
+            v-motion
+            :initial="{ opacity: 0, x: 60, y: 20 }"
+            :visibleOnce="{ opacity: 1, x: 0, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 200 } }"
+          >
+            <img
+              src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600"
+              alt="Seasonal ingredients styled on a table"
+              class="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
     </section>
+
   </div>
 </template>
