@@ -38,7 +38,7 @@ onUnmounted(() => {
     <div 
       :class="[
         'absolute top-0 left-0 right-0 transition-all duration-500 ease-in-out',
-        scrolled ? 'h-16 bg-background/70 backdrop-blur-lg border-b border-white/10' : 'h-24 bg-transparent'
+        scrolled ? 'h-16 bg-[#4e3b2d] backdrop-blur-lg border-b border-white/10' : 'h-24 bg-transparent'
       ]"
     ></div>
 
