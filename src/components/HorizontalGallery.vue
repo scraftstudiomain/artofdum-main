@@ -7,21 +7,6 @@ import img2 from '../RAW IMAGES AGGREGATOR SHOOT/2.jpg';
 import img3 from '../RAW IMAGES AGGREGATOR SHOOT/3.jpg';
 import img4 from '../RAW IMAGES AGGREGATOR SHOOT/4.jpg';
 import img5 from '../RAW IMAGES AGGREGATOR SHOOT/5.jpg';
-import img6 from '../RAW IMAGES AGGREGATOR SHOOT/6.jpg';
-import img7 from '../RAW IMAGES AGGREGATOR SHOOT/7.jpg';
-import img8 from '../RAW IMAGES AGGREGATOR SHOOT/8.jpg';
-import img9 from '../RAW IMAGES AGGREGATOR SHOOT/9.jpg';
-import img10 from '../RAW IMAGES AGGREGATOR SHOOT/10.jpg';
-import img11 from '../RAW IMAGES AGGREGATOR SHOOT/11.jpg';
-import img12 from '../RAW IMAGES AGGREGATOR SHOOT/12.jpg';
-import img13 from '../RAW IMAGES AGGREGATOR SHOOT/13.jpg';
-import img14 from '../RAW IMAGES AGGREGATOR SHOOT/14.jpg';
-import img15 from '../RAW IMAGES AGGREGATOR SHOOT/15.jpg';
-import img16 from '../RAW IMAGES AGGREGATOR SHOOT/16.jpg';
-import img17 from '../RAW IMAGES AGGREGATOR SHOOT/17.jpg';
-import img18 from '../RAW IMAGES AGGREGATOR SHOOT/18.jpg';
-import img19 from '../RAW IMAGES AGGREGATOR SHOOT/19.jpg';
-import img20 from '../RAW IMAGES AGGREGATOR SHOOT/20.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,29 +20,12 @@ const images = [
   img3,
   img4,
   img5,
-  img6,
-  img7,
-  img8,
-  img9,
-  img10,
-  img11,
-  img12,
-  img13,
-  img14,
-  img15,
-  img16,
-  img17,
-  img18,
-  img19,
-  img20,
 ];
 
 // Handle image loading error
 const handleImageError = (event: Event) => {
   const img = event.target as HTMLImageElement;
   console.error(`Failed to load image: ${img.src}`);
-  // You could add a fallback placeholder image here if needed
-  // img.src = '/path/to/placeholder.jpg';
 };
 
 let ctx: gsap.Context;
