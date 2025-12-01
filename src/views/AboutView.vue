@@ -26,13 +26,11 @@ const main = ref<HTMLElement | null>(null);
         :initial="{ opacity: 0, y: 50 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut', delay: 300 } }"
       >
+        <p class="text-xs md:text-sm tracking-[0.35em] uppercase text-[#f0ebe1]/80 mb-4">
+          About The Art Of Dum
+        </p>
         <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">A Tribute to Timeless Culinary Craft</h1>
         
-      </div>
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
-        <div class="w-6 h-10 border-2 border-text-muted flex justify-center items-start p-1">
-          <div class="w-1 h-2 bg-text-muted animate-bounce"></div>
-        </div>
       </div>
     </section>
 
@@ -49,7 +47,7 @@ const main = ref<HTMLElement | null>(null);
       >
         <div class="w-full space-y-8 md:space-y-12">
           <!-- Founded Date (label style) -->
-          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#d4af37] mb-3">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
             <TypewriterText text="Founded in 2017" :speed="70" />
           </p>
           
@@ -65,7 +63,7 @@ const main = ref<HTMLElement | null>(null);
 
           <!-- Supporting Text -->
           <div class="space-y-3 md:space-y-4 pt-4">
-            <p class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#d4af37]">
+            <p class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#4e3b2d]">
               <TypewriterText text="We Create and Preserve" :speed="70" :startDelay="150" />
             </p>
             <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
@@ -87,7 +85,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: -40 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-gold mb-3">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
             <TypewriterText text="Our Story" :speed="70" />
           </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
@@ -155,7 +153,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: 40 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-gold mb-3">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
             <TypewriterText text="The Dum Technique" :speed="70" />
           </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
@@ -169,7 +167,7 @@ const main = ref<HTMLElement | null>(null);
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-16">
         <div class="text-center mb-10 md:mb-12">
-          <p class="font-semibold text-xs md:text-sm tracking-[0.25em] uppercase text-[#2b2116]/80">
+          <p class="font-semibold text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d]">
             Our Brand Pillars
           </p>
         </div>
@@ -180,7 +178,7 @@ const main = ref<HTMLElement | null>(null);
             :initial="{ opacity: 0, y: 24 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut', delay: 100 } }"
           >
-            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 8.04 4 9.54 4.81 10.35 6.09 11.16 4.81 12.66 4 14.2 4 16.7 4 18.7 6 18.7 8.5c0 3.78-3.4 6.86-8.25 11.54z" />
               </svg>
@@ -197,7 +195,7 @@ const main = ref<HTMLElement | null>(null);
             :initial="{ opacity: 0, y: 24 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut', delay: 150 } }"
           >
-            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 10L12 4l8 6" />
                 <path d="M6 10h12v8H6z" />
@@ -216,7 +214,7 @@ const main = ref<HTMLElement | null>(null);
             :initial="{ opacity: 0, y: 24 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut', delay: 200 } }"
           >
-            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 19l3-7 4 4 4-10 3 13z" />
                 <path d="M2 21h20" />
@@ -229,7 +227,7 @@ const main = ref<HTMLElement | null>(null);
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="3" />
                 <circle cx="12" cy="12" r="7" />
@@ -246,7 +244,7 @@ const main = ref<HTMLElement | null>(null);
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z" />
                 <circle cx="12" cy="12" r="3" />
@@ -259,7 +257,7 @@ const main = ref<HTMLElement | null>(null);
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
+            <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M7 20c4 0 10-4 10-12-2 2-4.5 3-7 3H8c0-2 1-4 3-6-4 0-8 4-8 9 0 3 2 6 4 6z" />
               </svg>
@@ -281,7 +279,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: -40 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-gold mb-3">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
             <TypewriterText text="Food Philosophy" :speed="70" />
           </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">

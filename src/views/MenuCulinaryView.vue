@@ -35,23 +35,6 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
         <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-[#fdfaf3] mb-6">
           Our Culinary Offerings
         </h1>
-        <p class="max-w-2xl mx-auto text-base md:text-lg text-[#f0ebe1]/80 mb-8">
-          A slow-crafted journey through Dum Biryani, kebabs, gravies, desserts, and spice-led beverages, curated for lingering conversations and unhurried meals.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-          <router-link
-            to="/contact"
-            class="inline-flex items-center justify-center px-8 py-3 border border-transparent bg-gold text-background text-sm md:text-base font-semibold tracking-[0.25em] uppercase hover:bg-gold/90 transition-colors duration-300"
-          >
-            Reserve a Table
-          </router-link>
-          <router-link
-            to="/menu-modern"
-            class="inline-flex items-center justify-center px-8 py-3 border border-[#f0ebe1]/70 text-[#f0ebe1] text-sm md:text-base font-semibold tracking-[0.25em] uppercase bg-transparent hover:bg-white/10 transition-colors duration-300"
-          >
-            Order for Home
-          </router-link>
-        </div>
       </div>
     </section>
 
@@ -84,7 +67,7 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :initial="{ opacity: 0, y: 30 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 140 } }"
           >
-            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#2b2116]/70 mb-3">
+            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
               Signature Dum Biryani
             </p>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#2b2116] mb-4">
@@ -127,7 +110,7 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :initial="{ opacity: 0, y: 30 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 180 } }"
           >
-            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#2b2116]/70 mb-3">
+            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
               Melt-in-the-Mouth Kebabs
             </p>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#2b2116] mb-4">
@@ -170,7 +153,7 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :initial="{ opacity: 0, y: 30 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 200 } }"
           >
-            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#2b2116]/70 mb-3">
+            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
               Luscious Gravies
             </p>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#2b2116] mb-4">
@@ -213,7 +196,7 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :initial="{ opacity: 0, y: 30 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 220 } }"
           >
-            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#2b2116]/70 mb-3">
+            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
               Indulgent Sweet Dishes
             </p>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#2b2116] mb-4">
@@ -256,7 +239,7 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :initial="{ opacity: 0, y: 30 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 240 } }"
           >
-            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#2b2116]/70 mb-3">
+            <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3">
               Curated Beverages &amp; Cocktails
             </p>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#2b2116] mb-4">
@@ -266,6 +249,29 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
               Our bar menu celebrates Indian flavors: cardamom, cinnamon, ginger, and subtle chili infusions create drinks that are both complex and harmonious.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing CTA / Description Section -->
+    <section class="pt-24 pb-48 md:pt-28 md:pb-48 bg-[#f0ebe1] border-t border-[#d4af37]/20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <p class="max-w-2xl mx-auto text-base md:text-lg text-text-muted">
+          A slow-crafted journey through Dum Biryani, kebabs, gravies, desserts, and spice-led beverages, curated for lingering conversations and unhurried meals.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+          <router-link
+            to="/contact"
+            class="inline-flex items-center justify-center px-8 py-3 border border-transparent bg-gold text-background text-sm md:text-base font-semibold tracking-[0.25em] uppercase hover:bg-gold/90 transition-colors duration-300"
+          >
+            Reserve a Table
+          </router-link>
+          <router-link
+            to="/menu-modern"
+            class="inline-flex items-center justify-center px-8 py-3 border border-[#2b2116]/20 text-[#2b2116] text-sm md:text-base font-semibold tracking-[0.25em] uppercase bg-transparent hover:bg-black/5 transition-colors duration-300"
+          >
+            Order for Home
+          </router-link>
         </div>
       </div>
     </section>
