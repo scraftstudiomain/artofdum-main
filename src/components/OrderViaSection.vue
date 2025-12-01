@@ -27,7 +27,7 @@ const partners = [
       </div>
 
       <div 
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
+        class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto"
       >
         <a
           v-for="(partner, index) in partners"
