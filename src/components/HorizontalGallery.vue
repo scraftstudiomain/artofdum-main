@@ -112,7 +112,7 @@ onUnmounted(() => {
     <section ref="galleryRef" class="relative h-screen w-full overflow-hidden gallery-section">
       <div ref="trackRef" class="h-full flex items-start md:items-center">
         <div class="flex-shrink-0 w-[80vw] sm:w-[50vw] lg:w-[40vw] pl-6 sm:pl-12 md:pl-[10vw] flex flex-col justify-start md:justify-center pt-10 md:pt-0">
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-gold text-center sm:text-left">A Visual Symphony</h2>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-gold text-center sm:text-left">Immersive Dining Theatre</h2>
           <p class="mt-3 sm:mt-4 text-text-muted max-w-sm mx-auto sm:mx-0 text-center sm:text-left">Glimpses of the artistry and passion infused into every creation.</p>
         </div>
         <div

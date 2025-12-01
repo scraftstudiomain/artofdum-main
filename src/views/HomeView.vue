@@ -11,11 +11,11 @@ import HorizontalGallery from '../components/HorizontalGallery.vue'
 // import CurveDivider from '../components/icons/CurveDivider.vue'
 // import VideoPinSection from '../components/VideoPinSection.vue'
 import ViewMenuTextPath from '../components/ViewMenuTextPath.vue'
-import ImageSlider from '../components/ImageSlider.vue'
+
 import CustomerReviewsSection from '../components/CustomerReviewsSection.vue'
 import ScrollDrivenAnimationSection from '../components/ScrollDrivenAnimationSection.vue'
 import ParallaxImpactSection from '../components/ParallaxImpactSection.vue'
-import WelcomeSection from '../components/WelcomeSection.vue'
+import ReservationSection from '../components/ReservationSection.vue'
 
 // Refresh ScrollTrigger after all components are mounted to fix positioning
 onMounted(() => {
@@ -71,13 +71,16 @@ onMounted(() => {
     </section> -->
 
     <ViewMenuTextPath />
+     <ReservationSection />
 
-    <ScrollDrivenAnimationSection />
+    <!-- <ScrollDrivenAnimationSection />
 
-    <ParallaxImpactSection />
+    <ParallaxImpactSection /> -->
 
     <!-- Customer Reviews Section -->
     <CustomerReviewsSection />
+
+   
 
     <!-- Video section removed -->
     <!-- <VideoPinSection key="video-pin-section" /> -->

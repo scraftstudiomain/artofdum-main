@@ -145,7 +145,7 @@ onUnmounted(() => {
 
       <!-- Footer sections - shown after main content -->
       <div v-if="showMainContent" class="relative fade-in">
-        <CurveDivider class="absolute bottom-full w-full h-24 text-background fill-current" />
+        <CurveDivider class="absolute bottom-full w-full h-24 text-[#4e3b2d] fill-current" />
         <div data-ordervia-section>
           <OrderViaSection />
         </div>

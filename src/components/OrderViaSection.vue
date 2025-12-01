@@ -14,7 +14,7 @@ const partners = [
 </script>
 
 <template>
-  <section class="py-20 sm:py-24">
+  <section class="py-20 sm:py-24" style="background-color: #4e3b2d">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div 
         class="text-center mb-12"

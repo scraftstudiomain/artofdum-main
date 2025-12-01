@@ -10,7 +10,7 @@ const socialLinks = [
 </script>
 
 <template>
-  <footer class="bg-background text-text-muted border-t border-white/10">
+  <footer class="bg-[#4e3b2d] text-text-muted border-t border-white/10">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
       <div class="text-center mb-8 md:mb-12" v-motion-fade-visible-once>
         <router-link to="/" class="inline-block mb-4">
