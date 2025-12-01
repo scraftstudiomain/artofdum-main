@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import heroVideo from '../0_Cooking_Chef_1920x1080.mp4';
 import ParallaxStackSection from '../components/ParallaxStackSection.vue';
 import bgImage from '../011-01.png';
+import TypewriterText from '../components/TypewriterText.vue';
 
 const main = ref<HTMLElement | null>(null);
 </script>
@@ -23,7 +24,7 @@ const main = ref<HTMLElement | null>(null);
         class="relative z-10 text-center px-4"
         v-motion
         :initial="{ opacity: 0, y: 50 }"
-        :enter="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut', delay: 300 } }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut', delay: 300 } }"
       >
         <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">A Tribute to Timeless Culinary Craft</h1>
         
@@ -40,11 +41,16 @@ const main = ref<HTMLElement | null>(null);
       class="minimalist-statement-section min-h-[37vh] md:min-h-screen w-full flex items-center justify-center bg-[#faf9f6] py-12 sm:py-20 lg:py-28 bg-cover bg-center bg-no-repeat bg-fixed"
       :style="{ backgroundColor: '#f0ebe1' }"
     >
-      <div class="w-full px-8 sm:px-12 md:px-16 lg:px-24 xl:px-32 text-center">
+      <div
+        class="w-full px-8 sm:px-12 md:px-16 lg:px-24 xl:px-32 text-center"
+        v-motion
+        :initial="{ opacity: 0, y: 40 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
+      >
         <div class="w-full space-y-8 md:space-y-12">
           <!-- Founded Date -->
           <p class="text-2xl md:text-3xl font-decorative text-[#d4af37] mb-4">
-            Founded in 2017
+            <TypewriterText text="Founded in 2017" :speed="70" />
           </p>
           
           <!-- Main Headline -->
@@ -60,7 +66,7 @@ const main = ref<HTMLElement | null>(null);
           <!-- Supporting Text -->
           <div class="space-y-3 md:space-y-4 pt-4">
             <p class="text-3xl md:text-4xl lg:text-5xl font-decorative text-[#d4af37]">
-              We Create and Preserve
+              <TypewriterText text="We Create and Preserve" :speed="70" :startDelay="150" />
             </p>
             <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
               THE WORLD'S MOST AUTHENTIC
@@ -79,9 +85,11 @@ const main = ref<HTMLElement | null>(null);
           class="flex-1 text-center lg:text-left text-text"
           v-motion
           :initial="{ opacity: 0, x: -40 }"
-          :enter="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
+          :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-2xl font-decorative text-gold mb-4">Our Story</p>
+          <p class="text-2xl font-decorative text-gold mb-4">
+            <TypewriterText text="Our Story" :speed="70" />
+          </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
             From Royal Kitchens to Your Table
           </h2>
@@ -95,7 +103,7 @@ const main = ref<HTMLElement | null>(null);
           class="flex-1 w-full"
           v-motion
           :initial="{ opacity: 0, x: 40 }"
-          :enter="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 250 } }"
+          :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 250 } }"
         >
           <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)] backdrop-blur-sm group">
             <img
@@ -122,7 +130,7 @@ const main = ref<HTMLElement | null>(null);
           class="flex-1 w-full"
           v-motion
           :initial="{ opacity: 0, x: -40 }"
-          :enter="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 250 } }"
+          :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 250 } }"
         >
           <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)] backdrop-blur-sm group">
             <img
@@ -145,9 +153,11 @@ const main = ref<HTMLElement | null>(null);
           class="flex-1 text-center lg:text-left text-text"
           v-motion
           :initial="{ opacity: 0, x: 40 }"
-          :enter="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
+          :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-2xl font-decorative text-gold mb-4">The Dum Technique</p>
+          <p class="text-2xl font-decorative text-gold mb-4">
+            <TypewriterText text="The Dum Technique" :speed="70" />
+          </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
             Slow Cooking, Sealed in Time
           </h2>
@@ -164,7 +174,12 @@ const main = ref<HTMLElement | null>(null);
           </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          <div class="flex items-start gap-4">
+          <div
+            class="flex items-start gap-4"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut', delay: 100 } }"
+          >
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 8.04 4 9.54 4.81 10.35 6.09 11.16 4.81 12.66 4 14.2 4 16.7 4 18.7 6 18.7 8.5c0 3.78-3.4 6.86-8.25 11.54z" />
@@ -176,7 +191,12 @@ const main = ref<HTMLElement | null>(null);
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div
+            class="flex items-start gap-4"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut', delay: 150 } }"
+          >
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M4 10L12 4l8 6" />
@@ -190,7 +210,12 @@ const main = ref<HTMLElement | null>(null);
             </div>
           </div>
 
-          <div class="flex items-start gap-4">
+          <div
+            class="flex items-start gap-4"
+            v-motion
+            :initial="{ opacity: 0, y: 24 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut', delay: 200 } }"
+          >
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/60 text-[#d4af37]">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 19l3-7 4 4 4-10 3 13z" />
@@ -254,9 +279,11 @@ const main = ref<HTMLElement | null>(null);
           class="flex-1 text-center lg:text-left text-text"
           v-motion
           :initial="{ opacity: 0, x: -40 }"
-          :enter="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
+          :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-2xl font-decorative text-gold mb-4">Food Philosophy</p>
+          <p class="text-2xl font-decorative text-gold mb-4">
+            <TypewriterText text="Food Philosophy" :speed="70" />
+          </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
             Ingredients That Honour Every Origin
           </h2>
