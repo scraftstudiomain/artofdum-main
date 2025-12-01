@@ -48,24 +48,24 @@ const main = ref<HTMLElement | null>(null);
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
       >
         <div class="w-full space-y-8 md:space-y-12">
-          <!-- Founded Date -->
-          <p class="text-2xl md:text-3xl font-decorative text-[#d4af37] mb-4">
+          <!-- Founded Date (label style) -->
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-[#d4af37] mb-3">
             <TypewriterText text="Founded in 2017" :speed="70" />
           </p>
           
           <!-- Main Headline -->
           <div class="space-y-4 md:space-y-6">
-            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-sans font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
               A ROYAL CULINARY
             </h2>
-            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-sans font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
+            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
               HERITAGE RESTAURANT
             </h2>
           </div>
 
           <!-- Supporting Text -->
           <div class="space-y-3 md:space-y-4 pt-4">
-            <p class="text-3xl md:text-4xl lg:text-5xl font-decorative text-[#d4af37]">
+            <p class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#d4af37]">
               <TypewriterText text="We Create and Preserve" :speed="70" :startDelay="150" />
             </p>
             <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
@@ -87,7 +87,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: -40 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-2xl font-decorative text-gold mb-4">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-gold mb-3">
             <TypewriterText text="Our Story" :speed="70" />
           </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
@@ -155,7 +155,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: 40 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-2xl font-decorative text-gold mb-4">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-gold mb-3">
             <TypewriterText text="The Dum Technique" :speed="70" />
           </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
@@ -281,7 +281,7 @@ const main = ref<HTMLElement | null>(null);
           :initial="{ opacity: 0, x: -40 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 800, ease: 'easeOut', delay: 150 } }"
         >
-          <p class="text-2xl font-decorative text-gold mb-4">
+          <p class="text-xs md:text-sm tracking-[0.25em] uppercase text-gold mb-3">
             <TypewriterText text="Food Philosophy" :speed="70" />
           </p>
           <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]">
