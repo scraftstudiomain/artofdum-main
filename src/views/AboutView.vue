@@ -29,7 +29,7 @@ const main = ref<HTMLElement | null>(null);
         <p class="text-xs md:text-sm tracking-[0.35em] uppercase text-[#f0ebe1]/80 mb-4">
           About The Art Of Dum
         </p>
-        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">A Tribute to Timeless Culinary Craft</h1>
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">A Tribute to Timeless <br><span class="text-gold">Culinary Craft</span> </h1>
         
       </div>
     </section>
