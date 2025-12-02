@@ -104,25 +104,108 @@ onUnmounted(() => {
         :initial="{ opacity: 0, y: 50 }"
         :enter="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut', delay: 300 } }"
       >
+        <div class="text-gold/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6">Art of Dum Sustainability</div>
         <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">Dum With a Conscience</h1>
-        <p class="mt-4 text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
-          Art of Dum embraces sustainability without compromising luxury. Our zero-plastic policy, reusable glass jars, traditional clay handis, and steel cutlery ensure every dining experience is environmentally responsible. From restaurant to home delivery, we merge mindful practices with uncompromised elegance.
-        </p>
+      
       </div>
 
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+      <!-- <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
         <div class="w-6 h-10 border-2 border-text-muted flex justify-center items-start p-1">
           <div class="w-1 h-2 bg-text-muted animate-bounce"></div>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- Sustainability Highlight Section -->
+    <section class="w-full min-h-[80vh] flex items-center bg-[#f0ebe1] pt-16 pb-28 sm:py-0">
+      <div class="w-full px-4 sm:px-8 lg:px-16">
+        <div class="max-w-3xl mx-auto text-center mb-10">
+          <p class="text-text-muted leading-relaxed">
+            Art of Dum embraces sustainability without compromising luxury. Our zero-plastic policy, reusable glass jars, traditional clay handis, and steel cutlery ensure every dining experience is environmentally responsible. From restaurant to home delivery, we merge mindful practices with uncompromised elegance.
+          </p>
+        </div>
+        <div class="flex gap-6 items-stretch">
+          
+          <div class="hidden md:flex items-center">
+          
+            <!-- <div
+              class="text-xs tracking-[0.6em] uppercase text-text-muted"
+              style="writing-mode: vertical-rl; text-orientation: mixed;"
+            >
+              Sustainability
+            </div> -->
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1">
+            <div
+              class="feature-card"
+              v-motion
+              :initial="{ opacity: 0, y: 30 }"
+              :visible-once="{ opacity: 1, y: 0, transition: { delay: 200 } }"
+            >
+              <div class="feature-image overflow-hidden shadow-2xl shadow-black/50 h-72">
+                <img
+                  src="https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  alt="Eco-Friendly Practices"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="mt-4 text-center">
+                <h3 class="font-serif text-xl md:text-2xl text-gold tracking-[0.25em] uppercase">
+                  Eco-Friendly Practices
+                </h3>
+              </div>
+            </div>
+
+            <div
+              class="feature-card"
+              v-motion
+              :initial="{ opacity: 0, y: 30 }"
+              :visible-once="{ opacity: 1, y: 0, transition: { delay: 300 } }"
+            >
+              <div class="feature-image overflow-hidden shadow-2xl shadow-black/50 h-72">
+                <img
+                  src="https://images.pexels.com/photos/3730760/pexels-photo-3730760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  alt="Reusable & Premium Packaging"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="mt-4 text-center">
+                <h3 class="font-serif text-xl md:text-2xl text-gold tracking-[0.25em] uppercase">
+                  Reusable & Premium Packaging
+                </h3>
+              </div>
+            </div>
+
+            <div
+              class="feature-card"
+              v-motion
+              :initial="{ opacity: 0, y: 30 }"
+              :visible-once="{ opacity: 1, y: 0, transition: { delay: 400 } }"
+            >
+              <div class="feature-image overflow-hidden shadow-2xl shadow-black/50 h-72">
+                <img
+                  src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  alt="Sustainable Dining at Home"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="mt-4 text-center">
+                <h3 class="font-serif text-xl md:text-2xl text-gold tracking-[0.25em] uppercase">
+                  Sustainable Dining at Home
+                </h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Main Content Section -->
-    <div class="pt-32 pb-20 sm:pt-40 sm:pb-32 bg-background">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- <div class="pt-32 pb-20 sm:pt-40 sm:pb-32 bg-background">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8"> -->
 
         <!-- Eco-Friendly Practices Section -->
-        <div class="space-y-20 max-w-4xl mx-auto mb-20">
+        <!-- <div class="space-y-20 max-w-4xl mx-auto mb-20">
           <div
             v-motion-fade-visible-once
           >
@@ -147,15 +230,15 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-        </div>
-
+        </div> -->
+<!-- 
         <div class="max-w-6xl mx-auto mb-20">
           <div class="text-center mb-16">
             <h2 class="font-serif text-4xl text-gold mb-4">Reusable & Premium Packaging</h2>
             <DecorativeDivider />
-          </div>
+          </div> -->
 
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div
               class="feature-card"
               v-motion
@@ -212,11 +295,11 @@ onUnmounted(() => {
                 <p class="text-text-muted">Partnering with local farms and ethical suppliers who share our commitment to environmental stewardship.</p>
               </div>
             </div>
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
 
         <!-- Call to Action -->
-        <div
+        <!-- <div
           class="text-center"
           v-motion
           :initial="{ opacity: 0, y: 30 }"
@@ -245,8 +328,8 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div> -->
+      <!-- </div>
+    </div> -->
   </div>
 </template>
