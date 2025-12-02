@@ -185,7 +185,7 @@ onUnmounted(() => {
           :initial="{ opacity: 0, y: 30 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut' } }"
         >
-          <div class="text-gold/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6">Experiance of The Art of dum</div>
+          <div class="text-gold/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6">Art of Dum Experiences</div>
           <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text mb-8 leading-tight">
             More Than a Meal <br><span class="text-gold">—An Experience</span>
           </h1>
