@@ -3,9 +3,8 @@ import DecorativeDivider from './icons/DecorativeDivider.vue';
 import DiamondIcon from './icons/DiamondIcon.vue';
 
 const socialLinks = [
-  { name: 'Instagram', href: '#' },
-  { name: 'Facebook', href: '#' },
-  { name: 'Twitter', href: '#' },
+  { name: 'Instagram', href: 'https://www.instagram.com/artofdumdubai' },
+  { name: 'TikTok', href: 'https://www.tiktok.com/@artofdumuae?_r=1&_t=ZS-91uilKm0Bhn' },
 ];
 </script>
 
@@ -23,8 +22,8 @@ const socialLinks = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         <div v-motion :initial="{opacity: 0, y: 20}" :visible-once="{opacity: 1, y: 0, transition: {delay: 200}}">
           <h3 class="font-bold text-text mb-4 uppercase tracking-widest text-sm">Location</h3>
-          <p>123 Royal Palace Road,</p>
-          <p>Jaipur, Rajasthan, 302001</p>
+          <p>Al Reem Island, Abu Dhabi,</p>
+          <p>Hazza Bin Zayed the First Street, Abdullah Omran Taryam Street - Abu Dhabi</p>
         </div>
         
         <div class="md:text-center" v-motion :initial="{opacity: 0, y: 20}" :visible-once="{opacity: 1, y: 0, transition: {delay: 300}}">
