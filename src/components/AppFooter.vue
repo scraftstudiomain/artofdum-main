@@ -34,7 +34,9 @@ const socialLinks = [
           >
             reservations@artofdum.com
           </a>
-          <p class="mt-1">+91 987 654 3210</p>
+          <p class="mt-1">
+            <a href="tel:0568561276" class="hover:text-gold transition-colors">0568561276</a>
+          </p>
         </div>
 
         <div class="md:text-right" v-motion :initial="{opacity: 0, y: 20}" :visible-once="{opacity: 1, y: 0, transition: {delay: 400}}">
