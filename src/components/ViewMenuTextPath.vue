@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 
-const repeatedText = 'View Our Menu \u2022 '.repeat(30);
+const repeatedText = 'Brand Pillars : Intimate - Heritage - Opulent - Immersive - Captivating - Grounded • '.repeat(30);
 
 const svgWrapperRef = ref<HTMLElement | null>(null);
 const isDragging = ref(false);

@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { getMenuItemImage } from '../data/menuImages';
-
-const heroDishImage = getMenuItemImage('31');
-const potImage = getMenuItemImage('21');
+import heroDishImage from '../RAW IMAGES AGGREGATOR SHOOT/1.jpg';
+import potImage from '../RAW IMAGES AGGREGATOR SHOOT/2.jpg';
 </script>
 
 <template>

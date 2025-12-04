@@ -3,18 +3,25 @@ import image1 from '../RAW IMAGES AGGREGATOR SHOOT/1.jpg'
 import image4 from '../RAW IMAGES AGGREGATOR SHOOT/4.jpg'
 import image8 from '../RAW IMAGES AGGREGATOR SHOOT/8.jpg'
 
+import signatureVideo from '../Signature Dum Biryani.mp4'
+import kebabsVideo from '../Melt-in-the-Mouth Kebabs.mp4'
+import graviesVideo from '../Luscious Gravies.mp4'
+
 const items = [
   {
     title: 'Signature Biryani',
-    image: image1
+    image: image1,
+    video: signatureVideo
   },
   {
     title: 'Handcrafted Kebabs',
-    image: image4
+    image: image4,
+    video: kebabsVideo
   },
   {
     title: 'Rich Gravies',
-    image: image8
+    image: image8,
+    video: graviesVideo
   }
 ]
 
@@ -77,7 +84,17 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
             <div
               class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"
             />
+            <video
+              v-if="item.video"
+              :src="item.video"
+              class="w-full h-full object-cover"
+              autoplay
+              muted
+              loop
+              playsinline
+            />
             <img
+              v-else
               :src="item.image"
               :alt="item.title"
               class="w-full h-full object-cover transform group-hover:scale-110 group-hover:rotate-2 transition-transform duration-500 ease-out"
@@ -102,7 +119,7 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
         <span
           class="whitespace-nowrap font-serif text-[18vw] sm:text-[16vw] md:text-[14vw] leading-none text-[#e4dcca]"
         >
-          DUM BIRYANI  KEBABS  GRAVIES  DUM BIRYANI  KEBABS  GRAVIES
+          Signature Biryani  Handcrafted Kebabs Rich Gravies  Signature Biryani  Handcrafted Kebabs Rich Gravies  
         </span>
       </div>
     </div>
