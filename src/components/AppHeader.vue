@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import DiamondIcon from './icons/DiamondIcon.vue';
+import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png';
 
 const props = defineProps<{ country: 'IN' | 'UAE' }>();
 const emit = defineEmits(['toggle-menu', 'update:country']);
@@ -67,11 +68,11 @@ onUnmounted(() => {
             class="transition-transform duration-300 hover:scale-110 focus:outline-none relative"
           >
             <img
-              src="/images/your-logo.png"
+              :src="LogoImage"
               alt="Art of Dum"
               :class="[
-                'transition-all duration-500 ease-in-out',
-                scrolled ? 'h-20 w-20 translate-y-4 md:h-32 md:w-32 md:translate-y-8' : 'h-16 w-16 md:h-24 md:w-24'
+                'transition-all duration-500 ease-in-out object-contain',
+                scrolled ? 'h-20 w-auto translate-y-4 md:h-32 md:w-auto md:translate-y-8' : 'h-16 w-auto md:h-24 md:w-auto'
               ]"
             />
           </button>

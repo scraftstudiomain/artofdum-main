@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import DecorativeDivider from './icons/DecorativeDivider.vue';
-import noonLogo from '../noon-2.svg';
+import noonLogo from '../noon-2.png';
 import talabatLogo from '../Talabat_logo-removebg-preview.png';
-import careemLogo from '../Careem_logo.svg.png';
-import deliverooLogo from '../deliveroo-logo.svg';
+import careemLogo from '../Careem_logo1-removebg-preview.png';
+import deliverooLogo from '../deliveroo-logo.png';
 import keetaLogo from '../keeta logo.png';
-import zometoLogo from '../zometo.png';
+import zometoLogo from '../zometo_cream-removebg-preview.png';
 
 const partners = [
   { name: 'Noon', link: '#', logo: noonLogo },

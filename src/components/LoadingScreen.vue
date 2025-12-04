@@ -10,7 +10,7 @@
       ref="logoContainer"
     >
       <img
-        src="/images/your-logo.png"
+        :src="LogoImage"
         alt="Restaurant Logo"
         class="logo"
         ref="logo"
@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
+import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png'
 
 const emit = defineEmits<{
   'loading-complete': []
@@ -51,11 +52,11 @@ onMounted(() => {
   document.body.classList.add('loading')
 
   // Initial setup - doors closed, logo visible
-  gsap.set([leftDoor.value, rightDoor.value], {
+  gsap.set([leftDoor.value!, rightDoor.value!], {
     x: 0
   })
 
-  gsap.set(logo.value, {
+  gsap.set(logo.value!, {
     scale: 1,
     opacity: 1
   })
@@ -112,12 +113,12 @@ const startLoadingSequence = () => {
     })
 
     // Logo animation sequence
-    tl.to(logo.value, {
+    tl.to(logo.value!, {
       scale: 1.05,
       duration: 1.2,
       ease: "power2.out"
     })
-    .to(logo.value, {
+    .to(logo.value!, {
       scale: 1,
       duration: 0.8,
       ease: "power2.inOut"
@@ -125,19 +126,19 @@ const startLoadingSequence = () => {
     .to({}, { duration: 1.5 }) // Wait time
 
     // Door opening animation - doors slide apart like a real door
-    .to(leftDoor.value, {
+    .to(leftDoor.value!, {
       x: "-100%",
       duration: 2.5,
       ease: "power3.inOut"
     }, "-=1.0")
-    .to(rightDoor.value, {
+    .to(rightDoor.value!, {
       x: "100%",
       duration: 2.5,
       ease: "power3.inOut"
     }, "<")
 
     // Fade out logo as doors open
-    .to(logo.value, {
+    .to(logo.value!, {
       opacity: 0,
       scale: 0.9,
       duration: 1.5,

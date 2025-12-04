@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DecorativeDivider from './icons/DecorativeDivider.vue';
 import DiamondIcon from './icons/DiamondIcon.vue';
+import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png';
 
 const socialLinks = [
   { name: 'Instagram', href: 'https://www.instagram.com/artofdumdubai' },
@@ -13,7 +14,7 @@ const socialLinks = [
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
       <div class="text-center mb-8 md:mb-12" v-motion-fade-visible-once>
         <router-link to="/" class="inline-block mb-4">
-          <img src="/images/your-logo.png" alt="Art of Dum" class="h-24 w-auto mx-auto" />
+          <img :src="LogoImage" alt="Art of Dum" class="h-24 w-auto mx-auto object-contain" />
         </router-link>
         <p class="italic">A Culinary Heritage</p>
         <DecorativeDivider />

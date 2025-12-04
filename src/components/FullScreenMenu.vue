@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { X, Instagram, Youtube, Facebook, Mail, Gift } from 'lucide-vue-next';
+import { X, Instagram, Music2, Gift } from 'lucide-vue-next';
 import { useRouter } from 'vue-router';
 import heroVideo from '../0_Cooking_Chef_1920x1080.mp4';
+import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png';
 
 defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(['close']);
@@ -34,17 +35,15 @@ const handleReservation = () => {
 
 // Contact information
 const contactInfo = {
-  locations: 'Chembur | Worli | Kamala Mills | Thane | Andheri | Saki Vihar | Belapur',
-  phone: '+91 987 654 3210',
+  locations: 'Al Reem Island, Abu Dhabi, Hazza Bin Zayed the First Street, Abdullah Omran Taryam Street - Abu Dhabi',
+  phone: '0568561276',
   email: 'reservations@artofdum.com'
 };
 
 // Social media links
 const socialLinks = [
-  { name: 'Instagram', icon: Instagram, href: '#' },
-  { name: 'YouTube', icon: Youtube, href: '#' },
-  { name: 'Facebook', icon: Facebook, href: '#' },
-  { name: 'Email', icon: Mail, href: `mailto:${contactInfo.email}` },
+  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/artofdumdubai' },
+  { name: 'TikTok', icon: Music2, href: 'https://www.tiktok.com/@artofdumuae' },
 ];
 </script>
 
@@ -73,15 +72,6 @@ const socialLinks = [
             playsinline
           />
           <div class="absolute inset-0 bg-black/60"></div>
-        </div>
-        
-        <!-- Logo in upper left -->
-        <div class="absolute top-4 left-4 md:top-8 md:left-8 z-10">
-          <img
-            src="/images/your-logo.png"
-            alt="Art of Dum"
-            class="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16"
-          />
         </div>
 
         <!-- Navigation Links - Vertically centered on left -->
@@ -122,9 +112,9 @@ const socialLinks = [
         <!-- Logo centered near top -->
         <div class="flex justify-center mt-16 md:mt-20 mb-8 md:mb-12">
           <img
-            src="/images/your-logo.png"
+            :src="LogoImage"
             alt="Art of Dum"
-            class="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24"
+            class="h-16 w-auto md:h-20 md:w-auto lg:h-24 lg:w-auto object-contain"
           />
         </div>
 
