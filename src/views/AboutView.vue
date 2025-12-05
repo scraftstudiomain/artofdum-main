@@ -70,7 +70,7 @@ const main = ref<HTMLElement | null>(null);
               THE WORLD'S MOST AUTHENTIC
             </p>
             <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
-              DUM PUKHT EXPERIENCES
+              DUM EXPERIENCES
             </p>
           </div>
         </div>

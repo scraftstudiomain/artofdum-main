@@ -50,19 +50,8 @@ onUnmounted(() => {
           scrolled ? 'h-16 py-2' : 'h-20 md:h-24 py-3 md:py-4'
         ]"
       >
-        <!-- Left side - Empty space -->
-        <div class="flex items-center w-1/4">
-          <button
-            @click="emit('toggle-menu')"
-            class="flex items-center gap-x-2 font-sans font-medium tracking-widest uppercase text-sm group md:hidden"
-          >
-            <DiamondIcon class="w-4 h-4 text-gold animate-spin-custom" />
-            <span class="text-text group-hover:text-gold transition-colors duration-300">Menu</span>
-          </button>
-        </div>
-
-        <!-- Center - Logo (always visible and bigger) -->
-        <div class="flex items-center justify-center w-1/2">
+        <!-- Left side - Logo -->
+        <div class="flex items-center">
           <button
             @click="navigateToHome"
             class="transition-transform duration-300 hover:scale-110 focus:outline-none relative"
@@ -72,14 +61,21 @@ onUnmounted(() => {
               alt="Art of Dum"
               :class="[
                 'transition-all duration-500 ease-in-out object-contain',
-                scrolled ? 'h-20 w-auto translate-y-4 md:h-32 md:w-auto md:translate-y-8' : 'h-16 w-auto md:h-24 md:w-auto'
+                scrolled ? 'h-10 w-auto md:h-12' : 'h-14 w-auto md:h-16'
               ]"
             />
           </button>
         </div>
 
-        <!-- Right side - Country selector + Menu -->
-        <div class="flex items-center w-1/4 justify-end gap-x-3">
+        <!-- Right side - Menu -->
+        <div class="flex items-center justify-end gap-x-3">
+          <button
+            @click="emit('toggle-menu')"
+            class="flex md:hidden items-center gap-x-2 font-sans font-medium tracking-widest uppercase text-sm group"
+          >
+            <DiamondIcon class="w-4 h-4 text-gold animate-spin-custom" />
+            <span class="text-text group-hover:text-gold transition-colors duration-300">Menu</span>
+          </button>
           <!-- <div class="flex items-center border border-white/20 rounded-full px-2 py-1 text-[10px] sm:text-xs uppercase tracking-widest bg-background/40 backdrop-blur-sm">
             <button
               type="button"
