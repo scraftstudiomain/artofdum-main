@@ -11,7 +11,7 @@ const socialLinks = [
 
 <template>
   <footer class="bg-[#4e3b2d] text-text-muted border-t border-white/10">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
       <div class="text-center mb-8 md:mb-12" v-motion-fade-visible-once>
         <router-link to="/" class="inline-block mb-4">
           <img :src="LogoImage" alt="Art of Dum" class="h-24 w-auto mx-auto object-contain" />
@@ -36,7 +36,7 @@ const socialLinks = [
             reservations@artofdum.com
           </a>
           <p class="mt-1">
-            <a href="tel:0568561276" class="hover:text-gold transition-colors">0568561276</a>
+            <a href="tel:0568561276" class="hover:text-gold transition-colors">+971 56 856 1276</a>
           </p>
         </div>
 
@@ -51,7 +51,7 @@ const socialLinks = [
         </div>
       </div>
 
-      <div class="mt-16 pt-8 border-t border-white/10 text-center" v-motion-fade-visible-once>
+      <div class="mt-8 pt-4 border-t border-white/10 text-center" v-motion-fade-visible-once>
         <p class="text-sm">&copy; 2025 Art of Dum. All Rights Reserved. Mindfully Crafted by <a href="https://scraft.studio/" target="_blank" class="underline hover:text-gold transition-colors">Scraft</a></p>
       </div>
     </div>

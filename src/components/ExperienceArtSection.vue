@@ -13,8 +13,8 @@ import potImage from '../RAW IMAGES AGGREGATOR SHOOT/2.jpg';
           </p>
 
           <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6">
-            Experience the Art
-            <span class="block text-gold">of Dum</span>
+            Experience the
+            <span class="block text-gold"> Art of Dum</span>
           </h2>
 
           <p class="text-base sm:text-lg text-black/80 leading-relaxed mb-0">
