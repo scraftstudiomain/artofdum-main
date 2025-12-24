@@ -74,7 +74,7 @@ onUnmounted(() => {
             class="flex md:hidden items-center gap-x-2 font-sans font-medium tracking-widest uppercase text-sm group"
           >
             <DiamondIcon class="w-4 h-4 text-gold animate-spin-custom" />
-            <span class="text-text group-hover:text-gold transition-colors duration-300">Menu</span>
+            <span class="text-text group-hover:text-gold transition-colors duration-300">Explore</span>
           </button>
           <!-- <div class="flex items-center border border-white/20 rounded-full px-2 py-1 text-[10px] sm:text-xs uppercase tracking-widest bg-background/40 backdrop-blur-sm">
             <button
@@ -103,7 +103,7 @@ onUnmounted(() => {
             class="hidden md:flex items-center gap-x-3 font-sans font-medium tracking-widest uppercase text-sm group"
           >
             <DiamondIcon class="w-4 h-4 text-gold animate-spin-custom" />
-            <span class="text-text group-hover:text-gold transition-colors duration-300">Menu</span>
+            <span class="text-text group-hover:text-gold transition-colors duration-300">Explore</span>
           </button>
         </div>
       </div>

@@ -26,9 +26,7 @@ const main = ref<HTMLElement | null>(null);
         :initial="{ opacity: 0, y: 50 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut', delay: 300 } }"
       >
-        <p class="text-xs md:text-sm tracking-[0.35em] uppercase text-[#f0ebe1]/80 mb-4">
-          About The Art Of Dum
-        </p>
+
         <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text">A Tribute to Timeless <br><span class="text-gold">Culinary Craft</span> </h1>
         
       </div>

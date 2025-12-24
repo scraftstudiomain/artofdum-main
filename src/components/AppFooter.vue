@@ -6,6 +6,7 @@ import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png';
 const socialLinks = [
   { name: 'Instagram', href: 'https://www.instagram.com/artofdumdubai' },
   { name: 'TikTok', href: 'https://www.tiktok.com/@artofdumuae?_r=1&_t=ZS-91uilKm0Bhn' },
+  { name: 'YouTube', href: 'https://www.youtube.com/@artofdumuae' },
 ];
 </script>
 
@@ -20,7 +21,7 @@ const socialLinks = [
         <DecorativeDivider />
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
         <div v-motion :initial="{opacity: 0, y: 20}" :visible-once="{opacity: 1, y: 0, transition: {delay: 200}}">
           <h3 class="font-bold text-text mb-4 uppercase tracking-widest text-sm">Location</h3>
           <p>Al Reem Island, Abu Dhabi,</p>
@@ -37,6 +38,19 @@ const socialLinks = [
           </a>
           <p class="mt-1">
             <a href="tel:0568561276" class="hover:text-gold transition-colors">+971 56 856 1276</a>
+          </p>
+        </div>
+
+        <div class="md:text-center" v-motion :initial="{opacity: 0, y: 20}" :visible-once="{opacity: 1, y: 0, transition: {delay: 350}}">
+          <h3 class="font-bold text-text mb-4 uppercase tracking-widest text-sm">Catering</h3>
+          <a 
+            href="mailto:togocatering@foodlinkglobal.ae" 
+            class="hover:text-gold transition-colors link-underline"
+          >
+            togocatering@foodlinkglobal.ae
+          </a>
+          <p class="mt-1">
+            <a href="tel:+971565118483" class="hover:text-gold transition-colors">+971 56 511 8483</a>
           </p>
         </div>
 
