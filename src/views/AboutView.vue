@@ -34,7 +34,7 @@ const main = ref<HTMLElement | null>(null);
 
     <!-- Minimalist Statement Section -->
     <section
-      class="minimalist-statement-section min-h-[37vh] md:min-h-screen w-full flex items-center justify-center bg-[#faf9f6] py-12 sm:py-20 lg:py-28 bg-cover bg-center bg-no-repeat bg-fixed"
+      class="minimalist-statement-section w-full flex items-center justify-center bg-[#faf9f6] py-10 md:py-16 bg-cover bg-center bg-no-repeat bg-fixed"
       :style="{ backgroundColor: '#f0ebe1' }"
     >
       <div
@@ -51,25 +51,9 @@ const main = ref<HTMLElement | null>(null);
           
           <!-- Main Headline -->
           <div class="space-y-4 md:space-y-6">
-            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
-              A ROYAL CULINARY
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#1a1a1a] leading-tight">
+              A Royal Legacy, <br></br>Perfected for the Modern Palate
             </h2>
-            <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]">
-              HERITAGE RESTAURANT
-            </h2>
-          </div>
-
-          <!-- Supporting Text -->
-          <div class="space-y-3 md:space-y-4 pt-4">
-            <p class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#4e3b2d]">
-              <TypewriterText text="We Create and Preserve" :speed="70" :startDelay="150" />
-            </p>
-            <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
-              THE WORLD'S MOST AUTHENTIC
-            </p>
-            <p class="text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]">
-              DUM EXPERIENCES
-            </p>
           </div>
         </div>
       </div>
@@ -284,7 +268,7 @@ const main = ref<HTMLElement | null>(null);
             Ingredients That Honour Every Origin
           </h2>
           <p class="text-base md:text-lg text-text-muted max-w-xl mx-auto lg:mx-0">
-            Every ingredient is sourced from the finest regions – saffron from Spain, rice from Himalayan valleys, hand-ground spices, and ethically reared meats. Through Dum, these treasures gently release their essence, creating dishes that are rich, fragrant, and deeply satisfying.
+            Every ingredient is sourced from the finest regions, saffron from Spain, rice from Himalayan valleys, hand-ground spices, and ethically reared meats. Through Dum, these treasures gently release their essence, creating dishes that are rich, fragrant, and deeply satisfying.
           </p>
         </div>
 

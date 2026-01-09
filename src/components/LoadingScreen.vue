@@ -30,7 +30,8 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 
 const emit = defineEmits<{
-  'loading-complete': []
+  'loading-complete': [],
+  'transition-start': []
 }>()
 
 const isLoading = ref(true)
@@ -126,6 +127,10 @@ const checkExit = () => {
 
 const startExitAnimation = () => {
   exitAnimationStarted.value = true
+  
+  // Signal that transition is starting so main content can be revealed behind
+  emit('transition-start')
+  
   const tl = gsap.timeline({
     onComplete: () => {
       isLoading.value = false

@@ -48,39 +48,39 @@ watch(route, () => {
 })
 
 // Methods
-const handleLoadingComplete = () => {
-  isLoading.value = false;
+const handleTransitionStart = () => {
+  // Show navigation immediately when transition starts
+  showNavigation.value = true
   
-  // Show navigation immediately after doors open
-  showNavigation.value = true;
+  // Show main content immediately so it's visible behind the sliding loading screen
+  showMainContent.value = true
   
-  // Show main content after a delay to ensure smooth transition
-  setTimeout(() => {
-    showMainContent.value = true;
-    
-    // Initialize Lenis after main content is shown
-    nextTick(() => {
-      lenis = new Lenis({
-        duration: 1.2,
-        lerp: 0.08,
-        smoothWheel: true,
-      });
+  // Initialize Lenis
+  nextTick(() => {
+    lenis = new Lenis({
+      duration: 1.2,
+      lerp: 0.08,
+      smoothWheel: true,
+    });
 
-      // Integrate Lenis with GSAP's ScrollTrigger
-      lenis.on('scroll', ScrollTrigger.update)
+    // Integrate Lenis with GSAP's ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update)
 
-      gsap.ticker.add((time)=>{
-        lenis.raf(time * 1000)
-      })
-
-      gsap.ticker.lagSmoothing(0)
-
-      // Recalculate ScrollTrigger positions after initial mount
-      nextTick(() => {
-        ScrollTrigger.refresh()
-      })
+    gsap.ticker.add((time)=>{
+      lenis.raf(time * 1000)
     })
-  }, 600) // Shorter delay for smoother transition
+
+    gsap.ticker.lagSmoothing(0)
+
+    // Recalculate ScrollTrigger positions after initial mount
+    nextTick(() => {
+      ScrollTrigger.refresh()
+    })
+  })
+}
+
+const handleLoadingComplete = () => {
+  isLoading.value = false
 }
 
 // Performance monitoring
@@ -119,6 +119,7 @@ onUnmounted(() => {
     <!-- Loading Screen -->
     <LoadingScreen
       v-if="isLoading"
+      @transition-start="handleTransitionStart"
       @loading-complete="handleLoadingComplete"
     />
 

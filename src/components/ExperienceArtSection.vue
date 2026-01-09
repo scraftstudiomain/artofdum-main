@@ -18,7 +18,7 @@ import potImage from '../RAW IMAGES AGGREGATOR SHOOT/2.jpg';
           </h2>
 
           <p class="text-base sm:text-lg text-black/80 leading-relaxed mb-0">
-            Art of Dum is a celebration of the timeless Dum technique—slow cooking in sealed vessels that preserves
+            Art of Dum is a celebration of the timeless Dum technique, slow cooking in sealed vessels that preserves
             flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious
             diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies,
             and indulgent desserts.

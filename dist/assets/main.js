@@ -14040,7 +14040,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("section", _hoisted_1$m, [
         createBaseVNode("div", _hoisted_2$i, [
           createBaseVNode("div", _hoisted_3$i, [
-            _cache[0] || (_cache[0] = createStaticVNode('<div class="flex-1 max-w-xl text-center lg:text-left" data-v-6f3b5c29><p class="text-xs sm:text-sm uppercase tracking-[0.3em] text-gold/80 mb-4" data-v-6f3b5c29> Slow-Cooked Perfection </p><h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6" data-v-6f3b5c29> Experience the <span class="block text-gold" data-v-6f3b5c29> Art of Dum</span></h2><p class="text-base sm:text-lg text-black/80 leading-relaxed mb-0" data-v-6f3b5c29> Art of Dum is a celebration of the timeless Dum technique—slow cooking in sealed vessels that preserves flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies, and indulgent desserts. </p></div>', 1)),
+            _cache[0] || (_cache[0] = createStaticVNode('<div class="flex-1 max-w-xl text-center lg:text-left" data-v-86e31357><p class="text-xs sm:text-sm uppercase tracking-[0.3em] text-gold/80 mb-4" data-v-86e31357> Slow-Cooked Perfection </p><h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6" data-v-86e31357> Experience the <span class="block text-gold" data-v-86e31357> Art of Dum</span></h2><p class="text-base sm:text-lg text-black/80 leading-relaxed mb-0" data-v-86e31357> Art of Dum is a celebration of the timeless Dum technique, slow cooking in sealed vessels that preserves flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies, and indulgent desserts. </p></div>', 1)),
             createBaseVNode("div", _hoisted_4$g, [
               createBaseVNode("div", _hoisted_5$g, [
                 createBaseVNode("div", _hoisted_6$d, [
@@ -14065,7 +14065,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const ExperienceArtSection = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-6f3b5c29"]]);
+const ExperienceArtSection = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-86e31357"]]);
 const img4 = "/assets/4.jpg";
 const image8 = "/assets/8.jpg";
 const signatureDumBiryaniVideo = "/assets/Signature%20Dum%20Biryani.mp4";
@@ -18291,7 +18291,7 @@ const LOOP_RANGE = 40;
 const _sfc_main$m = /* @__PURE__ */ defineComponent({
   __name: "ViewMenuTextPath",
   setup(__props) {
-    const repeatedText = "Brand Pillars : Intimate - Heritage - Opulent - Immersive - Captivating - Grounded • ".repeat(30);
+    const repeatedText = "Intimate - Heritage - Opulent - Immersive - Captivating - Grounded • ".repeat(30);
     const svgWrapperRef = ref(null);
     const isDragging = ref(false);
     const animationOffset = ref(0);
@@ -18393,7 +18393,7 @@ const _sfc_main$m = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const ViewMenuTextPath = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-472fe7d9"]]);
+const ViewMenuTextPath = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-7192da53"]]);
 const _sfc_main$l = {};
 const _hoisted_1$i = {
   width: "12",
@@ -18428,7 +18428,7 @@ const _hoisted_12$9 = { class: "review-card review-card-active flex-shrink-0 w-[
 const _hoisted_13$7 = { class: "review-card-box review-card-box-active rounded-lg p-8 md:p-10 h-full shadow-2xl shadow-black/30 relative" };
 const _hoisted_14$7 = { class: "relative z-10 flex flex-col items-center" };
 const _hoisted_15$7 = { class: "relative mb-6" };
-const _hoisted_16$6 = { class: "w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-gold/60 shadow-2xl ring-4 ring-gold/20 dish-image-active" };
+const _hoisted_16$7 = { class: "w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-gold/60 shadow-2xl ring-4 ring-gold/20 dish-image-active" };
 const _hoisted_17$6 = ["src", "alt"];
 const _hoisted_18$5 = { class: "text-black text-base md:text-lg mb-6 leading-relaxed text-center" };
 const _hoisted_19$5 = { class: "text-black/80 text-sm md:text-base uppercase tracking-wider font-medium" };
@@ -18441,7 +18441,7 @@ const _hoisted_25$3 = { class: "text-black/60 text-sm md:text-base mb-4 line-cla
 const _hoisted_26$3 = { class: "text-black/40 text-xs md:text-sm uppercase tracking-wider" };
 const _hoisted_27$3 = { class: "flex gap-1.5 mt-6 justify-center" };
 const _hoisted_28$3 = { class: "hidden md:flex justify-center gap-3 mt-12" };
-const _hoisted_29$3 = ["onClick", "aria-label"];
+const _hoisted_29$2 = ["onClick", "aria-label"];
 const _sfc_main$k = /* @__PURE__ */ defineComponent({
   __name: "CustomerReviewsSection",
   setup(__props) {
@@ -18765,7 +18765,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
                 createBaseVNode("div", _hoisted_13$7, [
                   createBaseVNode("div", _hoisted_14$7, [
                     createBaseVNode("div", _hoisted_15$7, [
-                      createBaseVNode("div", _hoisted_16$6, [
+                      createBaseVNode("div", _hoisted_16$7, [
                         createBaseVNode("img", {
                           src: visibleReviews.value.current.dishImage,
                           alt: visibleReviews.value.current.source,
@@ -18832,7 +18832,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
                     index === currentIndex.value ? "bg-black w-8" : "bg-black/30 hover:bg-black/50"
                   ]),
                   "aria-label": `Go to review ${index + 1}`
-                }, null, 42, _hoisted_29$3);
+                }, null, 42, _hoisted_29$2);
               }), 64))
             ]),
             createBaseVNode("div", { class: "md:hidden flex justify-center gap-8 mt-8" }, [
@@ -18882,7 +18882,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
   }
 });
 const CustomerReviewsSection = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-d4bef22b"]]);
-const _imports_0 = "/background.png";
+const _imports_0$1 = "/background.png";
 const _sfc_main$j = /* @__PURE__ */ defineComponent({
   __name: "ReservationSection",
   setup(__props) {
@@ -18918,7 +18918,7 @@ const _sfc_main$j = /* @__PURE__ */ defineComponent({
       }, [
         _cache[1] || (_cache[1] = createBaseVNode("div", { class: "absolute inset-0 z-0" }, [
           createBaseVNode("img", {
-            src: _imports_0,
+            src: _imports_0$1,
             alt: "Dining Ambiance",
             class: "w-full h-full object-cover"
           }),
@@ -19001,7 +19001,7 @@ const _hoisted_12$8 = {
 const _hoisted_13$6 = { class: "relative py-20 md:py-24 bg-[#fdf8ee]" };
 const _hoisted_14$6 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" };
 const _hoisted_15$6 = { class: "flex flex-col lg:flex-row items-center gap-10 lg:gap-16" };
-const _hoisted_16$5 = {
+const _hoisted_16$6 = {
   class: "flex-1 w-full mb-8 lg:mb-0",
   initial: { opacity: 0, y: 30 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 700, ease: "easeOut", delay: 140 } }
@@ -19030,8 +19030,8 @@ const _hoisted_26$2 = {
 };
 const _hoisted_27$2 = { class: "relative py-20 md:py-24 bg-[#fdf8ee]" };
 const _hoisted_28$2 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" };
-const _hoisted_29$2 = { class: "flex flex-col lg:flex-row items-center gap-10 lg:gap-16" };
-const _hoisted_30$2 = {
+const _hoisted_29$1 = { class: "flex flex-col lg:flex-row items-center gap-10 lg:gap-16" };
+const _hoisted_30$1 = {
   class: "flex-1 w-full mb-8 lg:mb-0",
   initial: { opacity: 0, y: 30 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 700, ease: "easeOut", delay: 180 } }
@@ -19118,7 +19118,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
         createBaseVNode("section", _hoisted_13$6, [
           createBaseVNode("div", _hoisted_14$6, [
             createBaseVNode("div", _hoisted_15$6, [
-              withDirectives((openBlock(), createElementBlock("div", _hoisted_16$5, [
+              withDirectives((openBlock(), createElementBlock("div", _hoisted_16$6, [
                 createBaseVNode("div", _hoisted_17$5, [
                   createBaseVNode("video", {
                     class: "w-full h-full object-cover",
@@ -19173,8 +19173,8 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
         ]),
         createBaseVNode("section", _hoisted_27$2, [
           createBaseVNode("div", _hoisted_28$2, [
-            createBaseVNode("div", _hoisted_29$2, [
-              withDirectives((openBlock(), createElementBlock("div", _hoisted_30$2, [
+            createBaseVNode("div", _hoisted_29$1, [
+              withDirectives((openBlock(), createElementBlock("div", _hoisted_30$1, [
                 createBaseVNode("div", _hoisted_31$1, [
                   createBaseVNode("video", {
                     class: "w-full h-full object-cover",
@@ -19534,7 +19534,7 @@ const _hoisted_12$7 = { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 g
 const _hoisted_13$5 = ["src", "alt"];
 const _hoisted_14$5 = { class: "w-full" };
 const _hoisted_15$5 = { class: "font-serif text-lg md:text-xl font-bold text-gray-900 mb-2" };
-const _hoisted_16$4 = { class: "text-gray-600 text-sm mb-3 leading-relaxed min-h-[3rem]" };
+const _hoisted_16$5 = { class: "text-gray-600 text-sm mb-3 leading-relaxed min-h-[3rem]" };
 const _hoisted_17$4 = {
   key: 0,
   class: "text-xs text-gray-500 italic"
@@ -19659,7 +19659,7 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
                       ], 2),
                       createBaseVNode("div", _hoisted_14$5, [
                         createBaseVNode("h3", _hoisted_15$5, toDisplayString(item.name), 1),
-                        createBaseVNode("p", _hoisted_16$4, toDisplayString(item.description), 1),
+                        createBaseVNode("p", _hoisted_16$5, toDisplayString(item.description), 1),
                         item.allergens ? (openBlock(), createElementBlock("p", _hoisted_17$4, toDisplayString(item.allergens), 1)) : createCommentVNode("", true)
                       ])
                     ]);
@@ -19762,7 +19762,7 @@ const _hoisted_12$6 = { class: "container mx-auto px-4 sm:px-6 lg:px-8" };
 const _hoisted_13$4 = { class: "text-center mb-16" };
 const _hoisted_14$4 = { class: "relative max-w-2xl mx-auto" };
 const _hoisted_15$4 = { class: "space-y-20" };
-const _hoisted_16$3 = { class: "md:text-center" };
+const _hoisted_16$4 = { class: "md:text-center" };
 const _hoisted_17$3 = { class: "absolute top-0 left-0 md:left-1/2 -translate-x-1/2 w-8 h-8 bg-background border-2 border-gold flex items-center justify-center font-serif text-gold z-10" };
 const _hoisted_18$3 = { class: "md:max-w-md md:mx-auto pt-12 md:pt-16" };
 const _hoisted_19$3 = { class: "font-serif text-3xl text-gold mb-3" };
@@ -19775,8 +19775,8 @@ const _hoisted_25$1 = { class: "grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10
 const _hoisted_26$1 = { class: "form-field relative" };
 const _hoisted_27$1 = { class: "form-field relative" };
 const _hoisted_28$1 = { class: "form-field relative" };
-const _hoisted_29$1 = { class: "form-field relative" };
-const _hoisted_30$1 = { class: "form-field relative" };
+const _hoisted_29 = { class: "form-field relative" };
+const _hoisted_30 = { class: "form-field relative" };
 const _hoisted_31 = { class: "form-field relative" };
 const _hoisted_32 = { class: "form-field relative" };
 const _hoisted_33 = { class: "form-field" };
@@ -19957,7 +19957,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                     key: step.step,
                     class: "process-step relative pl-12 md:pl-0"
                   }, [
-                    createBaseVNode("div", _hoisted_16$3, [
+                    createBaseVNode("div", _hoisted_16$4, [
                       createBaseVNode("div", _hoisted_17$3, toDisplayString(step.step), 1),
                       createBaseVNode("div", _hoisted_18$3, [
                         createBaseVNode("h3", _hoisted_19$3, toDisplayString(step.title), 1),
@@ -20029,7 +20029,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                       class: "form-label"
                     }, "Phone Number", -1))
                   ]),
-                  createBaseVNode("div", _hoisted_29$1, [
+                  createBaseVNode("div", _hoisted_29, [
                     withDirectives(createBaseVNode("input", {
                       type: "number",
                       id: "guests",
@@ -20044,7 +20044,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                       class: "form-label"
                     }, "Number of Guests", -1))
                   ]),
-                  createBaseVNode("div", _hoisted_30$1, [
+                  createBaseVNode("div", _hoisted_30, [
                     withDirectives(createBaseVNode("select", {
                       id: "eventType",
                       "onUpdate:modelValue": _cache[4] || (_cache[4] = ($event) => form.value.eventType = $event),
@@ -20257,7 +20257,7 @@ const _hoisted_4$9 = {
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 1e3, ease: "easeOut", delay: 300 } }
 };
 const _hoisted_5$9 = {
-  class: "minimalist-statement-section min-h-[37vh] md:min-h-screen w-full flex items-center justify-center bg-[#faf9f6] py-12 sm:py-20 lg:py-28 bg-cover bg-center bg-no-repeat bg-fixed",
+  class: "minimalist-statement-section w-full flex items-center justify-center bg-[#faf9f6] py-10 md:py-16 bg-cover bg-center bg-no-repeat bg-fixed",
   style: { backgroundColor: "#f0ebe1" }
 };
 const _hoisted_6$7 = {
@@ -20267,60 +20267,58 @@ const _hoisted_6$7 = {
 };
 const _hoisted_7$6 = { class: "w-full space-y-8 md:space-y-12" };
 const _hoisted_8$5 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
-const _hoisted_9$5 = { class: "space-y-3 md:space-y-4 pt-4" };
-const _hoisted_10$5 = { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#4e3b2d]" };
-const _hoisted_11$5 = { class: "relative py-20 md:py-28 bg-[#f0ebe1]" };
-const _hoisted_12$5 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-16" };
+const _hoisted_9$5 = { class: "relative py-20 md:py-28 bg-[#f0ebe1]" };
+const _hoisted_10$5 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-16" };
+const _hoisted_11$5 = {
+  class: "flex-1 text-center lg:text-left text-text",
+  initial: { opacity: 0, x: -40 },
+  visibleOnce: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 150 } }
+};
+const _hoisted_12$5 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
 const _hoisted_13$3 = {
-  class: "flex-1 text-center lg:text-left text-text",
-  initial: { opacity: 0, x: -40 },
-  visibleOnce: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 150 } }
-};
-const _hoisted_14$3 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
-const _hoisted_15$3 = {
   class: "flex-1 w-full",
   initial: { opacity: 0, x: 40 },
   visibleOnce: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 250 } }
 };
-const _hoisted_16$2 = { class: "relative py-20 md:py-28 bg-[#f0ebe1]" };
-const _hoisted_17$2 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16" };
-const _hoisted_18$2 = {
+const _hoisted_14$3 = { class: "relative py-20 md:py-28 bg-[#f0ebe1]" };
+const _hoisted_15$3 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16" };
+const _hoisted_16$3 = {
   class: "flex-1 w-full",
   initial: { opacity: 0, x: -40 },
   visibleOnce: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 250 } }
 };
-const _hoisted_19$2 = {
+const _hoisted_17$2 = {
   class: "flex-1 text-center lg:text-left text-text",
   initial: { opacity: 0, x: 40 },
   visibleOnce: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 150 } }
 };
-const _hoisted_20$2 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
-const _hoisted_21$1 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-16" };
-const _hoisted_22$1 = { class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" };
-const _hoisted_23$1 = {
+const _hoisted_18$2 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
+const _hoisted_19$2 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-16" };
+const _hoisted_20$2 = { class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10" };
+const _hoisted_21$1 = {
   class: "flex items-start gap-4",
   initial: { opacity: 0, y: 24 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 600, ease: "easeOut", delay: 100 } }
 };
-const _hoisted_24 = {
+const _hoisted_22$1 = {
   class: "flex items-start gap-4",
   initial: { opacity: 0, y: 24 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 600, ease: "easeOut", delay: 150 } }
 };
-const _hoisted_25 = {
+const _hoisted_23$1 = {
   class: "flex items-start gap-4",
   initial: { opacity: 0, y: 24 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 600, ease: "easeOut", delay: 200 } }
 };
-const _hoisted_26 = { class: "relative py-20 md:py-28 bg-[#f0ebe1]" };
-const _hoisted_27 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-16" };
-const _hoisted_28 = {
+const _hoisted_24 = { class: "relative py-20 md:py-28 bg-[#f0ebe1]" };
+const _hoisted_25 = { class: "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 lg:gap-16" };
+const _hoisted_26 = {
   class: "flex-1 text-center lg:text-left text-text",
   initial: { opacity: 0, x: -40 },
   visibleOnce: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 150 } }
 };
-const _hoisted_29 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
-const _hoisted_30 = {
+const _hoisted_27 = { class: "text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d] mb-3" };
+const _hoisted_28 = {
   class: "flex-1 w-full",
   initial: { opacity: 0, x: 40 },
   enter: { opacity: 1, x: 0, transition: { duration: 800, ease: "easeOut", delay: 250 } }
@@ -20367,106 +20365,98 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                   speed: 70
                 })
               ]),
-              _cache[4] || (_cache[4] = createBaseVNode("div", { class: "space-y-4 md:space-y-6" }, [
-                createBaseVNode("h2", { class: "text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]" }, " A ROYAL CULINARY "),
-                createBaseVNode("h2", { class: "text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-serif font-black uppercase leading-[1.1] tracking-tight text-[#1a1a1a]" }, " HERITAGE RESTAURANT ")
-              ], -1)),
-              createBaseVNode("div", _hoisted_9$5, [
-                createBaseVNode("p", _hoisted_10$5, [
-                  createVNode(_sfc_main$d, {
-                    text: "We Create and Preserve",
-                    speed: 70,
-                    startDelay: 150
-                  })
-                ]),
-                _cache[2] || (_cache[2] = createBaseVNode("p", { class: "text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]" }, " THE WORLD'S MOST AUTHENTIC ", -1)),
-                _cache[3] || (_cache[3] = createBaseVNode("p", { class: "text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-sans font-bold uppercase leading-[1.2] tracking-tight text-[#1a1a1a]" }, " DUM EXPERIENCES ", -1))
-              ])
+              _cache[2] || (_cache[2] = createBaseVNode("div", { class: "space-y-4 md:space-y-6" }, [
+                createBaseVNode("h2", { class: "text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-[#1a1a1a] leading-tight" }, [
+                  createTextVNode(" A Royal Legacy, "),
+                  createBaseVNode("br"),
+                  createTextVNode("Perfected for the Modern Palate ")
+                ])
+              ], -1))
             ])
           ])), [
             [_directive_motion]
           ])
         ]),
-        createBaseVNode("section", _hoisted_11$5, [
-          createBaseVNode("div", _hoisted_12$5, [
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_13$3, [
-              createBaseVNode("p", _hoisted_14$3, [
+        createBaseVNode("section", _hoisted_9$5, [
+          createBaseVNode("div", _hoisted_10$5, [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_11$5, [
+              createBaseVNode("p", _hoisted_12$5, [
                 createVNode(_sfc_main$d, {
                   text: "Our Story",
                   speed: 70
                 })
               ]),
-              _cache[5] || (_cache[5] = createBaseVNode("h2", { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]" }, " From Royal Kitchens to Your Table ", -1)),
-              _cache[6] || (_cache[6] = createBaseVNode("p", { class: "text-base md:text-lg text-text-muted mb-4 max-w-xl" }, " Art of Dum reimagines centuries-old Indian slow-cooking traditions with modern elegance. Inspired by the wisdom of Khansamas and royal kitchens, we create dishes that honor the past while celebrating the present. Each meal is thoughtfully designed to immerse diners in flavor, aroma, and heritage. ", -1))
+              _cache[3] || (_cache[3] = createBaseVNode("h2", { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]" }, " From Royal Kitchens to Your Table ", -1)),
+              _cache[4] || (_cache[4] = createBaseVNode("p", { class: "text-base md:text-lg text-text-muted mb-4 max-w-xl" }, " Art of Dum reimagines centuries-old Indian slow-cooking traditions with modern elegance. Inspired by the wisdom of Khansamas and royal kitchens, we create dishes that honor the past while celebrating the present. Each meal is thoughtfully designed to immerse diners in flavor, aroma, and heritage. ", -1))
             ])), [
               [_directive_motion]
             ]),
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_15$3, [..._cache[7] || (_cache[7] = [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_13$3, [..._cache[5] || (_cache[5] = [
               createStaticVNode('<div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)] backdrop-blur-sm group"><img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" alt="Warmly lit dining room with elegant table settings" class="w-full h-full object-cover transform group-hover:scale-105 group-hover:brightness-110 transition-transform duration-700 ease-out"><div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/10 to-transparent pointer-events-none"></div><div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs md:text-sm text-white/80"><span class="uppercase tracking-[0.25em]">Art of Dum</span><span class="inline-flex items-center gap-2"><span class="h-[1px] w-10 bg-white/40"></span> Curated Dining Experience </span></div></div>', 1)
             ])])), [
               [_directive_motion]
             ])
           ])
         ]),
-        createBaseVNode("section", _hoisted_16$2, [
-          createBaseVNode("div", _hoisted_17$2, [
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_18$2, [..._cache[8] || (_cache[8] = [
+        createBaseVNode("section", _hoisted_14$3, [
+          createBaseVNode("div", _hoisted_15$3, [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_16$3, [..._cache[6] || (_cache[6] = [
               createStaticVNode('<div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)] backdrop-blur-sm group"><img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" alt="Slow-cooked dum dish being served" class="w-full h-full object-cover transform group-hover:scale-105 group-hover:brightness-110 transition-transform duration-700 ease-out"><div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/10 to-transparent pointer-events-none"></div><div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs md:text-sm text-white/80"><span class="uppercase tracking-[0.25em]">Art of Dum</span><span class="inline-flex items-center gap-2"><span class="h-[1px] w-10 bg-white/40"></span> The Dum Technique </span></div></div>', 1)
             ])])), [
               [_directive_motion]
             ]),
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_19$2, [
-              createBaseVNode("p", _hoisted_20$2, [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_17$2, [
+              createBaseVNode("p", _hoisted_18$2, [
                 createVNode(_sfc_main$d, {
                   text: "The Dum Technique",
                   speed: 70
                 })
               ]),
-              _cache[9] || (_cache[9] = createBaseVNode("h2", { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]" }, " Slow Cooking, Sealed in Time ", -1)),
-              _cache[10] || (_cache[10] = createBaseVNode("p", { class: "text-base md:text-lg text-text-muted mb-6 max-w-xl" }, " Dum - slow cooking in a sealed environment - has been practiced for over a thousand years across Persian, Central Asian, and Indian cultures. By sealing ingredients in heavy-bottomed vessels, flavors meld gently, aromas intensify, and every dish becomes a sensory revelation. ", -1))
+              _cache[7] || (_cache[7] = createBaseVNode("h2", { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]" }, " Slow Cooking, Sealed in Time ", -1)),
+              _cache[8] || (_cache[8] = createBaseVNode("p", { class: "text-base md:text-lg text-text-muted mb-6 max-w-xl" }, " Dum - slow cooking in a sealed environment - has been practiced for over a thousand years across Persian, Central Asian, and Indian cultures. By sealing ingredients in heavy-bottomed vessels, flavors meld gently, aromas intensify, and every dish becomes a sensory revelation. ", -1))
             ])), [
               [_directive_motion]
             ])
           ]),
-          createBaseVNode("div", _hoisted_21$1, [
-            _cache[15] || (_cache[15] = createBaseVNode("div", { class: "text-center mb-10 md:mb-12" }, [
+          createBaseVNode("div", _hoisted_19$2, [
+            _cache[13] || (_cache[13] = createBaseVNode("div", { class: "text-center mb-10 md:mb-12" }, [
               createBaseVNode("p", { class: "font-semibold text-xs md:text-sm tracking-[0.25em] uppercase text-[#4e3b2d]" }, " Our Brand Pillars ")
             ], -1)),
-            createBaseVNode("div", _hoisted_22$1, [
-              withDirectives((openBlock(), createElementBlock("div", _hoisted_23$1, [..._cache[11] || (_cache[11] = [
+            createBaseVNode("div", _hoisted_20$2, [
+              withDirectives((openBlock(), createElementBlock("div", _hoisted_21$1, [..._cache[9] || (_cache[9] = [
                 createStaticVNode('<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4 8.04 4 9.54 4.81 10.35 6.09 11.16 4.81 12.66 4 14.2 4 16.7 4 18.7 6 18.7 8.5c0 3.78-3.4 6.86-8.25 11.54z"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Intimate</p><p class="text-sm md:text-base text-text-muted">Creating deeply personal, memorable dining moments.</p></div>', 2)
               ])])), [
                 [_directive_motion]
               ]),
-              withDirectives((openBlock(), createElementBlock("div", _hoisted_24, [..._cache[12] || (_cache[12] = [
+              withDirectives((openBlock(), createElementBlock("div", _hoisted_22$1, [..._cache[10] || (_cache[10] = [
                 createStaticVNode('<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10L12 4l8 6"></path><path d="M6 10h12v8H6z"></path><path d="M4 18h16"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Heritage</p><p class="text-sm md:text-base text-text-muted">Honouring age-old culinary rituals through refined interpretation.</p></div>', 2)
               ])])), [
                 [_directive_motion]
               ]),
-              withDirectives((openBlock(), createElementBlock("div", _hoisted_25, [..._cache[13] || (_cache[13] = [
+              withDirectives((openBlock(), createElementBlock("div", _hoisted_23$1, [..._cache[11] || (_cache[11] = [
                 createStaticVNode('<div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19l3-7 4 4 4-10 3 13z"></path><path d="M2 21h20"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Opulent</p><p class="text-sm md:text-base text-text-muted">Offering soulful luxury in every bite, texture, and presentation.</p></div>', 2)
               ])])), [
                 [_directive_motion]
               ]),
-              _cache[14] || (_cache[14] = createStaticVNode('<div class="flex items-start gap-4"><div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><circle cx="12" cy="12" r="7"></circle><path d="M12 5V3"></path><path d="M5 12H3"></path><path d="M12 21v-2"></path><path d="M21 12h-2"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Immersive</p><p class="text-sm md:text-base text-text-muted">Engaging all senses to create a slow, mindful dining journey.</p></div></div><div class="flex items-start gap-4"><div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Captivating</p><p class="text-sm md:text-base text-text-muted">Bringing culinary theatre to life in every unveiling, aroma, and detail.</p></div></div><div class="flex items-start gap-4"><div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20c4 0 10-4 10-12-2 2-4.5 3-7 3H8c0-2 1-4 3-6-4 0-8 4-8 9 0 3 2 6 4 6z"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Grounded</p><p class="text-sm md:text-base text-text-muted">Staying anchored to ingredients, tradition, and time-honoured methods.</p></div></div>', 3))
+              _cache[12] || (_cache[12] = createStaticVNode('<div class="flex items-start gap-4"><div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><circle cx="12" cy="12" r="7"></circle><path d="M12 5V3"></path><path d="M5 12H3"></path><path d="M12 21v-2"></path><path d="M21 12h-2"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Immersive</p><p class="text-sm md:text-base text-text-muted">Engaging all senses to create a slow, mindful dining journey.</p></div></div><div class="flex items-start gap-4"><div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Captivating</p><p class="text-sm md:text-base text-text-muted">Bringing culinary theatre to life in every unveiling, aroma, and detail.</p></div></div><div class="flex items-start gap-4"><div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#4e3b2d]/10 border border-[#4e3b2d]/60 text-[#4e3b2d]"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20c4 0 10-4 10-12-2 2-4.5 3-7 3H8c0-2 1-4 3-6-4 0-8 4-8 9 0 3 2 6 4 6z"></path></svg></div><div class="text-left"><p class="font-semibold text-[#2b2116]">Grounded</p><p class="text-sm md:text-base text-text-muted">Staying anchored to ingredients, tradition, and time-honoured methods.</p></div></div>', 3))
             ])
           ])
         ]),
-        createBaseVNode("section", _hoisted_26, [
-          createBaseVNode("div", _hoisted_27, [
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_28, [
-              createBaseVNode("p", _hoisted_29, [
+        createBaseVNode("section", _hoisted_24, [
+          createBaseVNode("div", _hoisted_25, [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_26, [
+              createBaseVNode("p", _hoisted_27, [
                 createVNode(_sfc_main$d, {
                   text: "Food Philosophy",
                   speed: 70
                 })
               ]),
-              _cache[16] || (_cache[16] = createBaseVNode("h2", { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]" }, " Ingredients That Honour Every Origin ", -1)),
-              _cache[17] || (_cache[17] = createBaseVNode("p", { class: "text-base md:text-lg text-text-muted max-w-xl mx-auto lg:mx-0" }, " Every ingredient is sourced from the finest regions – saffron from Spain, rice from Himalayan valleys, hand-ground spices, and ethically reared meats. Through Dum, these treasures gently release their essence, creating dishes that are rich, fragrant, and deeply satisfying. ", -1))
+              _cache[14] || (_cache[14] = createBaseVNode("h2", { class: "font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-[#2b2116]" }, " Ingredients That Honour Every Origin ", -1)),
+              _cache[15] || (_cache[15] = createBaseVNode("p", { class: "text-base md:text-lg text-text-muted max-w-xl mx-auto lg:mx-0" }, " Every ingredient is sourced from the finest regions, saffron from Spain, rice from Himalayan valleys, hand-ground spices, and ethically reared meats. Through Dum, these treasures gently release their essence, creating dishes that are rich, fragrant, and deeply satisfying. ", -1))
             ])), [
               [_directive_motion]
             ]),
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_30, [..._cache[18] || (_cache[18] = [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_28, [..._cache[16] || (_cache[16] = [
               createStaticVNode('<div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.6)] backdrop-blur-sm group"><img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600" alt="Plated gourmet dish showcasing Art of Dum&#39;s food philosophy" class="w-full h-full object-cover transform group-hover:scale-105 group-hover:brightness-110 transition-transform duration-700 ease-out"><div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/10 to-transparent pointer-events-none"></div><div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs md:text-sm text-white/80"><span class="uppercase tracking-[0.25em]">Art of Dum</span><span class="inline-flex items-center gap-2"><span class="h-[1px] w-10 bg-white/40"></span> Food Philosophy </span></div></div>', 1)
             ])])), [
               [_directive_motion]
@@ -20504,6 +20494,11 @@ const _hoisted_14$2 = {
   visible: { opacity: 1, x: 0, transition: { duration: 1e3, ease: "easeOut", delay: 400 } }
 };
 const _hoisted_15$2 = { class: "grid grid-cols-1 sm:grid-cols-2 gap-6" };
+const _hoisted_16$2 = {
+  class: "mt-16 sm:mt-24 max-w-7xl mx-auto",
+  initial: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1e3, ease: "easeOut", delay: 600 } }
+};
 const _sfc_main$b = /* @__PURE__ */ defineComponent({
   __name: "ContactView",
   setup(__props) {
@@ -20522,8 +20517,8 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("div", _hoisted_1$a, [
         createBaseVNode("div", _hoisted_2$8, [
           withDirectives((openBlock(), createElementBlock("div", _hoisted_3$8, [..._cache[4] || (_cache[4] = [
-            createBaseVNode("h1", { class: "font-serif text-5xl md:text-7xl font-bold text-gray-900" }, "Connect with Royalty", -1),
-            createBaseVNode("p", { class: "mt-4 text-lg text-gray-700 max-w-3xl mx-auto" }, " Book a table to immerse yourself in the art of Dum. For inquiries, catering requests, or private events, our team is ready to assist. ", -1)
+            createBaseVNode("h1", { class: "font-serif text-5xl md:text-7xl font-bold text-gray-900" }, "Connect with the Art of Dum Team", -1),
+            createBaseVNode("p", { class: "mt-4 text-lg text-gray-700 max-w-3xl mx-auto" }, " We’d love to hear from you. ", -1)
           ])])), [
             [_directive_motion]
           ]),
@@ -20662,6 +20657,22 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
             ])), [
               [_directive_motion]
             ])
+          ]),
+          withDirectives((openBlock(), createElementBlock("div", _hoisted_16$2, [..._cache[18] || (_cache[18] = [
+            createBaseVNode("div", { class: "w-full h-[450px] rounded-2xl overflow-hidden shadow-xl border-4 border-white/50" }, [
+              createBaseVNode("iframe", {
+                src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.9159701722974!2d54.400385899999996!3d24.488368199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e67eccaee4d9d%3A0x2a2770fe3ef7d91d!2sArt%20of%20Dum%20-%20Reem%20Mall!5e0!3m2!1sen!2sin!4v1767958216385!5m2!1sen!2sin",
+                width: "100%",
+                height: "100%",
+                style: { "border": "0" },
+                allowfullscreen: "true",
+                loading: "lazy",
+                referrerpolicy: "no-referrer-when-downgrade",
+                class: "w-full h-full"
+              })
+            ], -1)
+          ])])), [
+            [_directive_motion]
           ])
         ])
       ]);
@@ -22365,126 +22376,134 @@ var Lenis = class {
     this.rootElement.className = this.rootElement.className.replace(/lenis(-\w+)?/g, "").trim();
   }
 };
-const LogoImage = "/assets/Art%20of%20Dum_Refined%20logos_Open_CTC%20Eng%20Gold%20H1.png";
-const _hoisted_1$6 = ["src"];
+const _imports_0 = "/video/loading%20video.mp4";
+const _hoisted_1$6 = {
+  key: 0,
+  class: "loading-screen",
+  ref: "loadingScreen"
+};
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "LoadingScreen",
-  emits: ["loading-complete"],
+  emits: ["loading-complete", "transition-start"],
   setup(__props, { emit: __emit }) {
     const emit2 = __emit;
     const isLoading = ref(true);
-    const loadingScreen = ref();
-    const leftDoor = ref();
-    const rightDoor = ref();
-    const logoContainer = ref();
     const logo = ref();
+    const logoContainer = ref();
+    const pageLoaded = ref(false);
+    const minTimeElapsed = ref(false);
+    const exitAnimationStarted = ref(false);
     onMounted(() => {
       document.body.classList.add("loading");
-      gsapWithCSS.set([leftDoor.value, rightDoor.value], {
-        x: 0
-      });
       gsapWithCSS.set(logo.value, {
         scale: 1,
         opacity: 1
       });
-      startLoadingSequence();
+      if (logo.value && logo.value.readyState >= 1) {
+        onLoadedMetadata();
+      }
+      setTimeout(() => {
+        if (isLoading.value) {
+          console.warn("Loading screen safety timeout triggered");
+          minTimeElapsed.value = true;
+          pageLoaded.value = true;
+          checkExit();
+        }
+      }, 8e3);
+      checkPageLoaded();
     });
     onUnmounted(() => {
       document.body.classList.remove("loading");
     });
-    const startLoadingSequence = () => {
-      const checkPageLoaded = () => {
-        return new Promise((resolve2) => {
-          const checkComplete = () => {
-            const images = document.querySelectorAll("img");
-            const imagePromises = Array.from(images).map((img) => {
-              return new Promise((imgResolve) => {
-                if (img.complete) {
-                  imgResolve();
-                } else {
-                  img.onload = () => imgResolve();
-                  img.onerror = () => imgResolve();
-                }
-              });
-            });
-            Promise.all(imagePromises).then(() => {
-              setTimeout(resolve2, 3e3);
-            });
-          };
-          if (document.readyState === "complete") {
-            checkComplete();
-          } else {
-            window.addEventListener("load", checkComplete);
-          }
+    const onVideoError = () => {
+      console.error("Video failed to load");
+      minTimeElapsed.value = true;
+      checkExit();
+    };
+    const onLoadedMetadata = () => {
+      if (logo.value && !minTimeElapsed.value) {
+        const duration = logo.value.duration * 1e3;
+        setTimeout(() => {
+          minTimeElapsed.value = true;
+          checkExit();
+        }, duration - 100);
+      }
+    };
+    const checkPageLoaded = () => {
+      const checkComplete = () => {
+        const images = document.querySelectorAll("img");
+        const imagePromises = Array.from(images).map((img) => {
+          return new Promise((imgResolve) => {
+            if (img.complete) {
+              imgResolve();
+            } else {
+              img.onload = () => imgResolve();
+              img.onerror = () => imgResolve();
+            }
+          });
+        });
+        Promise.all(imagePromises).then(() => {
+          pageLoaded.value = true;
+          checkExit();
         });
       };
-      checkPageLoaded().then(() => {
-        const tl = gsapWithCSS.timeline({
-          onComplete: () => {
-            isLoading.value = false;
-            document.body.classList.remove("loading");
-            emit2("loading-complete");
-          }
-        });
-        tl.to(logo.value, {
-          scale: 1.05,
-          duration: 1.2,
-          ease: "power2.out"
-        }).to(logo.value, {
-          scale: 1,
-          duration: 0.8,
-          ease: "power2.inOut"
-        }).to({}, { duration: 1.5 }).to(leftDoor.value, {
-          x: "-100%",
-          duration: 2.5,
-          ease: "power3.inOut"
-        }, "-=1.0").to(rightDoor.value, {
-          x: "100%",
-          duration: 2.5,
-          ease: "power3.inOut"
-        }, "<").to(logo.value, {
-          opacity: 0,
-          scale: 0.9,
-          duration: 1.5,
-          ease: "power2.out"
-        }, "-=1.8");
+      if (document.readyState === "complete") {
+        checkComplete();
+      } else {
+        window.addEventListener("load", checkComplete);
+      }
+    };
+    const checkExit = () => {
+      if (pageLoaded.value && minTimeElapsed.value && !exitAnimationStarted.value) {
+        startExitAnimation();
+      }
+    };
+    const startExitAnimation = () => {
+      exitAnimationStarted.value = true;
+      emit2("transition-start");
+      const tl = gsapWithCSS.timeline({
+        onComplete: () => {
+          isLoading.value = false;
+          document.body.classList.remove("loading");
+          emit2("loading-complete");
+        }
+      });
+      tl.to(logoContainer.value, {
+        y: "-100%",
+        duration: 1.5,
+        ease: "power2.out"
       });
     };
     return (_ctx, _cache) => {
-      return isLoading.value ? (openBlock(), createElementBlock("div", {
-        key: 0,
-        class: "loading-screen",
-        ref_key: "loadingScreen",
-        ref: loadingScreen
-      }, [
+      return isLoading.value ? (openBlock(), createElementBlock("div", _hoisted_1$6, [
         createBaseVNode("div", {
           class: "logo-container",
           ref_key: "logoContainer",
           ref: logoContainer
         }, [
-          createBaseVNode("img", {
-            src: unref(LogoImage),
-            alt: "Restaurant Logo",
-            class: "logo",
+          createBaseVNode("video", {
             ref_key: "logo",
-            ref: logo
-          }, null, 8, _hoisted_1$6)
-        ], 512),
-        createBaseVNode("div", {
-          class: "door-panel left-door",
-          ref_key: "leftDoor",
-          ref: leftDoor
-        }, null, 512),
-        createBaseVNode("div", {
-          class: "door-panel right-door",
-          ref_key: "rightDoor",
-          ref: rightDoor
-        }, null, 512)
+            ref: logo,
+            class: "logo",
+            autoplay: "",
+            loop: "",
+            muted: "",
+            playsinline: "",
+            onLoadedmetadata: onLoadedMetadata,
+            onError: onVideoError
+          }, [..._cache[0] || (_cache[0] = [
+            createBaseVNode("source", {
+              src: _imports_0,
+              type: "video/mp4"
+            }, null, -1)
+          ])], 544)
+        ], 512)
       ], 512)) : createCommentVNode("", true);
     };
   }
 });
-const LoadingScreen = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-3b08bbb9"]]);
+const LoadingScreen = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-9e775b47"]]);
+const LogoImage = "/assets/Art%20of%20Dum_Refined%20logos_Open_CTC%20Eng%20Gold%20H1.png";
 const _hoisted_1$5 = { class: "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out" };
 const _hoisted_2$4 = { class: "container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" };
 const _hoisted_3$4 = { class: "flex items-center" };
@@ -22499,6 +22518,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   setup(__props, { emit: __emit }) {
     const emit2 = __emit;
     const router2 = useRouter();
+    const route = useRoute();
     const scrolled = ref(false);
     const handleScroll = () => {
       scrolled.value = window.scrollY > 50;
@@ -22517,7 +22537,8 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
         createBaseVNode("div", {
           class: normalizeClass([
             "absolute top-0 left-0 right-0 transition-all duration-500 ease-in-out",
-            scrolled.value ? "h-16 bg-[#4e3b2d] backdrop-blur-lg border-b border-white/10" : "h-24 bg-transparent"
+            scrolled.value ? "h-16" : "h-24",
+            scrolled.value || unref(route).name === "Contact" ? "bg-[#4e3b2d] backdrop-blur-lg border-b border-white/10" : "bg-transparent"
           ])
         }, null, 2),
         createBaseVNode("div", _hoisted_2$4, [
@@ -23046,10 +23067,7 @@ function _sfc_render(_ctx, _cache) {
 }
 const CurveDivider = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
 const _hoisted_1 = { class: "bg-background font-sans text-text" };
-const _hoisted_2 = {
-  key: 1,
-  class: "main-content-transition"
-};
+const _hoisted_2 = { class: "main-content-transition" };
 const _hoisted_3 = {
   key: 0,
   class: "navigation-transition"
@@ -23086,27 +23104,27 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
         ScrollTrigger.refresh();
       });
     });
+    const handleTransitionStart = () => {
+      showNavigation.value = true;
+      showMainContent.value = true;
+      nextTick(() => {
+        lenis = new Lenis({
+          duration: 1.2,
+          lerp: 0.08,
+          smoothWheel: true
+        });
+        lenis.on("scroll", ScrollTrigger.update);
+        gsapWithCSS.ticker.add((time) => {
+          lenis.raf(time * 1e3);
+        });
+        gsapWithCSS.ticker.lagSmoothing(0);
+        nextTick(() => {
+          ScrollTrigger.refresh();
+        });
+      });
+    };
     const handleLoadingComplete = () => {
       isLoading.value = false;
-      showNavigation.value = true;
-      setTimeout(() => {
-        showMainContent.value = true;
-        nextTick(() => {
-          lenis = new Lenis({
-            duration: 1.2,
-            lerp: 0.08,
-            smoothWheel: true
-          });
-          lenis.on("scroll", ScrollTrigger.update);
-          gsapWithCSS.ticker.add((time) => {
-            lenis.raf(time * 1e3);
-          });
-          gsapWithCSS.ticker.lagSmoothing(0);
-          nextTick(() => {
-            ScrollTrigger.refresh();
-          });
-        });
-      }, 600);
     };
     onMounted(() => {
       if (typeof window !== "undefined") {
@@ -23135,9 +23153,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       return openBlock(), createElementBlock("div", _hoisted_1, [
         isLoading.value ? (openBlock(), createBlock(LoadingScreen, {
           key: 0,
+          onTransitionStart: handleTransitionStart,
           onLoadingComplete: handleLoadingComplete
         })) : createCommentVNode("", true),
-        !isLoading.value ? (openBlock(), createElementBlock("div", _hoisted_2, [
+        createBaseVNode("div", _hoisted_2, [
           showNavigation.value ? (openBlock(), createElementBlock("div", _hoisted_3, [
             createVNode(_sfc_main$5, {
               country: selectedCountry.value,
@@ -23172,7 +23191,7 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             ]),
             createVNode(_sfc_main$4)
           ])) : createCommentVNode("", true)
-        ])) : createCommentVNode("", true)
+        ])
       ]);
     };
   }

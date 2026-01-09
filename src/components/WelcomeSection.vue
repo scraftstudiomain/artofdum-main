@@ -133,7 +133,7 @@ onUnmounted(() => {
               <div class="flex-1">
                 <div class="space-y-4 text-black text-base md:text-lg leading-relaxed">
                   <p>
-                    Art of Dum is a celebration of the timeless Dum technique—slow cooking in sealed vessels that preserves flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies, and indulgent desserts.
+                    Art of Dum is a celebration of the timeless Dum technique, slow cooking in sealed vessels that preserves flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies, and indulgent desserts.
                   </p>
                   <p>
                     Step into a world where culinary tradition meets modern refinement. From copper tandoors to live Dum stations, every element is designed to enchant your senses.
