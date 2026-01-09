@@ -123,7 +123,7 @@ onUnmounted(() => {
     />
 
     <!-- Main App Content - shown after doors open -->
-    <div v-if="!isLoading" class="main-content-transition">
+    <div class="main-content-transition">
       <!-- Navigation - shown immediately with hero -->
       <div v-if="showNavigation" class="navigation-transition">
         <AppHeader

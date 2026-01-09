@@ -4,7 +4,7 @@
     class="loading-screen"
     ref="loadingScreen"
   >
-    <!-- Video container - stays in center, above doors -->
+    <!-- Video container - stays in center -->
     <div
       class="logo-container"
       ref="logoContainer"
@@ -13,25 +13,15 @@
         ref="logo"
         class="logo"
         autoplay
+        loop
         muted
         playsinline
-        @ended="onVideoEnded"
+        @loadedmetadata="onLoadedMetadata"
+        @error="onVideoError"
       >
         <source src="/video/loading video.mp4" type="video/mp4" />
       </video>
     </div>
-
-    <!-- Left door panel -->
-    <div
-      class="door-panel left-door"
-      ref="leftDoor"
-    ></div>
-
-    <!-- Right door panel -->
-    <div
-      class="door-panel right-door"
-      ref="rightDoor"
-    ></div>
   </div>
 </template>
 
@@ -44,25 +34,35 @@ const emit = defineEmits<{
 }>()
 
 const isLoading = ref(true)
-const leftDoor = ref<HTMLElement>()
-const rightDoor = ref<HTMLElement>()
 const logo = ref<HTMLVideoElement>()
-const videoEnded = ref(false)
+const logoContainer = ref<HTMLElement>()
 const pageLoaded = ref(false)
+const minTimeElapsed = ref(false)
+const exitAnimationStarted = ref(false)
 
 onMounted(() => {
   // Prevent body scroll during loading
   document.body.classList.add('loading')
 
-  // Initial setup - doors closed, video visible
-  gsap.set([leftDoor.value!, rightDoor.value!], {
-    x: 0
-  })
-
   gsap.set(logo.value!, {
     scale: 1,
     opacity: 1
   })
+
+  // Check if video metadata is already loaded (e.g. cached)
+  if (logo.value && logo.value.readyState >= 1) {
+    onLoadedMetadata()
+  }
+
+  // Safety timeout: Force exit after 8 seconds max
+  setTimeout(() => {
+    if (isLoading.value) {
+      console.warn('Loading screen safety timeout triggered')
+      minTimeElapsed.value = true
+      pageLoaded.value = true
+      checkExit()
+    }
+  }, 8000)
 
   // Check when page is loaded
   checkPageLoaded()
@@ -72,6 +72,23 @@ onUnmounted(() => {
   // Re-enable body scroll
   document.body.classList.remove('loading')
 })
+
+const onVideoError = () => {
+  console.error('Video failed to load')
+  minTimeElapsed.value = true
+  checkExit()
+}
+
+const onLoadedMetadata = () => {
+  if (logo.value && !minTimeElapsed.value) {
+    const duration = logo.value.duration * 1000 // Convert to ms
+    // Subtract a small buffer to ensure we trigger just before the loop restart if possible
+    setTimeout(() => {
+      minTimeElapsed.value = true
+      checkExit()
+    }, duration - 100)
+  }
+}
 
 const checkPageLoaded = () => {
   const checkComplete = () => {
@@ -90,8 +107,7 @@ const checkPageLoaded = () => {
 
     Promise.all(imagePromises).then(() => {
       pageLoaded.value = true
-      // Try to start the door animation if video has also ended
-      tryStartDoorAnimation()
+      checkExit()
     })
   }
 
@@ -102,16 +118,14 @@ const checkPageLoaded = () => {
   }
 }
 
-const onVideoEnded = () => {
-  videoEnded.value = true
-  // Try to start the door animation if page has also loaded
-  tryStartDoorAnimation()
+const checkExit = () => {
+  if (pageLoaded.value && minTimeElapsed.value && !exitAnimationStarted.value) {
+    startExitAnimation()
+  }
 }
 
-const tryStartDoorAnimation = () => {
-  // Only start door animation when both video ended and page loaded
-  if (!videoEnded.value || !pageLoaded.value) return
-
+const startExitAnimation = () => {
+  exitAnimationStarted.value = true
   const tl = gsap.timeline({
     onComplete: () => {
       isLoading.value = false
@@ -121,28 +135,12 @@ const tryStartDoorAnimation = () => {
     }
   })
 
-  // Small delay before door opening animation
-  tl.to({}, { duration: 0.5 })
-
-  // Door opening animation - doors slide apart like a real door
-  .to(leftDoor.value!, {
-    x: "-100%",
-    duration: 2.5,
-    ease: "power3.inOut"
-  })
-  .to(rightDoor.value!, {
-    x: "100%",
-    duration: 2.5,
-    ease: "power3.inOut"
-  }, "<")
-
-  // Slide up video as doors open
-  .to(logo.value!, {
-    opacity: 0,
+  // Slide up video container
+  tl.to(logoContainer.value!, {
     y: "-100%",
     duration: 1.5,
     ease: "power2.out"
-  }, "-=1.8")
+  })
 }
 </script>
 
@@ -153,32 +151,12 @@ const tryStartDoorAnimation = () => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000000;
+  background-color: transparent;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-}
-
-.door-panel {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background-color: #000000;
-  z-index: 2;
-  border: none;
-}
-
-.left-door {
-  left: 0;
-  transform-origin: right center;
-}
-
-.right-door {
-  left: 50%;
-  transform-origin: left center;
 }
 
 .logo-container {
@@ -191,6 +169,7 @@ const tryStartDoorAnimation = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
 }
 
 .logo {
