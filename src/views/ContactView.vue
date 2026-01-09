@@ -27,9 +27,9 @@ const handleSubmit = () => {
         :initial="{ opacity: 0, y: 50 }"
         :enter="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut' } }"
       >
-        <h1 class="font-serif text-5xl md:text-7xl font-bold text-gray-900">Connect with Royalty</h1>
+        <h1 class="font-serif text-5xl md:text-7xl font-bold text-gray-900">Connect with the Art of Dum Team</h1>
         <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto">
-          Book a table to immerse yourself in the art of Dum. For inquiries, catering requests, or private events, our team is ready to assist.
+         We’d love to hear from you. 
         </p>
       </div>
 
@@ -116,6 +116,27 @@ const handleSubmit = () => {
               </button>
             </div>
           </form>
+        </div>
+      </div>
+
+      <!-- Google Map Section -->
+      <div 
+        class="mt-16 sm:mt-24 max-w-7xl mx-auto"
+        v-motion
+        :initial="{ opacity: 0, y: 50 }"
+        :visible="{ opacity: 1, y: 0, transition: { duration: 1000, ease: 'easeOut', delay: 600 } }"
+      >
+        <div class="w-full h-[450px] rounded-2xl overflow-hidden shadow-xl border-4 border-white/50">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.9159701722974!2d54.400385899999996!3d24.488368199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e67eccaee4d9d%3A0x2a2770fe3ef7d91d!2sArt%20of%20Dum%20-%20Reem%20Mall!5e0!3m2!1sen!2sin!4v1767958216385!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="true" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full h-full"
+          ></iframe>
         </div>
       </div>
     </div>

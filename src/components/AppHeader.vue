@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import DiamondIcon from './icons/DiamondIcon.vue';
 import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png';
 
 const props = defineProps<{ country: 'IN' | 'UAE' }>();
 const emit = defineEmits(['toggle-menu', 'update:country']);
 const router = useRouter();
+const route = useRoute();
 const scrolled = ref(false);
 
 const setCountry = (value: 'IN' | 'UAE') => {
@@ -39,7 +40,8 @@ onUnmounted(() => {
     <div 
       :class="[
         'absolute top-0 left-0 right-0 transition-all duration-500 ease-in-out',
-        scrolled ? 'h-16 bg-[#4e3b2d] backdrop-blur-lg border-b border-white/10' : 'h-24 bg-transparent'
+        scrolled ? 'h-16' : 'h-24',
+        (scrolled || route.name === 'Contact') ? 'bg-[#4e3b2d] backdrop-blur-lg border-b border-white/10' : 'bg-transparent'
       ]"
     ></div>
 
