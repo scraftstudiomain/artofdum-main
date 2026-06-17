@@ -6654,6 +6654,46 @@ function patchClass(el, value, isSVG) {
 }
 const vShowOriginalDisplay = Symbol("_vod");
 const vShowHidden = Symbol("_vsh");
+const vShow = {
+  // used for prop mismatch check during hydration
+  name: "show",
+  beforeMount(el, { value }, { transition }) {
+    el[vShowOriginalDisplay] = el.style.display === "none" ? "" : el.style.display;
+    if (transition && value) {
+      transition.beforeEnter(el);
+    } else {
+      setDisplay(el, value);
+    }
+  },
+  mounted(el, { value }, { transition }) {
+    if (transition && value) {
+      transition.enter(el);
+    }
+  },
+  updated(el, { value, oldValue }, { transition }) {
+    if (!value === !oldValue) return;
+    if (transition) {
+      if (value) {
+        transition.beforeEnter(el);
+        setDisplay(el, true);
+        transition.enter(el);
+      } else {
+        transition.leave(el, () => {
+          setDisplay(el, false);
+        });
+      }
+    } else {
+      setDisplay(el, value);
+    }
+  },
+  beforeUnmount(el, { value }) {
+    setDisplay(el, value);
+  }
+};
+function setDisplay(el, value) {
+  el.style.display = value ? el[vShowOriginalDisplay] : "none";
+  el[vShowHidden] = !value;
+}
 const CSS_VAR_TEXT = Symbol("");
 const displayRE = /(?:^|;)\s*display\s*:/;
 function patchStyle(el, prev, next) {
@@ -13985,23 +14025,41 @@ ScrollTrigger.core = {
 };
 _getGSAP2() && gsap$1.registerPlugin(ScrollTrigger);
 const heroVideo$1 = "/assets/aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4";
-const _hoisted_1$n = { class: "relative h-screen w-full flex items-center justify-center overflow-visible hero-section" };
-const _hoisted_2$j = { class: "absolute inset-0 z-0 hero-image-container" };
-const _hoisted_3$j = ["src"];
+const _hoisted_1$n = { class: "absolute inset-0 z-0 hero-image-container" };
+const _hoisted_2$j = ["src"];
 const _sfc_main$q = /* @__PURE__ */ defineComponent({
   __name: "HeroSection",
   setup(__props) {
+    const heroVideoRef = ref();
+    const heroBackgroundColor = ref("#0a0a0a");
+    const onHeroVideoReady = () => {
+      console.log("Hero video is ready");
+    };
+    onMounted(() => {
+      if (heroVideoRef.value) {
+        heroVideoRef.value.play().catch((err) => {
+          console.log("Hero video autoplay prevented:", err);
+        });
+      }
+    });
     return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("section", _hoisted_1$n, [
-        createBaseVNode("div", _hoisted_2$j, [
+      return openBlock(), createElementBlock("section", {
+        class: "relative h-screen w-full flex items-center justify-center overflow-visible hero-section",
+        style: normalizeStyle({ backgroundColor: heroBackgroundColor.value })
+      }, [
+        createBaseVNode("div", _hoisted_1$n, [
           createBaseVNode("video", {
+            ref_key: "heroVideoRef",
+            ref: heroVideoRef,
             src: unref(heroVideo$1),
             autoplay: "",
             loop: "",
             muted: "",
             playsinline: "",
-            class: "w-full h-full object-cover hero-video"
-          }, null, 8, _hoisted_3$j),
+            preload: "auto",
+            class: "w-full h-full object-cover hero-video",
+            onCanplay: onHeroVideoReady
+          }, null, 40, _hoisted_2$j),
           _cache[0] || (_cache[0] = createBaseVNode("div", { class: "absolute inset-0 bg-black/50" }, null, -1))
         ]),
         _cache[1] || (_cache[1] = createBaseVNode("div", { class: "relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8" }, [
@@ -14010,7 +14068,7 @@ const _sfc_main$q = /* @__PURE__ */ defineComponent({
             createBaseVNode("span", { class: "text-gold font-decorative" }, "Innovation")
           ])
         ], -1))
-      ]);
+      ], 4);
     };
   }
 });
@@ -14021,14 +14079,14 @@ const _export_sfc = (sfc, props) => {
   }
   return target;
 };
-const HeroSection = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-de221c1a"]]);
+const HeroSection = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-3b9b4693"]]);
 const img1 = "/assets/1.jpg";
 const img2 = "/assets/2.jpg";
 const _hoisted_1$m = { class: "relative py-16 sm:py-20 lg:py-24 bg-[#f0ebe1]" };
 const _hoisted_2$i = { class: "relative container mx-auto px-4 sm:px-6 lg:px-8" };
 const _hoisted_3$i = { class: "flex flex-col lg:flex-row items-center gap-12 lg:gap-16" };
 const _hoisted_4$g = { class: "flex-1 w-full max-w-lg lg:max-w-xl mx-auto" };
-const _hoisted_5$g = { class: "relative w-full aspect-[4/3]" };
+const _hoisted_5$f = { class: "relative w-full aspect-[4/3]" };
 const _hoisted_6$d = { class: "absolute top-0 left-10 w-[90%] h-[78%] overflow-hidden border border-black/10 bg-black/5 shadow-lg image-card" };
 const _hoisted_7$c = ["src"];
 const _hoisted_8$a = { class: "absolute top-10 left-0 w-[88%] h-[82%] overflow-hidden border border-black/10 bg-black/5 shadow-2xl image-card" };
@@ -14042,7 +14100,7 @@ const _sfc_main$p = /* @__PURE__ */ defineComponent({
           createBaseVNode("div", _hoisted_3$i, [
             _cache[0] || (_cache[0] = createStaticVNode('<div class="flex-1 max-w-xl text-center lg:text-left" data-v-86e31357><p class="text-xs sm:text-sm uppercase tracking-[0.3em] text-gold/80 mb-4" data-v-86e31357> Slow-Cooked Perfection </p><h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-black leading-tight mb-6" data-v-86e31357> Experience the <span class="block text-gold" data-v-86e31357> Art of Dum</span></h2><p class="text-base sm:text-lg text-black/80 leading-relaxed mb-0" data-v-86e31357> Art of Dum is a celebration of the timeless Dum technique, slow cooking in sealed vessels that preserves flavor, aroma, and depth. Inspired by royal Indian kitchens and crafted for today’s design-conscious diners, every dish is a journey: melt-in-the-mouth Kebabs, fragrant Biryani, delicately spiced Gravies, and indulgent desserts. </p></div>', 1)),
             createBaseVNode("div", _hoisted_4$g, [
-              createBaseVNode("div", _hoisted_5$g, [
+              createBaseVNode("div", _hoisted_5$f, [
                 createBaseVNode("div", _hoisted_6$d, [
                   createBaseVNode("img", {
                     src: unref(img1),
@@ -14078,7 +14136,7 @@ const _hoisted_1$l = {
 const _hoisted_2$h = { class: "relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8" };
 const _hoisted_3$h = { class: "relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 min-h-[320px]" };
 const _hoisted_4$f = { class: "w-44 h-44 sm:w-52 sm:h-52 rounded-full border-[3px] border-[#c9a974] overflow-hidden shadow-2xl shadow-black/60 bg-black relative" };
-const _hoisted_5$f = ["src"];
+const _hoisted_5$e = ["src"];
 const _hoisted_6$c = ["src", "alt"];
 const _hoisted_7$b = { class: "px-5 py-2 bg-[#f0ebe1] border border-[#c9a974]/80 text-[#2b2116] text-xs sm:text-sm tracking-[0.18em] uppercase font-medium shadow-md" };
 const _sfc_main$o = /* @__PURE__ */ defineComponent({
@@ -14122,7 +14180,7 @@ const _sfc_main$o = /* @__PURE__ */ defineComponent({
                     muted: "",
                     loop: "",
                     playsinline: ""
-                  }, null, 8, _hoisted_5$f)) : (openBlock(), createElementBlock("img", {
+                  }, null, 8, _hoisted_5$e)) : (openBlock(), createElementBlock("img", {
                     key: 1,
                     src: item.image,
                     alt: item.title,
@@ -18417,7 +18475,7 @@ const _hoisted_3$e = {
   "visible-once": { opacity: 1, y: 0, transition: { duration: 1e3, ease: "easeOut" } }
 };
 const _hoisted_4$e = { class: "relative max-w-7xl mx-auto" };
-const _hoisted_5$e = { class: "review-card-box review-card-box-inactive rounded-lg p-6 md:p-8 h-full flex flex-col items-center" };
+const _hoisted_5$d = { class: "review-card-box review-card-box-inactive rounded-lg p-6 md:p-8 h-full flex flex-col items-center" };
 const _hoisted_6$b = { class: "relative mb-6" };
 const _hoisted_7$a = { class: "w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-gold/30 shadow-lg dish-image-inactive" };
 const _hoisted_8$9 = ["src", "alt"];
@@ -18737,7 +18795,7 @@ const _sfc_main$k = /* @__PURE__ */ defineComponent({
                 class: "review-card review-card-inactive flex-shrink-0 w-[280px] md:w-[320px] lg:w-[360px] transition-all duration-500",
                 onClick: _cache[0] || (_cache[0] = ($event) => !isDragging.value && prevReview())
               }, [
-                createBaseVNode("div", _hoisted_5$e, [
+                createBaseVNode("div", _hoisted_5$d, [
                   createBaseVNode("div", _hoisted_6$b, [
                     createBaseVNode("div", _hoisted_7$a, [
                       createBaseVNode("img", {
@@ -18978,7 +19036,7 @@ const _hoisted_1$f = { class: "bg-background text-text overflow-hidden" };
 const _hoisted_2$d = { class: "relative h-[100dvh] min-h-screen w-full flex items-center justify-center overflow-hidden" };
 const _hoisted_3$d = { class: "absolute inset-0 z-0" };
 const _hoisted_4$d = ["src"];
-const _hoisted_5$d = {
+const _hoisted_5$c = {
   class: "relative z-10 text-center px-4",
   initial: { opacity: 0, y: 40 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 900, ease: "easeOut", delay: 200 } }
@@ -19080,7 +19138,7 @@ const _sfc_main$h = /* @__PURE__ */ defineComponent({
             }, null, 8, _hoisted_4$d),
             _cache[0] || (_cache[0] = createBaseVNode("div", { class: "absolute inset-0 bg-black/60" }, null, -1))
           ]),
-          withDirectives((openBlock(), createElementBlock("div", _hoisted_5$d, [..._cache[1] || (_cache[1] = [
+          withDirectives((openBlock(), createElementBlock("div", _hoisted_5$c, [..._cache[1] || (_cache[1] = [
             createBaseVNode("p", { class: "text-xs md:text-sm tracking-[0.35em] uppercase text-[#f0ebe1]/80 mb-4" }, " The Art of Dum Menu ", -1),
             createBaseVNode("h1", { class: "font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-[#fdfaf3] mb-6" }, " Our Culinary Offerings ", -1)
           ])])), [
@@ -19523,7 +19581,7 @@ const _hoisted_1$e = { class: "menu-modern-page bg-white min-h-screen" };
 const _hoisted_2$c = { class: "sticky top-24 z-40 bg-white border-b border-gray-200 shadow-sm" };
 const _hoisted_3$c = { class: "w-full px-4 sm:px-6 lg:px-8" };
 const _hoisted_4$c = { class: "overflow-x-auto" };
-const _hoisted_5$c = { class: "flex gap-2 md:gap-4 py-4 min-w-max justify-center" };
+const _hoisted_5$b = { class: "flex gap-2 md:gap-4 py-4 min-w-max justify-center" };
 const _hoisted_6$9 = ["onClick"];
 const _hoisted_7$8 = { class: "w-full px-4 sm:px-6 lg:px-8 py-12" };
 const _hoisted_8$7 = { class: "space-y-16 max-w-7xl mx-auto" };
@@ -19604,7 +19662,7 @@ const _sfc_main$g = /* @__PURE__ */ defineComponent({
         createBaseVNode("div", _hoisted_2$c, [
           createBaseVNode("div", _hoisted_3$c, [
             createBaseVNode("div", _hoisted_4$c, [
-              createBaseVNode("div", _hoisted_5$c, [
+              createBaseVNode("div", _hoisted_5$b, [
                 (openBlock(true), createElementBlock(Fragment, null, renderList(unref(menuCategories), (category) => {
                   return openBlock(), createElementBlock("button", {
                     key: category.id,
@@ -19717,7 +19775,7 @@ const _hoisted_4$b = {
   initial: { pathLength: 0, opacity: 0 },
   "visible-once": { pathLength: 1, opacity: 1, transition: { duration: 1, ease: "easeOut" } }
 };
-const _hoisted_5$b = {
+const _hoisted_5$a = {
   initial: { scale: 0, opacity: 0 },
   "visible-once": { scale: 1, opacity: 1, transition: { delay: 0.5, duration: 0.5, ease: "easeOut" } }
 };
@@ -19732,7 +19790,7 @@ function _sfc_render$1(_ctx, _cache) {
       withDirectives(createBaseVNode("path", _hoisted_4$b, null, 512), [
         [_directive_motion]
       ]),
-      withDirectives((openBlock(), createElementBlock("g", _hoisted_5$b, [..._cache[0] || (_cache[0] = [
+      withDirectives((openBlock(), createElementBlock("g", _hoisted_5$a, [..._cache[0] || (_cache[0] = [
         createStaticVNode('<path d="M90 10 C 92.5 7.5, 97.5 7.5, 100 10" stroke="currentColor" stroke-width="0.5"></path><path d="M110 10 C 107.5 7.5, 102.5 7.5, 100 10" stroke="currentColor" stroke-width="0.5"></path><path d="M90 10 C 92.5 12.5, 97.5 12.5, 100 10" stroke="currentColor" stroke-width="0.5"></path><path d="M110 10 C 107.5 12.5, 102.5 12.5, 100 10" stroke="currentColor" stroke-width="0.5"></path><circle cx="100" cy="10" r="2.5" fill="currentColor"></circle>', 5)
       ])])), [
         [_directive_motion]
@@ -19751,7 +19809,7 @@ const _hoisted_3$a = {
   enter: { opacity: 1, y: 0, transition: { duration: 800, ease: "easeOut" } }
 };
 const _hoisted_4$a = { class: "services-section h-screen w-full relative" };
-const _hoisted_5$a = { class: "service-bg-image absolute inset-0 opacity-0" };
+const _hoisted_5$9 = { class: "service-bg-image absolute inset-0 opacity-0" };
 const _hoisted_6$8 = ["src", "alt"];
 const _hoisted_7$7 = { class: "service-content relative h-full flex items-center justify-center text-center px-4 opacity-0" };
 const _hoisted_8$6 = { class: "max-w-2xl" };
@@ -19922,7 +19980,7 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
               key: service.title,
               class: "service-item absolute inset-0"
             }, [
-              createBaseVNode("div", _hoisted_5$a, [
+              createBaseVNode("div", _hoisted_5$9, [
                 createBaseVNode("img", {
                   src: service.image,
                   alt: service.title,
@@ -20256,7 +20314,7 @@ const _hoisted_4$9 = {
   initial: { opacity: 0, y: 50 },
   visibleOnce: { opacity: 1, y: 0, transition: { duration: 1e3, ease: "easeOut", delay: 300 } }
 };
-const _hoisted_5$9 = {
+const _hoisted_5$8 = {
   class: "minimalist-statement-section w-full flex items-center justify-center bg-[#faf9f6] py-10 md:py-16 bg-cover bg-center bg-no-repeat bg-fixed",
   style: { backgroundColor: "#f0ebe1" }
 };
@@ -20356,7 +20414,7 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
             [_directive_motion]
           ])
         ]),
-        createBaseVNode("section", _hoisted_5$9, [
+        createBaseVNode("section", _hoisted_5$8, [
           withDirectives((openBlock(), createElementBlock("div", _hoisted_6$7, [
             createBaseVNode("div", _hoisted_7$6, [
               createBaseVNode("p", _hoisted_8$5, [
@@ -20475,7 +20533,7 @@ const _hoisted_3$8 = {
   enter: { opacity: 1, y: 0, transition: { duration: 800, ease: "easeOut" } }
 };
 const _hoisted_4$8 = { class: "grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 max-w-7xl mx-auto" };
-const _hoisted_5$8 = {
+const _hoisted_5$7 = {
   class: "lg:col-span-5",
   initial: { opacity: 0, x: -50 },
   visible: { opacity: 1, x: 0, transition: { duration: 1e3, ease: "easeOut", delay: 200 } }
@@ -20523,7 +20581,7 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
             [_directive_motion]
           ]),
           createBaseVNode("div", _hoisted_4$8, [
-            withDirectives((openBlock(), createElementBlock("div", _hoisted_5$8, [
+            withDirectives((openBlock(), createElementBlock("div", _hoisted_5$7, [
               createBaseVNode("div", _hoisted_6$6, [
                 createBaseVNode("div", null, [
                   _cache[6] || (_cache[6] = createBaseVNode("h2", { class: "font-serif text-2xl text-gold mb-4" }, "Our Palace", -1)),
@@ -20683,7 +20741,7 @@ const _hoisted_1$9 = { class: "pt-32 pb-20 sm:pt-40 sm:pb-32 bg-background" };
 const _hoisted_2$7 = { class: "container mx-auto px-4 sm:px-6 lg:px-8" };
 const _hoisted_3$7 = { class: "grid gap-8 sm:grid-cols-2 lg:grid-cols-3" };
 const _hoisted_4$7 = { class: "p-6" };
-const _hoisted_5$7 = { class: "text-sm uppercase tracking-widest font-sans text-text-muted" };
+const _hoisted_5$6 = { class: "text-sm uppercase tracking-widest font-sans text-text-muted" };
 const _hoisted_6$5 = { class: "mt-2 font-serif text-2xl text-text group-hover:text-gold transition-colors" };
 const _hoisted_7$4 = { class: "mt-3 text-text-muted" };
 const _sfc_main$a = /* @__PURE__ */ defineComponent({
@@ -20727,7 +20785,7 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                 enter: { opacity: 1, y: 0, transition: { duration: 600, ease: "easeOut" } }
               }, [
                 createBaseVNode("div", _hoisted_4$7, [
-                  createBaseVNode("p", _hoisted_5$7, toDisplayString(new Date(post.date).toLocaleDateString()), 1),
+                  createBaseVNode("p", _hoisted_5$6, toDisplayString(new Date(post.date).toLocaleDateString()), 1),
                   createBaseVNode("h2", _hoisted_6$5, toDisplayString(post.title), 1),
                   createBaseVNode("p", _hoisted_7$4, toDisplayString(post.excerpt), 1),
                   createVNode(_component_router_link, {
@@ -20767,7 +20825,7 @@ const _hoisted_3$6 = {
   enter: { opacity: 1, y: 0, transition: { duration: 1e3, ease: "easeOut" } }
 };
 const _hoisted_4$6 = { class: "relative py-20 md:py-24 bg-[#f0ebe1]" };
-const _hoisted_5$6 = { class: "max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-y-32 md:gap-12 items-center" };
+const _hoisted_5$5 = { class: "max-w-6xl mx-auto px-4 md:px-8 grid md:grid-cols-2 gap-y-32 md:gap-12 items-center" };
 const _hoisted_6$4 = { class: "relative flex justify-center md:justify-start" };
 const _hoisted_7$3 = {
   class: "w-64 h-80 md:w-72 md:h-96 overflow-hidden shadow-xl bg-black/5 group",
@@ -20971,7 +21029,7 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
           ])
         ]),
         createBaseVNode("section", _hoisted_4$6, [
-          createBaseVNode("div", _hoisted_5$6, [
+          createBaseVNode("div", _hoisted_5$5, [
             createBaseVNode("div", _hoisted_6$4, [
               withDirectives((openBlock(), createElementBlock("div", _hoisted_7$3, [..._cache[2] || (_cache[2] = [
                 createBaseVNode("img", {
@@ -21092,7 +21150,7 @@ const _hoisted_3$5 = {
   class: "w-full h-full object-cover"
 };
 const _hoisted_4$5 = ["src"];
-const _hoisted_5$5 = {
+const _hoisted_5$4 = {
   class: "relative z-10 text-center px-4 max-w-6xl mx-auto",
   initial: { opacity: 0, y: 50 },
   enter: { opacity: 1, y: 0, transition: { duration: 1e3, ease: "easeOut", delay: 300 } }
@@ -21199,7 +21257,7 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
             ]),
             _cache[0] || (_cache[0] = createBaseVNode("div", { class: "absolute inset-0 bg-black/60" }, null, -1))
           ]),
-          withDirectives((openBlock(), createElementBlock("div", _hoisted_5$5, [..._cache[1] || (_cache[1] = [
+          withDirectives((openBlock(), createElementBlock("div", _hoisted_5$4, [..._cache[1] || (_cache[1] = [
             createBaseVNode("div", { class: "text-gold/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6" }, "Art of Dum Sustainability", -1),
             createBaseVNode("h1", { class: "font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-text" }, "Dum With a Conscience", -1)
           ])])), [
@@ -22379,8 +22437,7 @@ var Lenis = class {
 const _imports_0 = "/video/loading%20video.mp4";
 const _hoisted_1$6 = {
   key: 0,
-  class: "loading-screen",
-  ref: "loadingScreen"
+  class: "loading-screen"
 };
 const _sfc_main$6 = /* @__PURE__ */ defineComponent({
   __name: "LoadingScreen",
@@ -22390,88 +22447,73 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
     const isLoading = ref(true);
     const logo = ref();
     const logoContainer = ref();
-    const pageLoaded = ref(false);
-    const minTimeElapsed = ref(false);
+    const hasPlayedOnce = ref(false);
+    const isLooping = ref(false);
     const exitAnimationStarted = ref(false);
     onMounted(() => {
       document.body.classList.add("loading");
-      gsapWithCSS.set(logo.value, {
-        scale: 1,
-        opacity: 1
-      });
-      if (logo.value && logo.value.readyState >= 1) {
-        onLoadedMetadata();
-      }
       setTimeout(() => {
-        if (isLoading.value) {
-          console.warn("Loading screen safety timeout triggered");
-          minTimeElapsed.value = true;
-          pageLoaded.value = true;
+        if (isLoading.value && !exitAnimationStarted.value) {
+          console.warn("Loading screen safety timeout");
+          hasPlayedOnce.value = true;
           checkExit();
         }
-      }, 8e3);
-      checkPageLoaded();
+      }, 15e3);
     });
     onUnmounted(() => {
       document.body.classList.remove("loading");
     });
-    const onVideoError = () => {
-      console.error("Video failed to load");
-      minTimeElapsed.value = true;
-      checkExit();
-    };
-    const onLoadedMetadata = () => {
-      if (logo.value && !minTimeElapsed.value) {
-        const duration = logo.value.duration * 1e3;
-        setTimeout(() => {
-          minTimeElapsed.value = true;
-          checkExit();
-        }, duration - 100);
+    const onVideoEnded = () => {
+      if (!hasPlayedOnce.value) {
+        hasPlayedOnce.value = true;
+        checkExit();
+        if (logo.value && !exitAnimationStarted.value) {
+          isLooping.value = true;
+          logo.value.loop = true;
+          logo.value.play().catch(() => {
+          });
+        }
       }
     };
-    const checkPageLoaded = () => {
-      const checkComplete = () => {
-        const images = document.querySelectorAll("img");
-        const imagePromises = Array.from(images).map((img) => {
-          return new Promise((imgResolve) => {
-            if (img.complete) {
-              imgResolve();
-            } else {
-              img.onload = () => imgResolve();
-              img.onerror = () => imgResolve();
-            }
-          });
-        });
-        Promise.all(imagePromises).then(() => {
-          pageLoaded.value = true;
-          checkExit();
-        });
-      };
-      if (document.readyState === "complete") {
-        checkComplete();
-      } else {
-        window.addEventListener("load", checkComplete);
+    const onTimeUpdate = () => {
+      if (logo.value && hasPlayedOnce.value && !isLooping.value) {
+        const timeRemaining = logo.value.duration - logo.value.currentTime;
+        if (timeRemaining < 0.1) {
+          isLooping.value = true;
+          logo.value.loop = true;
+        }
       }
     };
     const checkExit = () => {
-      if (pageLoaded.value && minTimeElapsed.value && !exitAnimationStarted.value) {
-        startExitAnimation();
+      if (hasPlayedOnce.value && !exitAnimationStarted.value) {
+        setTimeout(() => {
+          if (!exitAnimationStarted.value) {
+            startExitAnimation();
+          }
+        }, 500);
       }
     };
     const startExitAnimation = () => {
+      if (exitAnimationStarted.value) return;
       exitAnimationStarted.value = true;
       emit2("transition-start");
-      const tl = gsapWithCSS.timeline({
-        onComplete: () => {
-          isLoading.value = false;
-          document.body.classList.remove("loading");
-          emit2("loading-complete");
-        }
-      });
-      tl.to(logoContainer.value, {
-        y: "-100%",
-        duration: 1.5,
-        ease: "power2.out"
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const tl = gsapWithCSS.timeline({
+              onComplete: () => {
+                isLoading.value = false;
+                document.body.classList.remove("loading");
+                emit2("loading-complete");
+              }
+            });
+            tl.to(logoContainer.value, {
+              y: "-100%",
+              duration: 1.5,
+              ease: "power2.out"
+            });
+          });
+        });
       });
     };
     return (_ctx, _cache) => {
@@ -22486,11 +22528,10 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
             ref: logo,
             class: "logo",
             autoplay: "",
-            loop: "",
             muted: "",
             playsinline: "",
-            onLoadedmetadata: onLoadedMetadata,
-            onError: onVideoError
+            onEnded: onVideoEnded,
+            onTimeupdate: onTimeUpdate
           }, [..._cache[0] || (_cache[0] = [
             createBaseVNode("source", {
               src: _imports_0,
@@ -22498,17 +22539,17 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
             }, null, -1)
           ])], 544)
         ], 512)
-      ], 512)) : createCommentVNode("", true);
+      ])) : createCommentVNode("", true);
     };
   }
 });
-const LoadingScreen = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-9e775b47"]]);
+const LoadingScreen = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-2e0143b5"]]);
 const LogoImage = "/assets/Art%20of%20Dum_Refined%20logos_Open_CTC%20Eng%20Gold%20H1.png";
 const _hoisted_1$5 = { class: "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out" };
 const _hoisted_2$4 = { class: "container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" };
 const _hoisted_3$4 = { class: "flex items-center" };
 const _hoisted_4$4 = ["src"];
-const _hoisted_5$4 = { class: "flex items-center justify-end gap-x-3" };
+const _hoisted_5$3 = { class: "flex items-center justify-end gap-x-3" };
 const _sfc_main$5 = /* @__PURE__ */ defineComponent({
   __name: "AppHeader",
   props: {
@@ -22563,7 +22604,7 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                 }, null, 10, _hoisted_4$4)
               ])
             ]),
-            createBaseVNode("div", _hoisted_5$4, [
+            createBaseVNode("div", _hoisted_5$3, [
               createBaseVNode("button", {
                 onClick: _cache[0] || (_cache[0] = ($event) => emit2("toggle-menu")),
                 class: "flex md:hidden items-center gap-x-2 font-sans font-medium tracking-widest uppercase text-sm group"
@@ -22589,7 +22630,7 @@ const _hoisted_1$4 = { class: "bg-[#4e3b2d] text-text-muted border-t border-whit
 const _hoisted_2$3 = { class: "container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10" };
 const _hoisted_3$3 = { class: "text-center mb-8 md:mb-12" };
 const _hoisted_4$3 = ["src"];
-const _hoisted_5$3 = { class: "grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left" };
+const _hoisted_5$2 = { class: "grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left" };
 const _hoisted_6$2 = {
   initial: { opacity: 0, y: 20 },
   "visible-once": { opacity: 1, y: 0, transition: { delay: 200 } }
@@ -22645,7 +22686,7 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
           ])), [
             [_directive_motion_fade_visible_once]
           ]),
-          createBaseVNode("div", _hoisted_5$3, [
+          createBaseVNode("div", _hoisted_5$2, [
             withDirectives((openBlock(), createElementBlock("div", _hoisted_6$2, [..._cache[1] || (_cache[1] = [
               createBaseVNode("h3", { class: "font-bold text-text mb-4 uppercase tracking-widest text-sm" }, "Location", -1),
               createBaseVNode("p", null, "Al Reem Island, Abu Dhabi,", -1),
@@ -22838,7 +22879,7 @@ const _hoisted_1$3 = {
 const _hoisted_2$2 = { class: "absolute top-4 right-4 md:top-6 md:right-6 flex items-center gap-3 md:gap-4 z-30 lg:hidden" };
 const _hoisted_3$2 = { class: "relative w-full lg:w-2/3 min-h-[60vh] lg:h-full shrink-0" };
 const _hoisted_4$2 = { class: "absolute inset-0 overflow-hidden" };
-const _hoisted_5$2 = ["src"];
+const _hoisted_5$1 = ["src"];
 const _hoisted_6$1 = { class: "relative z-10 h-full flex items-center pl-8 md:pl-12 lg:pl-16" };
 const _hoisted_7 = { class: "space-y-4 md:space-y-6" };
 const _hoisted_8 = ["enter"];
@@ -22912,7 +22953,7 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   muted: "",
                   loop: "",
                   playsinline: ""
-                }, null, 8, _hoisted_5$2),
+                }, null, 8, _hoisted_5$1),
                 _cache[1] || (_cache[1] = createBaseVNode("div", { class: "absolute inset-0 bg-black/60" }, null, -1))
               ]),
               createBaseVNode("nav", _hoisted_6$1, [
@@ -23011,7 +23052,7 @@ const _hoisted_1$2 = {
 const _hoisted_2$1 = { class: "container mx-auto px-4 sm:px-6 lg:px-8" };
 const _hoisted_3$1 = { class: "text-center mb-8" };
 const _hoisted_4$1 = { class: "flex flex-row flex-nowrap gap-8 items-center justify-center max-w-5xl mx-auto overflow-x-auto" };
-const _hoisted_5$1 = ["href"];
+const _hoisted_5 = ["href"];
 const _hoisted_6 = ["src", "alt"];
 const _sfc_main$2 = /* @__PURE__ */ defineComponent({
   __name: "OrderViaSection",
@@ -23045,7 +23086,7 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                   alt: `${partner.name} logo`,
                   class: "h-10 sm:h-12 md:h-14 w-auto object-contain"
                 }, null, 8, _hoisted_6)
-              ], 8, _hoisted_5$1);
+              ], 8, _hoisted_5);
             }), 64))
           ])
         ])
@@ -23067,16 +23108,9 @@ function _sfc_render(_ctx, _cache) {
 }
 const CurveDivider = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render]]);
 const _hoisted_1 = { class: "bg-background font-sans text-text" };
-const _hoisted_2 = { class: "main-content-transition" };
-const _hoisted_3 = {
-  key: 0,
-  class: "navigation-transition"
-};
-const _hoisted_4 = {
-  key: 1,
-  class: "relative fade-in"
-};
-const _hoisted_5 = { "data-ordervia-section": "" };
+const _hoisted_2 = { class: "main-content-wrapper" };
+const _hoisted_3 = { class: "relative" };
+const _hoisted_4 = { "data-ordervia-section": "" };
 const _sfc_main = /* @__PURE__ */ defineComponent({
   __name: "App",
   setup(__props) {
@@ -23084,7 +23118,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
     const route = useRoute();
     const isLoading = ref(true);
     const showMainContent = ref(false);
-    const showNavigation = ref(false);
     const isMenuOpen = ref(false);
     const selectedCountry = ref("IN");
     const bodyEl = document.body;
@@ -23105,8 +23138,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
       });
     });
     const handleTransitionStart = () => {
-      showNavigation.value = true;
       showMainContent.value = true;
+    };
+    const handleLoadingComplete = () => {
+      isLoading.value = false;
       nextTick(() => {
         lenis = new Lenis({
           duration: 1.2,
@@ -23122,9 +23157,6 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           ScrollTrigger.refresh();
         });
       });
-    };
-    const handleLoadingComplete = () => {
-      isLoading.value = false;
     };
     onMounted(() => {
       if (typeof window !== "undefined") {
@@ -23157,40 +23189,27 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
           onLoadingComplete: handleLoadingComplete
         })) : createCommentVNode("", true),
         createBaseVNode("div", _hoisted_2, [
-          showNavigation.value ? (openBlock(), createElementBlock("div", _hoisted_3, [
-            createVNode(_sfc_main$5, {
-              country: selectedCountry.value,
-              "onUpdate:country": _cache[0] || (_cache[0] = ($event) => selectedCountry.value = $event),
-              onToggleMenu: _cache[1] || (_cache[1] = ($event) => isMenuOpen.value = !isMenuOpen.value)
-            }, null, 8, ["country"]),
-            createVNode(FullScreenMenu, {
-              "is-open": isMenuOpen.value,
-              onClose: _cache[2] || (_cache[2] = ($event) => isMenuOpen.value = false)
-            }, null, 8, ["is-open"])
-          ])) : createCommentVNode("", true),
+          createVNode(_sfc_main$5, {
+            country: selectedCountry.value,
+            "onUpdate:country": _cache[0] || (_cache[0] = ($event) => selectedCountry.value = $event),
+            onToggleMenu: _cache[1] || (_cache[1] = ($event) => isMenuOpen.value = !isMenuOpen.value)
+          }, null, 8, ["country"]),
+          createVNode(FullScreenMenu, {
+            "is-open": isMenuOpen.value,
+            onClose: _cache[2] || (_cache[2] = ($event) => isMenuOpen.value = false)
+          }, null, 8, ["is-open"]),
           createBaseVNode("main", null, [
-            createVNode(_component_router_view, null, {
-              default: withCtx(({ Component }) => [
-                createVNode(Transition, {
-                  name: "page",
-                  mode: "out-in"
-                }, {
-                  default: withCtx(() => [
-                    (openBlock(), createBlock(resolveDynamicComponent(Component)))
-                  ]),
-                  _: 2
-                }, 1024)
-              ]),
-              _: 1
-            })
+            createVNode(_component_router_view)
           ]),
-          showMainContent.value ? (openBlock(), createElementBlock("div", _hoisted_4, [
+          withDirectives(createBaseVNode("div", _hoisted_3, [
             createVNode(CurveDivider, { class: "absolute bottom-full w-full h-24 text-[#4e3b2d] fill-current" }),
-            createBaseVNode("div", _hoisted_5, [
+            createBaseVNode("div", _hoisted_4, [
               createVNode(OrderViaSection)
             ]),
             createVNode(_sfc_main$4)
-          ])) : createCommentVNode("", true)
+          ], 512), [
+            [vShow, showMainContent.value]
+          ])
         ])
       ]);
     };
