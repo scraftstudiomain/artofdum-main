@@ -1,13 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import MenuCulinaryView from '../views/MenuCulinaryView.vue'
-import MenuViewModern from '../views/MenuViewModern.vue'
-import CateringView from '../views/CateringView.vue'
-import AboutView from '../views/AboutView.vue'
-import ContactView from '../views/ContactView.vue'
-import BlogView from '../views/BlogView.vue'
-import ExperiencesView from '../views/ExperiencesView.vue'
-import SustainabilityView from '../views/SustainabilityView.vue'
 
 const routes = [
   {
@@ -18,19 +10,19 @@ const routes = [
   {
     path: '/menu',
     name: 'Menu',
-    component: MenuCulinaryView,
+    component: () => import('../views/MenuCulinaryView.vue'),
   },
   {
     path: '/menu-modern',
     name: 'MenuModern',
-    component: MenuViewModern,
+    component: () => import('../views/MenuViewModern.vue'),
   },
-  { path: '/catering', name: 'Catering', component: CateringView },
-  { path: '/about', name: 'About', component: AboutView },
-  { path: '/experiences', name: 'Experiences', component: ExperiencesView },
-  { path: '/sustainability', name: 'Sustainability', component: SustainabilityView },
-  { path: '/blog', name: 'Blog', component: BlogView },
-  { path: '/contact', name: 'Contact', component: ContactView },
+  { path: '/catering', name: 'Catering', component: () => import('../views/CateringView.vue') },
+  { path: '/about', name: 'About', component: () => import('../views/AboutView.vue') },
+  { path: '/experiences', name: 'Experiences', component: () => import('../views/ExperiencesView.vue') },
+  { path: '/sustainability', name: 'Sustainability', component: () => import('../views/SustainabilityView.vue') },
+  { path: '/blog', name: 'Blog', component: () => import('../views/BlogView.vue') },
+  { path: '/contact', name: 'Contact', component: () => import('../views/ContactView.vue') },
 ]
 
 const router = createRouter({

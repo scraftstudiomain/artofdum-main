@@ -19,7 +19,7 @@ export default defineConfig({
     }
   },
   build: {
-    minify: false,
+    minify: 'esbuild',
     cssCodeSplit: false,
     sourcemap: true,
     rollupOptions: {

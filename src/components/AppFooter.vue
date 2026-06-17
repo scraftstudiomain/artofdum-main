@@ -11,7 +11,7 @@ const socialLinks = [
 </script>
 
 <template>
-  <footer class="bg-[#4e3b2d] text-text-muted border-t border-white/10">
+  <footer class="bg-brand-earthen text-text-muted border-t border-white/5">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
       <div class="text-center mb-8 md:mb-12" v-motion-fade-visible-once>
         <router-link to="/" class="inline-block mb-4">
@@ -32,12 +32,12 @@ const socialLinks = [
           <h3 class="font-bold text-text mb-4 uppercase tracking-widest text-sm">Reservations</h3>
           <a 
             href="mailto:reservations@artofdum.com" 
-            class="hover:text-gold transition-colors link-underline"
+            class="hover:text-[#e8ba71] transition-colors link-underline"
           >
             reservations@artofdum.com
           </a>
           <p class="mt-1">
-            <a href="tel:0568561276" class="hover:text-gold transition-colors">+971 56 856 1276</a>
+            <a href="tel:0568561276" class="hover:text-[#e8ba71] transition-colors">+971 56 856 1276</a>
           </p>
         </div>
 
@@ -45,12 +45,12 @@ const socialLinks = [
           <h3 class="font-bold text-text mb-4 uppercase tracking-widest text-sm">Catering</h3>
           <a 
             href="mailto:togocatering@foodlinkglobal.ae" 
-            class="hover:text-gold transition-colors link-underline"
+            class="hover:text-[#e8ba71] transition-colors link-underline"
           >
             togocatering@foodlinkglobal.ae
           </a>
           <p class="mt-1">
-            <a href="tel:+971565118483" class="hover:text-gold transition-colors">+971 56 511 8483</a>
+            <a href="tel:+971565118483" class="hover:text-[#e8ba71] transition-colors">+971 56 511 8483</a>
           </p>
         </div>
 
@@ -58,15 +58,15 @@ const socialLinks = [
           <h3 class="font-bold text-text mb-4 uppercase tracking-widest text-sm">Follow Us</h3>
           <div class="flex items-center justify-center md:justify-end">
             <template v-for="(link, index) in socialLinks" :key="link.name">
-              <a :href="link.href" class="hover:text-gold transition-colors link-underline">{{ link.name }}</a>
-              <DiamondIcon v-if="index < socialLinks.length - 1" class="w-2 h-2 text-gold/50 mx-4" />
+              <a :href="link.href" class="hover:text-[#e8ba71] transition-colors link-underline">{{ link.name }}</a>
+              <DiamondIcon v-if="index < socialLinks.length - 1" class="w-2 h-2 text-[#e8ba71]/50 mx-4" />
             </template>
           </div>
         </div>
       </div>
 
       <div class="mt-8 pt-4 border-t border-white/10 text-center" v-motion-fade-visible-once>
-        <p class="text-sm">&copy; 2025 Art of Dum. All Rights Reserved. Mindfully Crafted by <a href="https://scraft.studio/" target="_blank" class="underline hover:text-gold transition-colors">Scraft</a></p>
+        <p class="text-sm">&copy; 2025 Art of Dum. All Rights Reserved. Mindfully Crafted by <a href="https://scraft.studio/" target="_blank" class="underline hover:text-[#e8ba71] transition-colors">Scraft</a></p>
       </div>
     </div>
   </footer>

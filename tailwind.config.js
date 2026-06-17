@@ -7,11 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0a0a0a',
-        text: '#e5e5e5',
-        'text-muted': '#a3a3a3',
-        accent: '#e5e5e5',
-        gold: '#c9a974',
+        background: '#2b2116',
+        text: '#f0ebe1',
+        'text-muted': '#e4dcca',
+        accent: '#a9742a',
+        gold: '#a9742a',
+        'brand-earthen': '#2b2116',
+        'brand-nutmeg': '#4e3b2d',
+        'brand-sesame': '#e4dcca',
+        'brand-cashew': '#f0ebe1',
+        'brand-gold': '#a9742a',
       },
       fontFamily: {
         serif: ['"Bagatela"', 'serif'],

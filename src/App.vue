@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
-import { useScrollLock } from '@vueuse/core';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 
 // Components
-import LoadingScreen from './components/LoadingScreen.vue';
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
-import FullScreenMenu from './components/FullScreenMenu.vue';
 import OrderViaSection from './components/OrderViaSection.vue';
 import CurveDivider from './components/icons/CurveDivider.vue';
 
@@ -19,41 +16,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 // State variables
 const route = useRoute();
-const isLoading = ref(true);
-const showMainContent = ref(false);
-const isMenuOpen = ref(false);
 const selectedCountry = ref<'IN' | 'UAE'>('IN');
-const bodyEl = document.body;
-const isLocked = useScrollLock(bodyEl);
-
 let lenis: Lenis;
 
-// Watchers
-watch(isMenuOpen, (newVal) => {
-  isLocked.value = newVal;
-  if (newVal) {
-    lenis?.stop();
-  } else {
-    lenis?.start();
-  }
-});
-
 watch(route, () => {
-  isMenuOpen.value = false;
   nextTick(() => {
     ScrollTrigger.refresh();
   })
 })
 
 // Methods
-const handleTransitionStart = () => {
-  showMainContent.value = true
-}
+const handleScrollToSection = (e: Event) => {
+  const targetId = (e as CustomEvent).detail;
+  const el = document.querySelector(targetId);
+  if (el) {
+    lenis?.scrollTo(el);
+  }
+};
 
-const handleLoadingComplete = () => {
-  isLoading.value = false
-  
-  // Initialize Lenis after transition
+onMounted(() => {
+  // Initialize Lenis immediately on mount
   nextTick(() => {
     lenis = new Lenis({
       duration: 1.2,
@@ -61,22 +43,20 @@ const handleLoadingComplete = () => {
       smoothWheel: true,
     });
 
-    lenis.on('scroll', ScrollTrigger.update)
+    window.addEventListener('scroll-to-section', handleScrollToSection);
+    lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time)=>{
-      lenis.raf(time * 1000)
-    })
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
 
-    gsap.ticker.lagSmoothing(0)
+    gsap.ticker.lagSmoothing(0);
 
     nextTick(() => {
-      ScrollTrigger.refresh()
-    })
-  })
-}
+      ScrollTrigger.refresh();
+    });
+  });
 
-// Performance monitoring
-onMounted(() => {
   if (typeof window !== 'undefined') {
     window.addEventListener('load', () => {
       const perfData = window.performance.timing;
@@ -94,41 +74,32 @@ onMounted(() => {
       }
     });
   }
-})
+});
 
 onUnmounted(() => {
+  window.removeEventListener('scroll-to-section', handleScrollToSection);
   if (lenis) {
     lenis.destroy();
   }
-})
+});
 </script>
 
 <template>
   <div class="bg-background font-sans text-text">
-    <!-- Loading Screen - overlays everything with high z-index -->
-    <LoadingScreen
-      v-if="isLoading"
-      @transition-start="handleTransitionStart"
-      @loading-complete="handleLoadingComplete"
-    />
-
-    <!-- Main App Content - ALWAYS rendered from the start, just behind loading screen -->
+    <!-- Main App Content - loaded instantly without delay -->
     <div class="main-content-wrapper">
-      <!-- Navigation - always rendered -->
       <AppHeader
         :country="selectedCountry"
         @update:country="selectedCountry = $event"
-        @toggle-menu="isMenuOpen = !isMenuOpen"
       />
-      <FullScreenMenu :is-open="isMenuOpen" @close="isMenuOpen = false" />
 
-      <!-- Main content with router view - ALWAYS rendered -->
+      <!-- Main content with router view -->
       <main>
         <router-view />
       </main>
 
-      <!-- Footer sections - shown after loading -->
-      <div v-show="showMainContent" class="relative">
+      <!-- Footer sections -->
+      <div class="relative">
         <CurveDivider class="absolute bottom-full w-full h-24 text-[#4e3b2d] fill-current" />
         <div data-ordervia-section>
           <OrderViaSection />

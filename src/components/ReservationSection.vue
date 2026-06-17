@@ -2,9 +2,12 @@
 import { onMounted, ref } from 'vue';
 import gsap from 'gsap';
 
-
 const sectionRef = ref<HTMLElement | null>(null);
 const contentRef = ref<HTMLElement | null>(null);
+
+const scrollToMenu = () => {
+  window.dispatchEvent(new CustomEvent('scroll-to-section', { detail: '#menu-highlights' }))
+};
 
 onMounted(() => {
   if (sectionRef.value && contentRef.value) {
@@ -44,27 +47,27 @@ onMounted(() => {
     </div>
 
     <div ref="contentRef" class="relative z-10 container mx-auto px-4 text-center">
-      <h2 class="font-serif text-4xl md:text-5xl lg:text-7xl text-white mb-6 leading-tight">
+      <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-cashew mb-6 leading-[1.2]">
         Reserve your table today
       </h2>
-      <p class="font-sans text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light tracking-wide">
+      <p class="font-sans text-base sm:text-lg md:text-xl text-brand-sesame/90 mb-10 max-w-2xl mx-auto font-light tracking-wide">
         Experience the transformative art of slow-cooked Indian cuisine.
       </p>
       
       <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
         <a 
           href="#" 
-          class="group relative px-8 py-4 bg-[#e4dcca] text-black font-sans font-medium tracking-wider overflow-hidden transition-all duration-300 hover:bg-[#d4c0b0] min-w-[180px]"
+          class="group relative px-8 py-4 bg-gold-gradient text-brand-earthen font-sans font-semibold tracking-wider transition-all duration-300 hover:brightness-110 min-w-[180px] shadow-lg shadow-brand-gold/10 text-center"
         >
           <span class="relative z-10">Reserve Now</span>
         </a>
         
-        <a 
-          href="#" 
-          class="group px-8 py-4 border border-white/30 text-white font-sans font-medium tracking-wider hover:bg-white hover:text-black transition-all duration-300 min-w-[180px]"
+        <button 
+          @click="scrollToMenu"
+          class="group px-8 py-4 border border-brand-sesame/30 text-brand-cashew font-sans font-medium tracking-wider hover:bg-brand-cashew hover:text-brand-earthen hover:border-transparent transition-all duration-300 min-w-[180px] text-center"
         >
           Explore Menu
-        </a>
+        </button>
       </div>
     </div>
   </section>

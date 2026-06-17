@@ -6,6 +6,7 @@ import image8 from '../RAW IMAGES AGGREGATOR SHOOT/8.jpg'
 import signatureVideo from '../Signature Dum Biryani.mp4'
 import kebabsVideo from '../Melt-in-the-Mouth Kebabs.mp4'
 import graviesVideo from '../Luscious Gravies.mp4'
+import LazyVideo from './LazyVideo.vue'
 
 const items = [
   {
@@ -30,28 +31,28 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
 
 <template>
   <section
-    id="menu"
-    class="relative py-20 sm:py-24 md:py-28 bg-[#f0ebe1] text-[#2b2116] overflow-hidden"
+    id="signatures"
+    class="relative py-20 sm:py-24 md:py-28 bg-brand-sesame text-brand-earthen overflow-hidden"
   >
     <div
       class="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 text-center mb-16 md:mb-20 relative z-10"
     >
       <p
-        class="text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-[#4e3b2d]/80 mb-3"
+        class="text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-brand-nutmeg text-opacity-80 mb-3 font-semibold"
       >
         DISCOVER FLAVOR
       </p>
 
       <h2
-        class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold mb-4 leading-tight"
+        class="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold mb-4 leading-tight text-brand-earthen"
       >
        Our Signature Dum Cuisine
       </h2>
 
       <p
-        class="text-sm sm:text-base md:text-lg text-[#4e3b2d]/85 max-w-xl mx-auto leading-relaxed"
+        class="text-sm sm:text-base md:text-lg text-brand-nutmeg text-opacity-85 max-w-xl mx-auto leading-relaxed font-light"
       >
-       Step into a world where culinary tradition meets modern refinement. From copper tandoors to live Dum stations, every element is designed to enchant your senses.
+       Step into a world where culinary tradition meets modern refinement. From clay ovens to live Dum stations, every element is designed to enchant your senses.
       </p>
     </div>
 
@@ -62,8 +63,8 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
       <svg viewBox="0 0 1440 320" class="w-full h-auto">
         <path
           fill="none"
-          stroke="#c9a974"
-          stroke-width="2"
+          stroke="#885524"
+          stroke-width="1.5"
           d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,138.7C672,117,768,107,864,122.7C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128"
         />
       </svg>
@@ -79,32 +80,19 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
           :class="['flex flex-col items-center gap-5 group', offsets[index]]"
         >
           <div
-            class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-[3px] border-[#c9a974] overflow-hidden shadow-2xl shadow-black/60 bg-black relative"
+            class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-[3px] border-[#885524] overflow-hidden shadow-2xl shadow-black/40 bg-black relative"
           >
             <div
               class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"
             />
-            <video
-              v-if="item.video"
+            <LazyVideo
               :src="item.video"
-              class="w-full h-full object-cover"
-              autoplay
-              muted
-              loop
-              playsinline
-            />
-            <img
-              v-else
-              :src="item.image"
-              :alt="item.title"
-              class="w-full h-full object-cover transform group-hover:scale-110 group-hover:rotate-2 transition-transform duration-500 ease-out"
-              loading="lazy"
-              decoding="async"
+              :poster="item.image"
             />
           </div>
 
           <div
-            class="px-5 py-2 bg-[#f0ebe1] border border-[#c9a974]/80 text-[#2b2116] text-xs sm:text-sm tracking-[0.18em] uppercase font-medium shadow-md"
+            class="px-5 py-2 bg-brand-cashew border border-[#885524]/40 text-brand-earthen text-xs sm:text-sm tracking-[0.18em] uppercase font-medium shadow-md transition-all duration-300 group-hover:border-[#885524]"
           >
             {{ item.title }}
           </div>
@@ -117,7 +105,7 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
     >
       <div class="clean-offer-big">
         <span
-          class="whitespace-nowrap font-serif text-[18vw] sm:text-[16vw] md:text-[14vw] leading-none text-[#e4dcca]"
+          class="whitespace-nowrap font-serif text-[18vw] sm:text-[16vw] md:text-[14vw] leading-none text-brand-cashew text-opacity-30 select-none"
         >
           Signature Biryani  Handcrafted Kebabs Rich Gravies  Signature Biryani  Handcrafted Kebabs Rich Gravies  
         </span>

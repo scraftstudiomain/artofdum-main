@@ -18,10 +18,10 @@ const partners = [
 </script>
 
 <template>
-  <section class="py-12 sm:py-16" style="background-color: #4e3b2d">
+  <section class="py-12 sm:py-16 bg-brand-nutmeg text-brand-cashew">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8">
-        <h2 class="font-serif text-4xl md:text-5xl text-gold">Order Via</h2>
+        <h2 class="font-serif text-4xl md:text-5xl text-[#e8ba71]">Order Via</h2>
         <DecorativeDivider />
       </div>
 

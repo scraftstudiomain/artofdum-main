@@ -1,36 +1,37 @@
 <script setup lang="ts">
 import { X, Instagram, Music2, Gift } from 'lucide-vue-next';
-import { useRouter } from 'vue-router';
-import heroVideo from '../0_Cooking_Chef_1920x1080.mp4';
+import heroVideo from '../aa18e29e-8d8a-4894-a6f5-6acc9cd243a4.mp4';
 import LogoImage from '../Art of Dum_Refined logos_Open_CTC Eng Gold H1.png';
 
 defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(['close']);
-const router = useRouter();
 
 interface MenuItem {
   name: string;
   path: string;
 }
 
-// Menu items matching the design (Home, About, Stay, Menu, Contact)
-// Note: "Stay" maps to Experiences for now - can be updated if a Stay route is added
 const menuItems: MenuItem[] = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Experiences', path: '/experiences' }, // Using Experiences as placeholder for Stay
-  { name: 'Sustainability', path: '/sustainability' },
-  { name: 'Menu', path: '/menu' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'Home', path: '#hero' },
+  { name: 'Our Heritage', path: '#about' },
+  { name: 'Menu Highlights', path: '#menu-highlights' },
+  { name: 'Eco-Luxury Values', path: '#sustainability' },
+  { name: 'Bespoke Catering', path: '#catering' },
+  { name: 'Visual Gallery', path: '#experiences-gallery' },
+  { name: 'Book a Table', path: '#reservation' },
 ];
 
 const closeMenu = () => {
   emit('close');
 };
 
-const handleReservation = () => {
-  router.push('/contact');
+const scrollToSection = (targetId: string) => {
   closeMenu();
+  window.dispatchEvent(new CustomEvent('scroll-to-section', { detail: targetId }));
+};
+
+const handleReservation = () => {
+  scrollToSection('#reservation');
 };
 
 // Contact information
@@ -84,13 +85,13 @@ const socialLinks = [
               :initial="{ opacity: 0, x: -30 }"
               :enter="{ opacity: 1, x: 0, transition: { delay: 200 + index * 100, duration: 600, ease: 'easeOut' } }"
             >
-              <router-link
-                :to="item.path"
+              <a
+                href="#"
                 class="menu-link text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white hover:text-gold transition-colors duration-300 block font-serif"
-                @click="closeMenu" 
+                @click.prevent="scrollToSection(item.path)" 
               >
                 {{ item.name }}
-              </router-link>
+              </a>
             </li>
           </ul>
         </nav>

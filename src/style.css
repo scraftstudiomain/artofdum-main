@@ -5,7 +5,7 @@
 @layer base {
   @font-face {
     font-family: 'Bagatela';
-    src: url('/font/Bagatela-Regular.ttf') format('truetype');
+    src: url('/font/Bagatela-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@
 
   @font-face {
     font-family: 'Roc Grotesk';
-    src: url('/font/RocGrotesk-Regular.ttf') format('truetype');
+    src: url('/font/RocGrotesk-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -51,12 +51,22 @@
 }
 
 body {
-  background-color: #0a0a0a;
-  color: #e5e5e5;
+  background-color: #2b2116;
+  color: #f0ebe1;
   font-family: 'Roc Grotesk', 'Inter', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(45deg, #885524, #8d5827, #a9742a, #ffd081, #e8ba71);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(45deg, #885524, #8d5827, #a9742a, #ffd081, #e8ba71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body::before {
@@ -64,7 +74,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(ellipse at center, theme('colors.gold') 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, #a9742a 0%, transparent 70%);
   opacity: 0;
   animation: subtle-pulse 15s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   pointer-events: none;

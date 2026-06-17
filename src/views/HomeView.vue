@@ -1,30 +1,25 @@
 <script setup lang="ts">
 import { onMounted, nextTick } from 'vue'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+// Components
 import HeroSection from '../components/HeroSection.vue'
 import ExperienceArtSection from '../components/ExperienceArtSection.vue'
+import LandingMenuSection from '../components/LandingMenuSection.vue'
 import CleanCulinaryOfferingsSection from '../components/CleanCulinaryOfferingsSection.vue'
-// import IntroSection from '../components/IntroSection.vue'
+import LandingSustainabilitySection from '../components/LandingSustainabilitySection.vue'
+import LandingCateringSection from '../components/LandingCateringSection.vue'
 import HorizontalGallery from '../components/HorizontalGallery.vue'
-// import CurvedLoop from '../components/CurvedLoop.vue'
-// import TestimonialsSection from '../components/TestimonialsSection.vue'
-// import CurveDivider from '../components/icons/CurveDivider.vue'
-// import VideoPinSection from '../components/VideoPinSection.vue'
 import ViewMenuTextPath from '../components/ViewMenuTextPath.vue'
-
-import CustomerReviewsSection from '../components/CustomerReviewsSection.vue'
-import ScrollDrivenAnimationSection from '../components/ScrollDrivenAnimationSection.vue'
-import ParallaxImpactSection from '../components/ParallaxImpactSection.vue'
 import ReservationSection from '../components/ReservationSection.vue'
+import CustomerReviewsSection from '../components/CustomerReviewsSection.vue'
 
 // Refresh ScrollTrigger after all components are mounted to fix positioning
 onMounted(() => {
   nextTick(() => {
-    // Wait for window load and then refresh ScrollTrigger
     const refreshScrollTrigger = () => {
       setTimeout(() => {
         ScrollTrigger.refresh()
-        // Additional refresh after a short delay to ensure all layouts are settled
         setTimeout(() => {
           ScrollTrigger.refresh()
         }, 300)
@@ -42,53 +37,35 @@ onMounted(() => {
 
 <template>
   <div class="home-view-container">
-    <HeroSection />
+    <!-- Hero Section -->
+    <HeroSection id="hero" />
 
-    <ExperienceArtSection />
+    <!-- Heritage & About Section -->
+    <ExperienceArtSection id="about" />
 
-    <CleanCulinaryOfferingsSection />
+    <!-- Tabbed Menu Highlights Section -->
+    <LandingMenuSection id="menu-highlights" />
 
-    <!-- The Soul of Dum Pukht section hidden -->
-    <!-- <div class="relative -mt-24 z-10">
-      <CurveDivider class="w-full h-24 text-background fill-current" />
-      <IntroSection />
-    </div> -->
+    <!-- Cooking Process / Signature Videos Section -->
+    <CleanCulinaryOfferingsSection id="signatures" />
 
-    <!-- <ImageSlider /> -->
+    <!-- Clay Pots & Brand Values Section -->
+    <LandingSustainabilitySection id="sustainability" />
 
-    <!-- <WelcomeSection /> -->
+    <!-- Event Services & Catering Section -->
+    <LandingCateringSection id="catering" />
 
-    <HorizontalGallery />
+    <!-- Photo Gallery Grid -->
+    <HorizontalGallery id="experiences-gallery" />
 
-    <!-- Fine Dining Experience section hidden -->
-    <!-- <section class="bg-background py-8 md:py-12 w-full">
-      <CurvedLoop
-        marqueeText="Art of Dum ★ Authentic Indian Cuisine ★ Fine Dining Experience ★ Exquisite Flavors ★ Premium Dining ★ "
-        :speed="3"
-        :curve-amount="300"
-        class="text-gold"
-      />
-    </section> -->
-
+    <!-- Moving Decorative Text Banner -->
     <ViewMenuTextPath />
-     <ReservationSection />
 
-    <!-- <ScrollDrivenAnimationSection />
+    <!-- Reservations Form & Contact Section -->
+    <ReservationSection id="reservation" />
 
-    <ParallaxImpactSection /> -->
-
-    <!-- Customer Reviews Section -->
-    <CustomerReviewsSection />
-
-   
-
-    <!-- Video section removed -->
-    <!-- <VideoPinSection key="video-pin-section" /> -->
-
-    <!-- Words of Praise section hidden -->
-    <!-- <div class="relative">
-      <TestimonialsSection />
-    </div> -->
+    <!-- Testimonials & Customer Reviews Section -->
+    <CustomerReviewsSection id="testimonials" />
   </div>
 </template>
 

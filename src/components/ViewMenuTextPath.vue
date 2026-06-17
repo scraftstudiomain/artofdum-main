@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const repeatedText = 'Intimate - Heritage - Opulent - Immersive - Captivating - Grounded • '.repeat(30);
 
 const svgWrapperRef = ref<HTMLElement | null>(null);
 const isDragging = ref(false);
 const animationOffset = ref(0);
+const scrollOffsetAddition = ref(0);
 
 const LOOP_RANGE = 40;
-const LOOP_DURATION = 18; // seconds that the original <animate> took to move 40%
+const LOOP_DURATION = 24; // Slow, premium auto-scrolling speed
 const AUTO_SPEED = -(LOOP_RANGE / LOOP_DURATION);
 
 let animationFrameId: number | null = null;
 let lastTimestamp: number | null = null;
 let pointerStartX = 0;
 let dragStartOffset = 0;
+let scrollTriggerInstance: ScrollTrigger | null = null;
 
 const normalizeOffset = (value: number) => {
   const range = LOOP_RANGE;
@@ -31,7 +37,11 @@ const normalizeOffset = (value: number) => {
   return normalized;
 };
 
-const textPathOffset = computed(() => `${animationOffset.value}%`);
+// Combines the continuous auto-scrolling with the scroll-tied parallax offset
+const textPathOffset = computed(() => {
+  const totalOffset = animationOffset.value + scrollOffsetAddition.value;
+  return `${normalizeOffset(totalOffset)}%`;
+});
 
 const animate = (timestamp: number) => {
   if (isDragging.value) {
@@ -82,11 +92,28 @@ onMounted(() => {
   window.addEventListener('pointermove', handlePointerMove);
   window.addEventListener('pointerup', stopDragging);
   window.addEventListener('pointercancel', stopDragging);
+
+  // Animate the text offset based on viewport scroll progress
+  if (svgWrapperRef.value) {
+    scrollTriggerInstance = ScrollTrigger.create({
+      trigger: svgWrapperRef.value,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.2, // Buttery smooth lag for parallax gliding
+      onUpdate: (self) => {
+        // Shift text path offset by up to 25% based on scroll progress
+        scrollOffsetAddition.value = self.progress * -25;
+      }
+    });
+  }
 });
 
 onBeforeUnmount(() => {
   if (animationFrameId !== null) {
     cancelAnimationFrame(animationFrameId);
+  }
+  if (scrollTriggerInstance) {
+    scrollTriggerInstance.kill();
   }
   window.removeEventListener('pointermove', handlePointerMove);
   window.removeEventListener('pointerup', stopDragging);
@@ -99,12 +126,15 @@ onBeforeUnmount(() => {
     <div
       ref="svgWrapperRef"
       class="svg-wrapper"
+      v-motion
+      :initial="{ opacity: 0, y: 60, scale: 0.98 }"
+      :visibleOnce="{ opacity: 1, y: 0, scale: 1, transition: { duration: 1100, ease: 'easeOut' } }"
       :class="{ dragging: isDragging }"
       @pointerdown="handlePointerDown"
     >
       <svg
         class="text-path-svg"
-        viewBox="0 0 1920 400"
+        viewBox="0 0 1920 160"
         preserveAspectRatio="xMidYMid meet"
         role="presentation"
         aria-hidden="true"
@@ -112,9 +142,9 @@ onBeforeUnmount(() => {
         <defs>
           <path
             id="view-menu-curve"
-            d="M0,200 C240,40 480,40 720,200
-               S1200,360 1440,200
-               S1680,40 1920,200"
+            d="M0,80 C240,30 480,30 720,80
+               S1200,130 1440,80
+               S1680,30 1920,80"
             fill="none"
           />
         </defs>
@@ -145,16 +175,15 @@ onBeforeUnmount(() => {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 0 0 15rem 0;
+  padding: 2.5rem 0 4.5rem 0; /* Compact padding */
   cursor: grab;
   user-select: none;
   touch-action: none;
-  transition: box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .svg-wrapper.dragging {
   cursor: grabbing;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .text-path-svg {
@@ -164,42 +193,43 @@ onBeforeUnmount(() => {
 }
 
 .text-path {
-  font-family: serif;
-  font-size: clamp(1.5rem, 2vw, 2.25rem);
-  fill: #000;
+  font-family: 'Bagatela', serif !important; /* Premium brand serif font */
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem); /* Perfectly balanced desktop size */
+  fill: #4e3b2d; /* Elegant theme dark brown */
   white-space: nowrap;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em; /* Sophisticated spacing */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .view-menu-text-path-container {
-    margin-top: -3rem;
+    margin-top: -1.5rem;
   }
 
   .svg-wrapper {
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
     touch-action: pan-y;
   }
 
   .text-path {
-    font-size: clamp(1.9rem, 5.5vw, 2.4rem);
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem); /* Scaled down slightly for tablets */
+    letter-spacing: 0.18em;
   }
 }
 
 @media (max-width: 480px) {
   .view-menu-text-path-container {
-    margin-top: -4rem;
+    margin-top: -1rem;
   }
 
   .svg-wrapper {
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
   }
 
   .text-path {
-    font-size: clamp(2rem, 7vw, 2.6rem);
+    font-size: clamp(1rem, 4.5vw, 1.15rem); /* Clear and readable on mobile */
   }
 }
 </style>

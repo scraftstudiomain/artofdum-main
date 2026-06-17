@@ -5,6 +5,14 @@ import meltInTheMouthKebabsVideo from '../Melt-in-the-Mouth Kebabs.mp4';
 import lusciousGraviesVideo from '../Luscious Gravies.mp4';
 import indulgentSweetDishesVideo from '../Indulgent Sweet Dishes.mp4';
 import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4';
+
+import signatureDumBiryaniPoster from '../RAW IMAGES AGGREGATOR SHOOT/1.jpg';
+import meltInTheMouthKebabsPoster from '../RAW IMAGES AGGREGATOR SHOOT/4.jpg';
+import lusciousGraviesPoster from '../RAW IMAGES AGGREGATOR SHOOT/8.jpg';
+import indulgentSweetDishesPoster from '../RAW IMAGES AGGREGATOR SHOOT/5.jpg';
+import curatedBeveragesCocktailsPoster from '../RAW IMAGES AGGREGATOR SHOOT/9.jpg';
+
+import LazyVideo from '../components/LazyVideo.vue';
 </script>
 
 <template>
@@ -49,14 +57,10 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 100 } }"
           >
             <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
-              <video
-                class="w-full h-full object-cover"
+              <LazyVideo
                 :src="signatureDumBiryaniVideo"
-                autoplay
-                loop
-                muted
-                playsinline
-              ></video>
+                :poster="signatureDumBiryaniPoster"
+              />
               <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"></div>
             </div>
           </div>
@@ -92,14 +96,10 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 140 } }"
           >
             <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
-              <video
-                class="w-full h-full object-cover"
+              <LazyVideo
                 :src="meltInTheMouthKebabsVideo"
-                autoplay
-                loop
-                muted
-                playsinline
-              ></video>
+                :poster="meltInTheMouthKebabsPoster"
+              />
               <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"></div>
             </div>
           </div>
@@ -135,14 +135,10 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 160 } }"
           >
             <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
-              <video
-                class="w-full h-full object-cover"
+              <LazyVideo
                 :src="lusciousGraviesVideo"
-                autoplay
-                loop
-                muted
-                playsinline
-              ></video>
+                :poster="lusciousGraviesPoster"
+              />
               <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"></div>
             </div>
           </div>
@@ -178,14 +174,10 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 180 } }"
           >
             <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
-              <video
-                class="w-full h-full object-cover"
+              <LazyVideo
                 :src="indulgentSweetDishesVideo"
-                autoplay
-                loop
-                muted
-                playsinline
-              ></video>
+                :poster="indulgentSweetDishesPoster"
+              />
               <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"></div>
             </div>
           </div>
@@ -221,14 +213,10 @@ import curatedBeveragesCocktailsVideo from '../Curated Beverages & Cocktails.mp4
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, ease: 'easeOut', delay: 200 } }"
           >
             <div class="relative overflow-hidden bg-black/40 border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.5)]">
-              <video
-                class="w-full h-full object-cover"
+              <LazyVideo
                 :src="curatedBeveragesCocktailsVideo"
-                autoplay
-                loop
-                muted
-                playsinline
-              ></video>
+                :poster="curatedBeveragesCocktailsPoster"
+              />
               <div class="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/20 to-transparent"></div>
             </div>
           </div>
