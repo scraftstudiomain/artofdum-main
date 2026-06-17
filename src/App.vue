@@ -21,7 +21,6 @@ gsap.registerPlugin(ScrollTrigger);
 const route = useRoute();
 const isLoading = ref(true);
 const showMainContent = ref(false);
-const showNavigation = ref(false);
 const isMenuOpen = ref(false);
 const selectedCountry = ref<'IN' | 'UAE'>('IN');
 const bodyEl = document.body;
@@ -41,7 +40,6 @@ watch(isMenuOpen, (newVal) => {
 
 watch(route, () => {
   isMenuOpen.value = false;
-  // Ensure scroll-based animations recalc after route changes
   nextTick(() => {
     ScrollTrigger.refresh();
   })
@@ -49,13 +47,13 @@ watch(route, () => {
 
 // Methods
 const handleTransitionStart = () => {
-  // Show navigation immediately when transition starts
-  showNavigation.value = true
-  
-  // Show main content immediately so it's visible behind the sliding loading screen
   showMainContent.value = true
+}
+
+const handleLoadingComplete = () => {
+  isLoading.value = false
   
-  // Initialize Lenis
+  // Initialize Lenis after transition
   nextTick(() => {
     lenis = new Lenis({
       duration: 1.2,
@@ -63,7 +61,6 @@ const handleTransitionStart = () => {
       smoothWheel: true,
     });
 
-    // Integrate Lenis with GSAP's ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update)
 
     gsap.ticker.add((time)=>{
@@ -72,15 +69,10 @@ const handleTransitionStart = () => {
 
     gsap.ticker.lagSmoothing(0)
 
-    // Recalculate ScrollTrigger positions after initial mount
     nextTick(() => {
       ScrollTrigger.refresh()
     })
   })
-}
-
-const handleLoadingComplete = () => {
-  isLoading.value = false
 }
 
 // Performance monitoring
@@ -94,7 +86,6 @@ onMounted(() => {
       console.log(`Page load time: ${pageLoadTime}ms`);
       console.log(`DOM Content Loaded: ${domContentLoaded}ms`);
       
-      // Report to monitoring service if needed
       if (window.gtag) {
         window.gtag('event', 'page_load_time', {
           value: pageLoadTime,
@@ -103,8 +94,6 @@ onMounted(() => {
       }
     });
   }
-  
-  // Lenis initialization is now handled in handleLoadingComplete
 })
 
 onUnmounted(() => {
@@ -116,36 +105,30 @@ onUnmounted(() => {
 
 <template>
   <div class="bg-background font-sans text-text">
-    <!-- Loading Screen -->
+    <!-- Loading Screen - overlays everything with high z-index -->
     <LoadingScreen
       v-if="isLoading"
       @transition-start="handleTransitionStart"
       @loading-complete="handleLoadingComplete"
     />
 
-    <!-- Main App Content - shown after doors open -->
-    <div class="main-content-transition">
-      <!-- Navigation - shown immediately with hero -->
-      <div v-if="showNavigation" class="navigation-transition">
-        <AppHeader
-          :country="selectedCountry"
-          @update:country="selectedCountry = $event"
-          @toggle-menu="isMenuOpen = !isMenuOpen"
-        />
-        <FullScreenMenu :is-open="isMenuOpen" @close="isMenuOpen = false" />
-      </div>
+    <!-- Main App Content - ALWAYS rendered from the start, just behind loading screen -->
+    <div class="main-content-wrapper">
+      <!-- Navigation - always rendered -->
+      <AppHeader
+        :country="selectedCountry"
+        @update:country="selectedCountry = $event"
+        @toggle-menu="isMenuOpen = !isMenuOpen"
+      />
+      <FullScreenMenu :is-open="isMenuOpen" @close="isMenuOpen = false" />
 
-      <!-- Main content with router view -->
+      <!-- Main content with router view - ALWAYS rendered -->
       <main>
-        <router-view v-slot="{ Component }">
-          <transition name="page" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
+        <router-view />
       </main>
 
-      <!-- Footer sections - shown after main content -->
-      <div v-if="showMainContent" class="relative fade-in">
+      <!-- Footer sections - shown after loading -->
+      <div v-show="showMainContent" class="relative">
         <CurveDivider class="absolute bottom-full w-full h-24 text-[#4e3b2d] fill-current" />
         <div data-ordervia-section>
           <OrderViaSection />
@@ -157,59 +140,8 @@ onUnmounted(() => {
 </template>
 
 <style>
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(15px);
-}
-
-.fade-in {
-  animation: fadeIn 0.8s ease-in-out;
-}
-
-.navigation-transition {
-  animation: navigationSlideDown 0.8s ease-out;
-}
-
-.main-content-transition {
-  animation: contentFadeIn 1.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes navigationSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes contentFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.main-content-wrapper {
+  position: relative;
+  z-index: 1;
 }
 </style>
