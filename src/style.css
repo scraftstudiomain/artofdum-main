@@ -59,14 +59,47 @@ body {
   overflow-x: hidden;
 }
 
+/* Explicit Brand Color Overrides for Robust Readability */
+.text-brand-earthen, [text-brand-earthen] {
+  color: #2b2116 !important;
+}
+.text-brand-nutmeg, [text-brand-nutmeg] {
+  color: #4e3b2d !important;
+}
+.text-brand-sesame, [text-brand-sesame] {
+  color: #e4dcca !important;
+}
+.text-brand-cashew, [text-brand-cashew] {
+  color: #f0ebe1 !important;
+}
+.text-brand-gold-dark, [text-brand-gold-dark] {
+  color: #885524 !important;
+}
+.text-brand-gold-light, [text-brand-gold-light] {
+  color: #e8ba71 !important;
+}
+
+.bg-brand-earthen, [bg-brand-earthen] {
+  background-color: #2b2116 !important;
+}
+.bg-brand-nutmeg, [bg-brand-nutmeg] {
+  background-color: #4e3b2d !important;
+}
+.bg-brand-sesame, [bg-brand-sesame] {
+  background-color: #e4dcca !important;
+}
+.bg-brand-cashew, [bg-brand-cashew] {
+  background-color: #f0ebe1 !important;
+}
+
 .bg-gold-gradient {
-  background: linear-gradient(45deg, #885524, #8d5827, #a9742a, #ffd081, #e8ba71);
+  background: linear-gradient(45deg, #885524, #8d5827, #a9742a, #ffd081, #e8ba71) !important;
 }
 
 .text-gold-gradient {
-  background: linear-gradient(45deg, #885524, #8d5827, #a9742a, #ffd081, #e8ba71);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background: linear-gradient(45deg, #885524, #8d5827, #a9742a, #ffd081, #e8ba71) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
 body::before {

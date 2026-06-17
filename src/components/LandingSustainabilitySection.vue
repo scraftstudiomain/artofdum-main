@@ -20,7 +20,7 @@
             MINDFUL LUXURY
           </p>
           <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-earthen leading-tight mb-6">
-            Dum with a <span class="text-[#885524]">Conscience</span>
+            Dum with a <span class="text-brand-gold-dark">Conscience</span>
           </h2>
           <p class="text-sm sm:text-base md:text-lg text-brand-nutmeg text-opacity-90 leading-relaxed mb-8 font-light">
             Art of Dum redefines fine dining by pairing opulent slow-cooked heritage with an uncompromising commitment to our planet. From hand-baked terracotta clay vessels to our zero-plastic delivery policy, every detail is mindfully chosen to honor the earth.
@@ -34,7 +34,7 @@
               class="flex gap-4 items-start"
             >
               <!-- Icon Container -->
-              <div class="flex-shrink-0 w-10 h-10 rounded-full border border-[#885524]/60 flex items-center justify-center bg-brand-sesame text-[#885524] shadow-sm">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full border border-brand-gold-dark/40 flex items-center justify-center bg-brand-sesame text-brand-gold-dark shadow-sm">
                 <component :is="feature.icon" class="w-5 h-5" />
               </div>
               <div>
@@ -68,7 +68,7 @@
             </div>
 
             <!-- Front overlapping image (Glass Jars/Sustainability packaging) -->
-            <div class="absolute bottom-0 left-0 w-[80%] h-[78%] overflow-hidden border border-brand-gold/25 shadow-2xl image-card bg-brand-sesame">
+            <div class="absolute bottom-0 left-0 w-[80%] h-[78%] overflow-hidden border border-brand-gold-dark/30 shadow-2xl image-card bg-brand-sesame">
               <img
                 src="https://images.pexels.com/photos/3730760/pexels-photo-3730760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Eco-friendly Packaging"

@@ -14,7 +14,7 @@ import potImage from '../RAW IMAGES AGGREGATOR SHOOT/2.jpg';
 
           <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-earthen leading-[1.2] mb-6">
             Experience the<br />
-            <span class="text-[#885524] font-serif">Art of Dum</span>
+            <span class="text-brand-gold-dark font-serif">Art of Dum</span>
           </h2>
 
           <p class="text-base sm:text-lg text-brand-nutmeg leading-relaxed font-light mb-0">

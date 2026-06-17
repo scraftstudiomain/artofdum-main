@@ -80,7 +80,7 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
           :class="['flex flex-col items-center gap-5 group', offsets[index]]"
         >
           <div
-            class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-[3px] border-[#885524] overflow-hidden shadow-2xl shadow-black/40 bg-black relative"
+            class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-[3px] border-brand-gold-dark overflow-hidden shadow-2xl shadow-black/40 bg-black relative"
           >
             <div
               class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"
@@ -92,7 +92,7 @@ const offsets = ['md:-translate-y-6', 'md:translate-y-10', 'md:-translate-y-6']
           </div>
 
           <div
-            class="px-5 py-2 bg-brand-cashew border border-[#885524]/40 text-brand-earthen text-xs sm:text-sm tracking-[0.18em] uppercase font-medium shadow-md transition-all duration-300 group-hover:border-[#885524]"
+            class="px-5 py-2 bg-brand-cashew border border-brand-gold-dark/40 text-brand-earthen text-xs sm:text-sm tracking-[0.18em] uppercase font-medium shadow-md transition-all duration-300 group-hover:border-brand-gold-dark"
           >
             {{ item.title }}
           </div>

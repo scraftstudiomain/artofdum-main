@@ -20,7 +20,7 @@
         <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-brand-earthen mb-6">
           Bespoke Catering
         </h2>
-        <div class="h-[1px] w-24 bg-[#885524] mx-auto mb-6"></div>
+        <div class="h-[1px] w-24 bg-brand-gold-dark mx-auto mb-6"></div>
         <p class="text-sm sm:text-base md:text-lg text-brand-nutmeg text-opacity-85 max-w-xl mx-auto leading-relaxed font-light">
           From intimate family gatherings to grand wedding banquets, bring the theatrical slow-cooking legacy of Art of Dum to your special occasions.
         </p>
@@ -73,7 +73,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 relative">
           <!-- Horizontal connecting line for desktop -->
-          <div class="hidden md:block absolute top-10 left-[10%] right-[10%] h-[1px] bg-[#885524]/30 z-0"></div>
+          <div class="hidden md:block absolute top-10 left-[10%] right-[10%] h-[1px] bg-brand-gold-dark/30 z-0"></div>
 
           <div
             v-for="(step, index) in steps"
